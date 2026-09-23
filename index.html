@@ -6,6 +6,7 @@
   <meta name="description" content="Vinzent Ferfers — Biological Oceanography, Scientific Diving, Marine Monitoring and Computer Vision." />
   <meta name="theme-color" content="#071820" />
   <title>Vinzent Ferfers | Ocean Vision</title>
+
   <style>
     :root {
       --bg: #071820;
@@ -21,6 +22,7 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -41,9 +43,10 @@
       top: 0;
       z-index: 20;
       backdrop-filter: blur(16px);
-      background: rgba(7,24,32,.82);
+      background: rgba(7,24,32,.84);
       border-bottom: 1px solid var(--line);
     }
+
     nav {
       min-height: 68px;
       display: flex;
@@ -51,9 +54,10 @@
       justify-content: space-between;
       gap: 1rem;
     }
-    .brand { font-weight: 850; letter-spacing: .025em; }
+
+    .brand { font-weight: 850; letter-spacing: .025em; white-space: nowrap; }
     .brand span { color: var(--accent); }
-    .nav-links { display: flex; flex-wrap: wrap; gap: 1rem; color: var(--muted); font-size: .92rem; }
+    .nav-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .85rem; color: var(--muted); font-size: .84rem; }
 
     .hero { min-height: 85vh; display: grid; place-items: center; padding: 5.5rem 0 4rem; }
     .hero-grid { display: grid; grid-template-columns: 1.28fr .72fr; gap: 3.5rem; align-items: center; }
@@ -65,16 +69,24 @@
 
     .actions { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: 2rem; }
     .button {
-      display: inline-flex; align-items: center; justify-content: center; gap: .45rem;
-      padding: .9rem 1.15rem; border-radius: 999px; border: 1px solid var(--line);
-      font-weight: 750; transition: transform .2s ease, border-color .2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .45rem;
+      padding: .9rem 1.15rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-weight: 750;
+      transition: transform .2s ease, border-color .2s ease;
     }
     .button.primary { background: var(--accent); color: #052029; border-color: transparent; }
     .button:hover { transform: translateY(-2px); border-color: rgba(112,214,197,.65); }
 
     .profile-card {
       background: linear-gradient(180deg, rgba(18,52,65,.96), rgba(13,37,48,.96));
-      border: 1px solid var(--line); border-radius: 28px; padding: 1rem;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 1rem;
       box-shadow: 0 30px 80px rgba(0,0,0,.28);
     }
     .profile-card img { width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 20%; border-radius: 20px; display: block; }
@@ -84,22 +96,37 @@
 
     section { padding: 5rem 0; scroll-margin-top: 70px; }
     .section-title { font-size: clamp(2rem, 4vw, 3.5rem); margin: 0 0 .75rem; }
-    .section-intro { color: var(--muted); max-width: 780px; margin: 0 0 2.25rem; }
+    .section-intro { color: var(--muted); max-width: 800px; margin: 0 0 2.25rem; }
 
     .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
     .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .card { background: rgba(13,37,48,.82); border: 1px solid var(--line); border-radius: 22px; padding: 1.5rem; }
+
+    .card,
+    .stat-card {
+      background: rgba(13,37,48,.82);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 1.5rem;
+    }
     .card h3 { margin: 0 0 .5rem; font-size: 1.18rem; }
-    .card p { color: var(--muted); margin: 0; }
+    .card p, .stat-card p { color: var(--muted); margin: 0; }
     .card .date { color: var(--accent); font-size: .78rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .6rem; }
+    .stat-card .big { font-size: 2.4rem; font-weight: 850; letter-spacing: -.04em; color: var(--accent); }
 
     .spotlight {
-      display: grid; grid-template-columns: .85fr 1.15fr; gap: 1rem; align-items: stretch;
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 1rem;
+      align-items: stretch;
       background: linear-gradient(135deg, rgba(112,214,197,.10), rgba(158,201,255,.06));
-      border: 1px solid var(--line); border-radius: 28px; padding: 1.75rem;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 1.75rem;
     }
     .spotlight h3 { font-size: 1.75rem; margin: .2rem 0 .7rem; }
     .spotlight p { color: var(--muted); }
+    .mini-list { margin: .7rem 0 0; padding-left: 1.15rem; color: #d8e8ea; }
+    .mini-list li { margin: .4rem 0; }
 
     .cv-video-wrap {
       margin-top: 1rem;
@@ -108,18 +135,10 @@
       border: 1px solid var(--line);
       border-radius: 28px;
     }
-    .cv-video-wrap video {
-      width: 100%;
-      display: block;
-      background: #000;
-      max-height: 680px;
-      object-fit: contain;
-    }
-    .cv-video-caption {
-      padding: 1rem 1.25rem 1.2rem;
-      color: var(--muted);
-      font-size: .92rem;
-    }
+    .cv-video-wrap video { width: 100%; display: block; background: #000; max-height: 680px; object-fit: contain; }
+    .cv-video-caption { padding: 1rem 1.25rem 1.2rem; color: var(--muted); font-size: .92rem; }
+
+    .vessels { display: grid; grid-template-columns: .8fr 1.2fr; gap: 1rem; }
 
     .expedition-feature {
       margin-top: 1rem;
@@ -128,58 +147,20 @@
       border: 1px solid var(--line);
       border-radius: 28px;
     }
-    .expedition-feature img {
-      width: 100%;
-      aspect-ratio: 3 / 2;
-      object-fit: cover;
-      display: block;
-    }
+    .expedition-feature img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; }
     .expedition-copy { padding: 1.35rem 1.5rem 1.5rem; }
     .expedition-copy h3 { margin: .15rem 0 .4rem; font-size: 1.45rem; }
     .expedition-copy p { margin: 0; color: var(--muted); }
     .photo-credit { margin-top: .65rem !important; font-size: .82rem; color: #91abb1 !important; }
 
-
-    .photo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1rem; }
-    .photo-card { overflow: hidden; background: rgba(13,37,48,.82); border: 1px solid var(--line); border-radius: 22px; }
-    .photo-card img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; }
-    .photo-card figcaption { padding: 1rem 1.1rem 1.2rem; color: var(--muted); font-size: .95rem; }
-    .photo-card strong { color: var(--text); display: block; margin-bottom: .3rem; }
-
-    .mini-list { margin: .7rem 0 0; padding-left: 1.15rem; color: #d8e8ea; }
-    .mini-list li { margin: .4rem 0; }
-
-    .timeline { display: grid; gap: 1rem; }
-    .timeline-item { display: grid; grid-template-columns: 150px 1fr; gap: 1.3rem; padding: 1.25rem 0; border-top: 1px solid var(--line); }
-    .timeline-item:first-child { border-top: 0; }
-    .timeline-date { color: var(--accent); font-weight: 800; font-size: .88rem; }
-    .timeline-copy h3 { margin: 0 0 .2rem; }
-    .timeline-copy .org { color: #d8e8ea; margin-bottom: .45rem; }
-    .timeline-copy p { margin: 0; color: var(--muted); }
-
-    .skill-cloud { display: flex; flex-wrap: wrap; gap: .65rem; }
-    .tag { padding: .58rem .82rem; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.05); color: #dcebed; font-size: .9rem; }
-
-    .vessels { display: grid; grid-template-columns: .8fr 1.2fr; gap: 1rem; }
-    .stat-card { background: rgba(13,37,48,.82); border: 1px solid var(--line); border-radius: 22px; padding: 1.5rem; }
-    .stat-card .big { font-size: 2.4rem; font-weight: 850; letter-spacing: -.04em; color: var(--accent); }
-    .stat-card p { color: var(--muted); margin: .2rem 0 0; }
-
     .globe-section {
-      margin-top: 1rem;
       background: linear-gradient(135deg, rgba(13,37,48,.92), rgba(6,25,34,.96));
       border: 1px solid var(--line);
       border-radius: 28px;
       padding: 1.35rem;
       overflow: hidden;
     }
-    .globe-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: .25rem .25rem 1rem;
-    }
+    .globe-head { display: flex; align-items: end; justify-content: space-between; gap: 1rem; padding: .25rem .25rem 1rem; }
     .globe-head h3 { margin: .1rem 0 .25rem; font-size: 1.55rem; }
     .globe-head p { margin: 0; color: var(--muted); max-width: 680px; }
     .globe-hint { color: #91abb1; font-size: .82rem; white-space: nowrap; }
@@ -188,16 +169,11 @@
       min-height: 540px;
       border-radius: 22px;
       overflow: hidden;
-      background:
-        radial-gradient(circle at 50% 45%, rgba(25,85,100,.18), transparent 36%),
-        #031118;
+      background: radial-gradient(circle at 50% 45%, rgba(25,85,100,.18), transparent 36%), #031118;
       position: relative;
     }
     #globeViz canvas { display: block; }
-    .scene-tooltip {
-      pointer-events: none;
-      z-index: 30;
-    }
+    .scene-tooltip { pointer-events: none; z-index: 30; }
     .globe-tooltip {
       width: 280px;
       overflow: hidden;
@@ -208,79 +184,97 @@
       color: var(--text);
       backdrop-filter: blur(14px);
     }
-    .globe-tooltip img {
-      width: 100%;
-      height: 145px;
-      object-fit: cover;
-      display: block;
-    }
+    .globe-tooltip img { width: 100%; height: 145px; object-fit: cover; display: block; }
     .globe-tooltip-copy { padding: .85rem .95rem 1rem; }
-    .globe-tooltip-kicker {
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      font-size: .68rem;
-      font-weight: 850;
-      margin-bottom: .28rem;
-    }
+    .globe-tooltip-kicker { color: var(--accent); text-transform: uppercase; letter-spacing: .12em; font-size: .68rem; font-weight: 850; margin-bottom: .28rem; }
     .globe-tooltip strong { display: block; font-size: 1rem; margin-bottom: .2rem; }
     .globe-tooltip p { margin: 0; color: #bfd0d4; font-size: .86rem; line-height: 1.45; }
-    .globe-mobile-card {
-      display: none;
-      margin-top: 1rem;
-      background: rgba(255,255,255,.045);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      overflow: hidden;
-    }
+    .globe-mobile-card { display: none; margin-top: 1rem; background: rgba(255,255,255,.045); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
     .globe-mobile-card.active { display: grid; grid-template-columns: 180px 1fr; }
     .globe-mobile-card img { width: 100%; height: 100%; min-height: 150px; object-fit: cover; }
     .globe-mobile-copy { padding: 1rem; }
     .globe-mobile-copy h4 { margin: .15rem 0 .35rem; font-size: 1.08rem; }
     .globe-mobile-copy p { margin: 0; color: var(--muted); }
+
+    .sswd-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-items: stretch; }
+    .sswd-copy { background: linear-gradient(135deg, rgba(112,214,197,.08), rgba(158,201,255,.05)); border: 1px solid var(--line); border-radius: 28px; padding: 1.75rem; }
+    .sswd-copy h3 { margin: .15rem 0 .6rem; font-size: 1.6rem; }
+    .sswd-copy p { color: var(--muted); }
+    .photo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .photo-card { overflow: hidden; background: rgba(13,37,48,.82); border: 1px solid var(--line); border-radius: 22px; margin: 0; }
+    .photo-card img { width: 100%; height: 100%; min-height: 320px; object-fit: cover; display: block; }
+
+    .timeline { display: grid; gap: 0; }
+    .timeline-item { display: grid; grid-template-columns: 170px 1fr; gap: 1.3rem; padding: 1.25rem 0; border-top: 1px solid var(--line); }
+    .timeline-item:first-child { border-top: 0; }
+    .timeline-date { color: var(--accent); font-weight: 800; font-size: .88rem; }
+    .timeline-copy h3 { margin: 0 0 .2rem; }
+    .timeline-copy .org { color: #d8e8ea; margin-bottom: .45rem; }
+    .timeline-copy p { margin: 0; color: var(--muted); }
+
     .photography-head { display: flex; align-items: end; justify-content: space-between; gap: 1.25rem; margin-bottom: 1.4rem; }
     .photography-head .section-intro { margin-bottom: 0; }
     .gallery-controls { display: flex; gap: .55rem; flex: 0 0 auto; }
     .gallery-button {
-      width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line);
-      background: rgba(255,255,255,.05); color: var(--text); font-size: 1.25rem; cursor: pointer;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      font-size: 1.25rem;
+      cursor: pointer;
       transition: transform .2s ease, border-color .2s ease, background .2s ease;
     }
     .gallery-button:hover { transform: translateY(-2px); border-color: rgba(112,214,197,.65); background: rgba(112,214,197,.08); }
     .underwater-gallery {
-      display: flex; gap: 1rem; overflow-x: auto; overscroll-behavior-inline: contain;
-      scroll-snap-type: x mandatory; scrollbar-width: thin; padding: .25rem 0 1.1rem;
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      overscroll-behavior-inline: contain;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: thin;
+      padding: .25rem 0 1.1rem;
     }
     .underwater-gallery::-webkit-scrollbar { height: 8px; }
     .underwater-gallery::-webkit-scrollbar-track { background: rgba(255,255,255,.04); border-radius: 999px; }
     .underwater-gallery::-webkit-scrollbar-thumb { background: rgba(112,214,197,.35); border-radius: 999px; }
     .underwater-shot {
-      flex: 0 0 clamp(260px, 35vw, 430px); margin: 0; overflow: hidden;
-      border: 1px solid var(--line); border-radius: 24px; background: rgba(13,37,48,.82);
-      scroll-snap-align: start; position: relative;
+      flex: 0 0 clamp(260px, 35vw, 430px);
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(13,37,48,.82);
+      scroll-snap-align: start;
+      position: relative;
     }
-    .underwater-shot img {
-      width: 100%; height: clamp(360px, 52vw, 560px); object-fit: cover; display: block;
-      transition: transform .5s ease;
-    }
+    .underwater-shot img { width: 100%; height: clamp(360px, 52vw, 560px); object-fit: cover; display: block; transition: transform .5s ease; }
     .underwater-shot:hover img { transform: scale(1.025); }
     .underwater-shot figcaption {
-      position: absolute; inset: auto 0 0; padding: 2.6rem 1.05rem .95rem;
-      background: linear-gradient(transparent, rgba(2,16,22,.86)); color: #eaf5f6; font-size: .88rem;
+      position: absolute;
+      inset: auto 0 0;
+      padding: 2.6rem 1.05rem .95rem;
+      background: linear-gradient(transparent, rgba(2,16,22,.86));
+      color: #eaf5f6;
+      font-size: .88rem;
     }
     .photo-note { color: var(--muted); font-size: .86rem; margin-top: .75rem; }
 
+    .skill-cloud { display: flex; flex-wrap: wrap; gap: .65rem; }
+    .tag { padding: .58rem .82rem; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.05); color: #dcebed; font-size: .9rem; }
+
     .contact-box { padding: 2rem; border-radius: 28px; border: 1px solid var(--line); background: linear-gradient(135deg, rgba(112,214,197,.12), rgba(158,201,255,.07)); }
     .contact-box .section-intro { margin-bottom: 1.3rem; }
-
-    footer { border-top: 1px solid var(--line); color: var(--muted); padding: 2rem 0 3rem; font-size: .9rem; }
     .fineprint { font-size: .83rem; color: var(--muted); margin-top: 1rem; }
 
-    @media (max-width: 850px) {
-      .hero-grid, .grid, .grid.three, .spotlight, .vessels { grid-template-columns: 1fr; }
+    footer { border-top: 1px solid var(--line); color: var(--muted); padding: 2rem 0 3rem; font-size: .9rem; }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hero-grid, .grid, .grid.three, .spotlight, .vessels, .sswd-layout { grid-template-columns: 1fr; }
       .profile-card { max-width: 420px; }
       .hero { min-height: auto; }
-      .nav-links { display: none; }
       .timeline-item { grid-template-columns: 1fr; gap: .25rem; }
       .globe-head { align-items: flex-start; flex-direction: column; }
       #globeViz { min-height: 430px; }
@@ -288,8 +282,10 @@
       .globe-mobile-card img { max-height: 240px; }
       .photography-head { align-items: flex-start; flex-direction: column; }
       .underwater-shot { flex-basis: 82vw; }
+      .photo-card img { min-height: 260px; }
     }
   </style>
+
   <script src="https://unpkg.com/globe.gl"></script>
 </head>
 <body>
@@ -298,13 +294,13 @@
       <nav>
         <a class="brand" href="#top">VINZENT <span>FERFERS</span></a>
         <div class="nav-links">
-          <a href="#about">About</a>
           <a href="#computer-vision">Computer Vision</a>
           <a href="#diving">Scientific Diving</a>
           <a href="#open-ocean">Open Ocean</a>
-          <a href="#photography">Photography</a>
+          <a href="#international">International</a>
+          <a href="#sswd">B.Sc. Research</a>
           <a href="#experience">Experience</a>
-          <a href="#contact">Contact</a>
+          <a href="#photography">Photography</a>
         </div>
       </nav>
     </div>
@@ -343,10 +339,7 @@
         <div class="eyebrow">About</div>
         <h2 class="section-title">Ocean observation, from fieldwork to algorithms.</h2>
         <p class="section-intro">
-          My background combines biological oceanography with hands-on marine fieldwork. I’m interested in linking
-          scientific diving and underwater observation with reproducible monitoring methods, image-based data and
-          computer vision. My experience ranges from ecophysiology and microbiology to research-vessel operations,
-          habitat documentation, ecological surveys and automated benthic assessment.
+          My background combines biological oceanography with hands-on marine fieldwork. I’m interested in linking scientific diving and underwater observation with reproducible monitoring methods, image-based data and computer vision. My experience ranges from ecophysiology and microbiology to research-vessel operations, habitat documentation, ecological surveys and automated benthic assessment.
         </p>
         <div class="grid three">
           <article class="card"><h3>Computer vision & monitoring</h3><p>Image annotation, model training, spatial analysis and emerging digital workflows for scalable marine monitoring.</p></article>
@@ -356,14 +349,13 @@
       </div>
     </section>
 
+    <!-- 1. COMPUTER VISION -->
     <section id="computer-vision">
       <div class="wrap">
         <div class="eyebrow">Computer vision · benthic habitat assessment</div>
         <h2 class="section-title">From underwater imagery to spatial monitoring.</h2>
         <p class="section-intro">
-          I work with image-based monitoring workflows that connect manual ecological annotation, machine learning,
-          high-performance computing and geospatial analysis. My current work in Sweden focuses on turning benthic
-          imagery into reproducible information that can support marine monitoring and management.
+          I work with image-based monitoring workflows that connect manual ecological annotation, machine learning, high-performance computing and geospatial analysis. My current work in Sweden focuses on turning benthic imagery into reproducible information that can support marine monitoring and management.
         </p>
 
         <div class="spotlight">
@@ -371,9 +363,7 @@
             <div class="eyebrow">LST project · SUBSIM · Sweden</div>
             <h3>Computer vision for benthic habitat assessment.</h3>
             <p>
-              I participated in an LST project for the <strong>Länsstyrelsen Skåne</strong> (County Administrative Board of Skåne),
-              using the SUBSIM computer-vision workflow integrated into Digital Twin Ocean. The work focused on analysing
-              underwater transect imagery to quantify algae coverage and translate image observations into spatial monitoring products.
+              I participated in an LST project for <strong>Länsstyrelsen Skåne</strong> (County Administrative Board of Skåne), using the SUBSIM computer-vision workflow integrated into Digital Twin Ocean. The work focused on analysing underwater transect imagery to quantify algae coverage and translate image observations into spatial monitoring products.
             </p>
           </div>
           <div class="card">
@@ -389,32 +379,30 @@
         </div>
 
         <figure class="cv-video-wrap">
-          <video id="benthicCvVideo" autoplay muted loop playsinline preload="metadata">
+          <video id="benthicCvVideo" autoplay muted loop playsinline preload="auto">
             <source src="assets/clip_LST_Skan_Transekt_M4_annotated.mp4" type="video/mp4" />
             Your browser does not support embedded MP4 video.
           </video>
-          <figcaption class="cv-video-caption">Annotated benthic transect imagery from the computer-vision monitoring workflow. Playback speed: 1.8×.</figcaption>
+          <figcaption class="cv-video-caption">Annotated benthic transect imagery from the computer-vision monitoring workflow · playback speed 1.8×.</figcaption>
         </figure>
 
-        <div class="card" style="margin-top:1rem">
+        <article class="card" style="margin-top:1rem">
           <div class="date">Environmental DNA monitoring · Sweden</div>
           <h3>Environmental DNA monitoring.</h3>
           <p>
-            Alongside image-based monitoring, I participated in environmental DNA (eDNA) field sampling along the Swedish coast,
-            collecting water samples and scrapings from submerged settling plates. This work complements visual and image-based
-            monitoring with molecular methods for detecting biological signals in the marine environment.
+            Alongside image-based monitoring, I participated in environmental DNA (eDNA) field sampling along the Swedish coast, collecting water samples and scrapings from submerged settling plates. This complements visual and image-based monitoring with molecular methods for detecting biological signals in the marine environment.
           </p>
-        </div>
+        </article>
       </div>
     </section>
 
+    <!-- 2. SCIENTIFIC DIVING -->
     <section id="diving">
       <div class="wrap">
         <div class="eyebrow">Scientific diving</div>
-        <h2 class="section-title">Working where the data are collected.</h2>
+        <h2 class="section-title">Scientific diving, monitoring & underwater operations.</h2>
         <p class="section-intro">
-          Scientific diving is a core part of my fieldwork. I combine underwater observation and sampling with project planning,
-          risk assessment, documentation and team coordination, linking what happens below the surface directly to ecological data.
+          Scientific diving is a core part of my fieldwork. I combine underwater observation and sampling with project planning, risk assessment, documentation and team coordination, linking what happens below the surface directly to ecological data.
         </p>
 
         <div class="vessels">
@@ -432,30 +420,16 @@
           <article class="card"><h3>Operational responsibility</h3><p>Risk assessments, dive planning, project preparation and coordination of scientific-diving teams through my role supervising scientific-diving operations.</p></article>
           <article class="card"><h3>Field-to-data practice</h3><p>Underwater observations are documented through photography, video, sampling and structured monitoring methods so field observations can feed directly into later analysis.</p></article>
         </div>
-
-        <div class="globe-section" aria-labelledby="globe-title">
-          <div class="globe-head">
-            <div>
-              <div class="eyebrow">International experience</div>
-              <h3 id="globe-title">Study, research & fieldwork around the world.</h3>
-              <p>Explore places where I studied, worked, collaborated, dived or joined marine-science projects.</p>
-            </div>
-            <div class="globe-hint">Drag to rotate · Scroll to zoom · Hover or tap a pin</div>
-          </div>
-          <div id="globeViz" role="img" aria-label="Interactive globe showing Vinzent Ferfers' international study, research and project locations"></div>
-          <div id="globeMobileCard" class="globe-mobile-card" aria-live="polite"></div>
-        </div>
       </div>
     </section>
 
+    <!-- 3. OPEN OCEAN -->
     <section id="open-ocean">
       <div class="wrap">
         <div class="eyebrow">Open-ocean research & oceanography</div>
         <h2 class="section-title">Oceanography at sea.</h2>
         <p class="section-intro">
-          My open-ocean experience combines research-vessel operations with hands-on oceanographic sampling and observation.
-          During the WASCAL Floating University and other cruises, I worked with instruments and workflows that connect physical,
-          biological and atmospheric observations across the marine environment.
+          My open-ocean experience combines research-vessel operations with hands-on oceanographic sampling and observation. During the WASCAL Floating University and other cruises, I worked with instruments and workflows that connect physical, biological and atmospheric observations across the marine environment.
         </p>
 
         <figure class="expedition-feature">
@@ -486,130 +460,101 @@
           </article>
         </div>
 
-        <div class="card" style="margin-top:1rem">
+        <article class="card" style="margin-top:1rem">
           <h3>Research-vessel experience</h3>
           <p>Field experience aboard <strong>RV Polarstern</strong>, <strong>RV Alkor</strong> and <strong>RV Littorina</strong>, alongside additional offshore sampling tools including Van Veen Grab, Box Corer, drop-down camera, dredge and mini-RUV.</p>
-        </div>
+        </article>
       </div>
     </section>
 
-    <section id="photography">
+    <!-- 4. INTERNATIONAL EXPERIENCE / GLOBE -->
+    <section id="international">
       <div class="wrap">
-        <div class="eyebrow">Underwater photography</div>
-        <div class="photography-head">
-          <div>
-            <h2 class="section-title">A view below the surface.</h2>
-            <p class="section-intro">
-              Underwater photography is part of how I document marine environments, field experiences and the organisms I encounter while diving.
-              Scroll through a selection of images from below the surface.
-            </p>
-          </div>
-          <div class="gallery-controls" aria-label="Underwater gallery controls">
-            <button class="gallery-button" type="button" id="galleryPrev" aria-label="Previous photographs">&#8592;</button>
-            <button class="gallery-button" type="button" id="galleryNext" aria-label="Next photographs">&#8594;</button>
-          </div>
-        </div>
+        <div class="eyebrow">International experience</div>
+        <h2 class="section-title">Working where the data are collected.</h2>
+        <p class="section-intro">
+          Study, research, fieldwork, scientific diving and marine projects have taken me across different ocean regions and research environments. Explore the locations below.
+        </p>
 
-        <!-- Gallery filenames below match the GitHub /assets folder exactly.
-             Keep capitalization exactly as written, especially R7_I2382.JPG. -->
-        <div class="underwater-gallery" id="underwaterGallery" tabindex="0" aria-label="Scrollable underwater photography gallery">
-          <figure class="underwater-shot">
-            <img src="./assets/WhatsApp Image 2026-09-23 at 22.13.18 (3).jpeg" alt="Shark swimming over a reef in Fuvahmulah, Maldives" loading="lazy" />
-            <figcaption>Fuvahmulah, Maldives · Underwater photography</figcaption>
-          </figure>
-          <figure class="underwater-shot">
-            <img src="./assets/R7_I2382.JPG" alt="Moray eel emerging from a rocky reef" loading="lazy" />
-            <figcaption>Underwater wildlife photography</figcaption>
-          </figure>
-          <figure class="underwater-shot">
-            <img src="./assets/WhatsApp Image 2026-09-23 at 22.13.18.jpeg" alt="Clownfish among a sea anemone" loading="lazy" />
-            <figcaption>Clownfish &amp; anemone</figcaption>
-          </figure>
-          <figure class="underwater-shot">
-            <img src="./assets/R7_I2318.jpg" alt="Reef fish photographed underwater" loading="lazy" />
-            <figcaption>Reef wildlife</figcaption>
-          </figure>
-          <figure class="underwater-shot">
-            <img src="./assets/R7_I2362.jpg" alt="Scuba diver exploring underwater at night with dive lights" loading="lazy" />
-            <figcaption>Night diving</figcaption>
-          </figure>
-          <figure class="underwater-shot">
-            <img src="./assets/WhatsApp Image 2026-09-23 at 22.13.18 (1).jpeg" alt="Divers framed by an underwater cavern opening in black and white" loading="lazy" />
-            <figcaption>Underwater exploration</figcaption>
-          </figure>
-          <figure class="underwater-shot">
-            <img src="./assets/WhatsApp Image 2026-09-23 at 22.13.18 (2).jpeg" alt="Diver documenting clownfish and sea anemones underwater" loading="lazy" />
-            <figcaption>Diving &amp; marine observation</figcaption>
-          </figure>
+        <div class="globe-section" aria-labelledby="globe-title">
+          <div class="globe-head">
+            <div>
+              <div class="eyebrow">Study · Research · Fieldwork</div>
+              <h3 id="globe-title">International marine-science experience.</h3>
+              <p>Hover over a pin for details, or tap one on mobile.</p>
+            </div>
+            <div class="globe-hint">Drag to rotate · Scroll to zoom · Hover or tap a pin</div>
+          </div>
+          <div id="globeViz" role="img" aria-label="Interactive globe showing Vinzent Ferfers' international study, research and project locations"></div>
+          <div id="globeMobileCard" class="globe-mobile-card" aria-live="polite"></div>
         </div>
-        <p class="photo-note">Drag, swipe or use the arrows to move through the gallery.</p>
       </div>
     </section>
 
+    <!-- 5. BACHELOR RESEARCH / SSWD -->
+    <section id="sswd">
+      <div class="wrap">
+        <div class="eyebrow">Bachelor research · Sea Star Wasting Disease</div>
+        <h2 class="section-title">Monitoring disease in <em>Asterias rubens</em>.</h2>
+        <p class="section-intro">
+          My B.Sc. research at GEOMAR combined experimental ecophysiology, microbiology and field monitoring to investigate Sea Star Wasting Disease in the common sea star <em>Asterias rubens</em> under different temperature conditions.
+        </p>
+
+        <div class="sswd-layout">
+          <article class="sswd-copy">
+            <div class="eyebrow">GEOMAR · 2023–2025</div>
+            <h3>From laboratory experiments to local population surveys.</h3>
+            <p>
+              I simulated future ocean temperatures and measured immune activity using flow cytometry and coelomocytes, while also investigating <em>Vibrio</em> densities in seawater and coelomic fluid. In parallel, I helped monitor local sea-star populations for visible SSWD symptoms using snorkel- and camera-based surveys.
+            </p>
+            <p>
+              I contributed to field data collection and analysis for the co-authored study <em>Sea star wasting disease in the keystone predator Asterias rubens from the Baltic Sea</em>.
+            </p>
+            <div class="actions">
+              <a class="button primary" href="https://www.biorxiv.org/content/10.64898/2026.01.16.699924v1.full" target="_blank" rel="noopener">Read co-authored paper ↗</a>
+            </div>
+          </article>
+
+          <div class="photo-grid">
+            <figure class="photo-card">
+              <img src="assets/sswd-monitoring-diver.jpg" alt="Scientific diver during Sea Star Wasting Disease monitoring" />
+            </figure>
+            <figure class="photo-card">
+              <img src="assets/sswd-monitoring-sea-star.jpg" alt="Asterias rubens photographed underwater during Sea Star Wasting Disease monitoring" />
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. WORK EXPERIENCE TIMELINE -->
     <section id="experience">
       <div class="wrap">
-        <div class="eyebrow">Selected experience</div>
-        <h2 class="section-title">Research, monitoring & leadership.</h2>
-        <p class="section-intro">A selection of experiences from my CV that best represent my scientific and technical profile.</p>
+        <div class="eyebrow">Work experience & leadership</div>
+        <h2 class="section-title">Experience over time.</h2>
+        <p class="section-intro">Research, internships, scientific-diving roles, monitoring projects and representation experience from my current CV.</p>
 
         <div class="timeline">
           <article class="timeline-item">
-            <div class="timeline-date">2023 – 2025</div>
+            <div class="timeline-date">08/2026 – 11/2026</div>
             <div class="timeline-copy">
-              <h3>Research Assistant & B.Sc. Thesis</h3>
-              <div class="org">GEOMAR Helmholtz Centre for Ocean Research · Prof. Dr. Frank Melzner</div>
-              <p>
-                Investigated sea-star responses to future ocean temperatures and Sea Star Wasting Disease symptoms,
-                including flow-cytometry work, coelomocyte measurements, camera-based population surveys and
-                microbiological measurements of <em>Vibrio</em> densities. I contributed to field data collection,
-                underwater monitoring and analysis for the co-authored Sea Star Wasting Disease study.
-              </p>
-              <div class="actions"><a class="button" href="https://www.biorxiv.org/content/10.64898/2026.01.16.699924v1.full" target="_blank" rel="noopener">Co-authored paper on bioRxiv ↗</a></div>
-              <div class="photo-grid">
-                <figure class="photo-card">
-                  <img src="assets/sswd-monitoring-diver.jpg" alt="Scientific diver during Sea Star Wasting Disease monitoring" />
-                  <figcaption>
-                    <strong>SSWD field monitoring</strong>
-                    Scientific-diving work during monitoring and field data collection.
-                  </figcaption>
-                </figure>
-                <figure class="photo-card">
-                  <img src="assets/sswd-monitoring-sea-star.jpg" alt="Underwater image of Asterias rubens during Sea Star Wasting Disease monitoring" />
-                  <figcaption>
-                    <strong><em>Asterias rubens</em></strong>
-                    Underwater observation image connected to Sea Star Wasting Disease monitoring.
-                  </figcaption>
-                </figure>
-              </div>
+              <h3>SUBSIM Internship · Computer Vision & Marine Monitoring</h3>
+              <div class="org">Sweden · Erasmus+</div>
+              <p>Subsea computer-vision model training for benthic habitat assessment and automated monitoring, including BIIGLE annotation, YOLO workflows, LUMI computing and QGIS-based spatial products.</p>
             </div>
           </article>
 
           <article class="timeline-item">
-            <div class="timeline-date">2023 – 2025</div>
-            <div class="timeline-copy">
-              <h3>Research Assistant · Sea Urchin Culture</h3>
-              <div class="org">Kiel University · Dr. Meike Stumpp, collaboration with Dr. Marian Hu</div>
-              <p>
-                Established and maintained a full-life-cycle rearing system for <em>Lytechinus pictus</em>, including seawater
-                manipulations and long-term culture maintenance, with scientific exchange involving Scripps Institution of Oceanography.
-              </p>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <div class="timeline-date">2025</div>
+            <div class="timeline-date">04/2025 – 08/2025</div>
             <div class="timeline-copy">
               <h3>Research Assistant · GAME</h3>
               <div class="org">GEOMAR Helmholtz Centre for Ocean Research · Dr. Mark Lenz</div>
-              <p>
-                Science communication and outreach, including lectures on light pollution, microplastics outreach events
-                and development of social-media strategies for public engagement.
-              </p>
+              <p>Science communication and outreach, including lectures on light pollution, microplastics outreach events and development of social-media strategies for public engagement.</p>
             </div>
           </article>
 
           <article class="timeline-item">
-            <div class="timeline-date">since 2024</div>
+            <div class="timeline-date">since 06/2024</div>
             <div class="timeline-copy">
               <h3>Supervisor for Scientific Diving Operations</h3>
               <div class="org">Geological Institute · Kiel University</div>
@@ -618,7 +563,43 @@
           </article>
 
           <article class="timeline-item">
-            <div class="timeline-date">since 2020</div>
+            <div class="timeline-date">07/2023 – 08/2025</div>
+            <div class="timeline-copy">
+              <h3>Research Assistant · Ecophysiology / B.Sc. Thesis</h3>
+              <div class="org">GEOMAR Helmholtz Centre for Ocean Research · Prof. Dr. Frank Melzner</div>
+              <p>Sea Star Wasting Disease research spanning ecophysiology, microbiology, flow cytometry and field monitoring of local sea-star populations.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">06/2023 – 03/2025</div>
+            <div class="timeline-copy">
+              <h3>Research Assistant · Sea Urchin Culture</h3>
+              <div class="org">Kiel University · Dr. Meike Stumpp, collaboration with Dr. Marian Hu</div>
+              <p>Established and maintained a full-life-cycle rearing system for <em>Lytechinus pictus</em>, including seawater manipulations, long-term culture maintenance and scientific exchange with Scripps Institution of Oceanography.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">02/2023 – 05/2023</div>
+            <div class="timeline-copy">
+              <h3>International Internship · Luminocean</h3>
+              <div class="org">Banda Neira, Indonesia · DAAD scholarship</div>
+              <p>Marine field experience including participation in the Reef Check programme for coral-reef health monitoring.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">since 08/2022</div>
+            <div class="timeline-copy">
+              <h3>Scientific Diver (KFT)</h3>
+              <div class="org">Geological Institute · Kiel University</div>
+              <p>Scientific-diving operations, underwater monitoring, documentation, sampling and operational field support.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">since 12/2020</div>
             <div class="timeline-copy">
               <h3>Student Representative</h3>
               <div class="org">Kiel University · GEOMAR · FYORD</div>
@@ -629,6 +610,58 @@
       </div>
     </section>
 
+    <!-- 7. UNDERWATER PHOTOGRAPHY -->
+    <section id="photography">
+      <div class="wrap">
+        <div class="eyebrow">Underwater photography</div>
+        <div class="photography-head">
+          <div>
+            <h2 class="section-title">A view below the surface.</h2>
+            <p class="section-intro">
+              Underwater photography is part of how I document marine environments, field experiences and the organisms I encounter while diving. Scroll through a selection of images from below the surface.
+            </p>
+          </div>
+          <div class="gallery-controls" aria-label="Underwater gallery controls">
+            <button class="gallery-button" type="button" id="galleryPrev" aria-label="Previous photographs">&#8592;</button>
+            <button class="gallery-button" type="button" id="galleryNext" aria-label="Next photographs">&#8594;</button>
+          </div>
+        </div>
+
+        <div class="underwater-gallery" id="underwaterGallery" tabindex="0" aria-label="Scrollable underwater photography gallery">
+          <figure class="underwater-shot">
+            <img src="assets/WhatsApp Image 2026-09-23 at 22.13.18 (3).jpeg" alt="Shark swimming over a reef in Fuvahmulah, Maldives" loading="lazy" />
+            <figcaption>Fuvahmulah, Maldives · Underwater photography</figcaption>
+          </figure>
+          <figure class="underwater-shot">
+            <img src="assets/R7_I2382.JPG" alt="Moray eel emerging from a rocky reef" loading="lazy" />
+            <figcaption>Underwater wildlife photography</figcaption>
+          </figure>
+          <figure class="underwater-shot">
+            <img src="assets/WhatsApp Image 2026-09-23 at 22.13.18.jpeg" alt="Clownfish among a sea anemone" loading="lazy" />
+            <figcaption>Clownfish &amp; anemone</figcaption>
+          </figure>
+          <figure class="underwater-shot">
+            <img src="assets/R7_I2318.jpg" alt="Reef fish photographed underwater" loading="lazy" />
+            <figcaption>Reef wildlife</figcaption>
+          </figure>
+          <figure class="underwater-shot">
+            <img src="assets/R7_I2362.jpg" alt="Scuba diver exploring underwater at night with dive lights" loading="lazy" />
+            <figcaption>Night diving</figcaption>
+          </figure>
+          <figure class="underwater-shot">
+            <img src="assets/WhatsApp Image 2026-09-23 at 22.13.18 (1).jpeg" alt="Divers framed by an underwater cavern opening in black and white" loading="lazy" />
+            <figcaption>Underwater exploration</figcaption>
+          </figure>
+          <figure class="underwater-shot">
+            <img src="assets/WhatsApp Image 2026-09-23 at 22.13.18 (2).jpeg" alt="Diver documenting clownfish and sea anemones underwater" loading="lazy" />
+            <figcaption>Diving &amp; marine observation</figcaption>
+          </figure>
+        </div>
+        <p class="photo-note">Drag, swipe or use the arrows to move through the gallery.</p>
+      </div>
+    </section>
+
+    <!-- Everything below is retained, only moved after the main portfolio sections. -->
     <section id="skills">
       <div class="wrap">
         <div class="eyebrow">Qualifications</div>
@@ -653,14 +686,14 @@
         <h2 class="section-title">Biology → biological oceanography.</h2>
         <div class="grid">
           <article class="card">
-            <div class="date">since 2024</div>
+            <div class="date">since 10/2024</div>
             <h3>M.Sc. Biological Oceanography</h3>
-            <p>GEOMAR / Kiel University, including international study and project experience.</p>
+            <p>GEOMAR / Kiel University, including an ERASMUS+ semester at the University of the Azores and international field and project experience.</p>
           </article>
           <article class="card">
-            <div class="date">2020 – 2025</div>
+            <div class="date">10/2020 – 09/2025</div>
             <h3>B.Sc. Biology</h3>
-            <p>Kiel University, with study abroad at the University of Aberdeen and an internship at Luminocean in Indonesia.</p>
+            <p>Kiel University, including an ERASMUS+ semester at the University of Aberdeen and a DAAD-supported internship with Luminocean in Indonesia.</p>
           </article>
         </div>
       </div>
@@ -671,9 +704,7 @@
         <div class="contact-box">
           <div class="eyebrow">Contact</div>
           <h2 class="section-title">Let’s talk ocean science.</h2>
-          <p class="section-intro">
-            I’m interested in marine monitoring, scientific diving, open-ocean fieldwork, subsea imaging and computer-vision applications for ocean research.
-          </p>
+          <p class="section-intro">I’m interested in marine monitoring, scientific diving, open-ocean fieldwork, subsea imaging and computer-vision applications for ocean research.</p>
           <div class="actions">
             <a class="button primary" href="mailto:vinzent.ferfers@gmx.de">vinzent.ferfers@gmx.de</a>
             <a class="button" href="CV_Vinzent_Ferfers_09_2026_Leadership.pdf" download>Download full CV</a>
@@ -689,6 +720,35 @@
   </footer>
 
   <script>
+    // Computer-vision video: autoplay, loop and keep 1.8× playback speed.
+    (function () {
+      const video = document.getElementById('benthicCvVideo');
+      if (!video) return;
+
+      const applyRate = () => { video.playbackRate = 1.8; };
+      video.addEventListener('loadedmetadata', applyRate);
+      video.addEventListener('play', applyRate);
+      applyRate();
+
+      const promise = video.play();
+      if (promise && typeof promise.catch === 'function') promise.catch(() => {});
+    })();
+
+    // Photography gallery controls.
+    (function () {
+      const gallery = document.getElementById('underwaterGallery');
+      const prev = document.getElementById('galleryPrev');
+      const next = document.getElementById('galleryNext');
+      if (!gallery || !prev || !next) return;
+
+      const move = direction => {
+        gallery.scrollBy({ left: direction * Math.max(300, gallery.clientWidth * 0.72), behavior: 'smooth' });
+      };
+      prev.addEventListener('click', () => move(-1));
+      next.addEventListener('click', () => move(1));
+    })();
+
+    // International-experience globe.
     (function () {
       const globeElement = document.getElementById('globeViz');
       if (!globeElement || typeof Globe === 'undefined') return;
@@ -718,16 +778,16 @@
           type: 'Study abroad · SSI-certified Divemaster',
           lat: 37.7412,
           lng: -25.6756,
-          info: 'ERASMUS+ semester abroad as part of my M.Sc. in Biological Oceanography. During my time in the Azores, I also worked as an SSI-certified Divemaster.',
+          info: 'ERASMUS+ semester abroad during my M.Sc. studies. I also worked in the Azores as an SSI-certified Divemaster.',
           image: ''
         },
         {
-          name: 'University of Gothenburg / SUBSIM',
+          name: 'SUBSIM / Gothenburg',
           place: 'Gothenburg, Sweden',
           type: 'Computer vision · Marine monitoring',
           lat: 57.7089,
           lng: 11.9746,
-          info: 'SUBSIM computer-vision work for benthic monitoring, including BIIGLE annotations, YOLO workflows, QGIS mapping and eDNA field sampling for porpoise monitoring along the Swedish coast.',
+          info: 'SUBSIM computer-vision work for benthic monitoring, including BIIGLE annotations, YOLO workflows, LUMI computing, QGIS mapping and environmental-DNA sampling using water samples and scrapings from submerged settling plates.',
           image: ''
         },
         {
@@ -736,7 +796,7 @@
           type: 'International internship · Reef Check',
           lat: -4.5250,
           lng: 129.8990,
-          info: 'DAAD-supported internship and marine field experience in Indonesia, including participation in the Reef Check programme for coral-reef health monitoring.',
+          info: 'DAAD-supported marine internship, including participation in the Reef Check programme for coral-reef health monitoring.',
           image: ''
         },
         {
@@ -749,26 +809,26 @@
           image: ''
         },
         {
-          name: 'Fuvahmulah · Maldives',
+          name: 'Fuvahmulah',
           place: 'Fuvahmulah, Maldives',
           type: 'Underwater photography',
           lat: -0.2988,
           lng: 73.4240,
-          info: 'Underwater photography in the waters around Fuvahmulah, documenting marine life and the pelagic environment.',
-          image: './assets/WhatsApp Image 2026-09-23 at 22.13.18 (3).jpeg'
+          info: 'Underwater photography documenting marine life and the pelagic environment around Fuvahmulah.',
+          image: 'assets/WhatsApp Image 2026-09-23 at 22.13.18 (3).jpeg'
         },
         {
           name: 'WASCAL Floating University',
           place: 'Cape Verde · RV Polarstern',
-          type: 'Floating university · Research vessel',
+          type: 'Floating university · Open-ocean research',
           lat: 15.1201,
           lng: -23.6052,
-          info: 'FYORD / WASCAL Floating-University experience aboard RV Polarstern (PS 154/2 / WASCAL-IV).',
+          info: 'FYORD / WASCAL Floating-University experience aboard RV Polarstern (PS 154/2 / WASCAL-IV), including practical oceanographic fieldwork.',
           image: 'assets/wascal-floating-university-polarstern.jpg'
         }
       ];
 
-      function tooltipHTML(d) {
+      const tooltipHTML = d => {
         const image = d.image ? `<img src="${d.image}" alt="">` : '';
         return `<div class="globe-tooltip">
           ${image}
@@ -778,7 +838,7 @@
             <p><b>${d.place}</b><br>${d.info}</p>
           </div>
         </div>`;
-      }
+      };
 
       const world = Globe()(globeElement)
         .backgroundColor('rgba(0,0,0,0)')
@@ -817,36 +877,15 @@
       world.controls().enableDamping = true;
       world.pointOfView({ lat: 18, lng: 5, altitude: 2.25 }, 0);
 
-      function resizeGlobe() {
+      const resizeGlobe = () => {
         const w = globeElement.clientWidth;
-        const h = Math.max(window.innerWidth < 850 ? 430 : 540, Math.min(650, w * 0.62));
+        const h = Math.max(window.innerWidth < 900 ? 430 : 540, Math.min(650, w * 0.62));
         world.width(w).height(h);
-      }
+      };
 
       resizeGlobe();
       window.addEventListener('resize', resizeGlobe);
-
-      const gallery = document.getElementById('underwaterGallery');
-      const galleryPrev = document.getElementById('galleryPrev');
-      const galleryNext = document.getElementById('galleryNext');
-      if (gallery && galleryPrev && galleryNext) {
-        const moveGallery = direction => {
-          gallery.scrollBy({ left: direction * Math.max(300, gallery.clientWidth * 0.72), behavior: 'smooth' });
-        };
-        galleryPrev.addEventListener('click', () => moveGallery(-1));
-        galleryNext.addEventListener('click', () => moveGallery(1));
-      }
     })();
-  </script>
-
-  <script>
-    const benthicCvVideo = document.getElementById('benthicCvVideo');
-    if (benthicCvVideo) {
-      const setBenthicPlaybackRate = () => { benthicCvVideo.playbackRate = 1.8; };
-      benthicCvVideo.addEventListener('loadedmetadata', setBenthicPlaybackRate);
-      benthicCvVideo.addEventListener('play', setBenthicPlaybackRate);
-      setBenthicPlaybackRate();
-    }
   </script>
 </body>
 </html>
