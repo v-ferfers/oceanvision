@@ -113,71 +113,87 @@
     .card .date { color: var(--accent); font-size: .78rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .6rem; }
     .stat-card .big { font-size: 2.4rem; font-weight: 850; letter-spacing: -.04em; color: var(--accent); }
 
-    /* Scientific diving: natural-aspect photo layout, no cropping */
-    .dive-layout {
+    /* Scientific Diving layout v6 — isolated styles, zero image cropping */
+    .sd-layout-v6 {
       display: grid;
       gap: 1rem;
     }
-    .dive-row {
+    .sd-row-v6 {
       display: grid;
-      grid-template-columns: minmax(0, 1.55fr) minmax(300px, .95fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1rem;
       align-items: stretch;
     }
-    .dive-row--reverse {
-      grid-template-columns: minmax(300px, .95fr) minmax(0, 1.55fr);
-    }
-    .dive-card {
-      padding: 0;
-      overflow: hidden;
+    .sd-card-v6 {
       min-width: 0;
+      overflow: hidden;
       background: rgba(13,37,48,.82);
       border: 1px solid var(--line);
       border-radius: 22px;
     }
-    .dive-card--landscape {
+    .sd-landscape-v6 {
       display: flex;
       flex-direction: column;
+      height: 100%;
     }
-    .dive-card--landscape .dive-card-media {
-      display: block;
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      object-position: center;
-      border-bottom: 1px solid var(--line);
+    .sd-landscape-v6 > img {
+      display: block !important;
+      width: 100% !important;
+      height: auto !important;
+      max-height: none !important;
+      aspect-ratio: auto !important;
+      object-fit: contain !important;
+      object-position: center !important;
+      flex: 0 0 auto;
       background: #06161d;
+      border-bottom: 1px solid var(--line);
     }
-    .dive-card--portrait {
+    .sd-portrait-v6 {
       display: grid;
-      grid-template-columns: minmax(150px, 43%) 1fr;
+      grid-template-columns: minmax(180px, 43%) minmax(0, 1fr);
+      height: 100%;
       align-items: stretch;
     }
-    .dive-card--portrait .dive-card-media-wrap {
+    .sd-portrait-media-v6 {
       display: flex;
       align-items: center;
       justify-content: center;
+      min-width: 0;
       background: #06161d;
       border-right: 1px solid var(--line);
-      min-width: 0;
     }
-    .dive-card--portrait .dive-card-media {
-      display: block;
-      width: 100%;
-      height: auto;
-      max-height: 430px;
-      object-fit: contain;
-      object-position: center;
+    .sd-portrait-media-v6 > img {
+      display: block !important;
+      width: 100% !important;
+      height: auto !important;
+      max-height: none !important;
+      aspect-ratio: auto !important;
+      object-fit: contain !important;
+      object-position: center !important;
     }
-    .dive-card-copy {
+    .sd-copy-v6 {
       padding: 1.3rem 1.4rem 1.45rem;
       min-width: 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
-    .dive-card-copy .big { margin-bottom: .25rem; }
-    .dive-card-copy h3 { margin-top: 0; }
+    .sd-copy-v6 h3 {
+      margin: 0 0 .5rem;
+      font-size: 1.18rem;
+    }
+    .sd-copy-v6 p {
+      margin: 0;
+      color: var(--muted);
+    }
+    .sd-copy-v6 .sd-big-v6 {
+      font-size: 2.4rem;
+      line-height: 1.05;
+      font-weight: 850;
+      letter-spacing: -.04em;
+      color: var(--accent);
+      margin: 0 0 .75rem;
+    }
 
     .spotlight {
       display: grid;
@@ -349,10 +365,14 @@
       .photography-head { align-items: flex-start; flex-direction: column; }
       .underwater-shot { flex-basis: 82vw; }
       .photo-card img { min-height: 260px; }
-      .dive-row, .dive-row--reverse { grid-template-columns: 1fr; }
-      .dive-card--portrait { grid-template-columns: 1fr; }
-      .dive-card--portrait .dive-card-media-wrap { border-right: 0; border-bottom: 1px solid var(--line); }
-      .dive-card--portrait .dive-card-media { width: auto; max-width: 100%; max-height: 520px; margin: 0 auto; }
+      .sd-row-v6 { grid-template-columns: 1fr; }
+      .sd-portrait-v6 { grid-template-columns: minmax(135px, 40%) minmax(0, 1fr); }
+    }
+
+    @media (max-width: 560px) {
+      .sd-portrait-v6 { grid-template-columns: 1fr; }
+      .sd-portrait-media-v6 { border-right: 0; border-bottom: 1px solid var(--line); }
+      .sd-portrait-media-v6 > img { width: min(100%, 430px) !important; margin: 0 auto; }
     }
   </style>
 
@@ -467,7 +487,7 @@
     </section>
 
     <!-- 2. SCIENTIFIC DIVING -->
-    <section id="diving">
+    <section id="diving" data-layout-version="sd-v6">
       <div class="wrap">
         <div class="eyebrow">Scientific diving</div>
         <h2 class="section-title">Scientific diving, monitoring & underwater operations.</h2>
@@ -475,41 +495,43 @@
           Scientific diving is a core part of my fieldwork. I combine underwater observation and sampling with project planning, risk assessment, documentation and team coordination, linking what happens below the surface directly to ecological data.
         </p>
 
-        <div class="dive-layout">
-          <div class="dive-row">
-            <article class="stat-card dive-card dive-card--landscape">
-              <img class="dive-card-media" src="./assets/WhatsApp Image 2026-09-24 at 00.37.33.jpeg?v=4" alt="Scientific diving field team operating from a small boat" loading="eager" decoding="async" />
-              <div class="dive-card-copy">
-                <div class="big">Since 2022</div>
+        <div class="sd-layout-v6">
+          <!-- Row 1: landscape + portrait -->
+          <div class="sd-row-v6">
+            <article class="sd-card-v6 sd-landscape-v6">
+              <img src="./assets/WhatsApp Image 2026-09-24 at 00.37.33.jpeg?v=6" alt="Scientific diving field team operating from a small boat" loading="eager" decoding="async" />
+              <div class="sd-copy-v6">
+                <div class="sd-big-v6">Since 2022</div>
                 <p>Scientific Diver (KFT), with later responsibility supervising scientific-diving operations.</p>
               </div>
             </article>
 
-            <article class="card dive-card dive-card--portrait">
-              <div class="dive-card-media-wrap">
-                <img class="dive-card-media" src="./assets/WhatsApp Image 2026-09-23 at 22.33.45.jpeg?v=4" alt="Scientific diver in full diving equipment" loading="eager" decoding="async" />
+            <article class="sd-card-v6 sd-portrait-v6">
+              <div class="sd-portrait-media-v6">
+                <img src="./assets/WhatsApp Image 2026-09-23 at 22.33.45.jpeg?v=6" alt="Scientific diver in full diving equipment" loading="eager" decoding="async" />
               </div>
-              <div class="dive-card-copy">
+              <div class="sd-copy-v6">
                 <h3>Operational responsibility</h3>
                 <p>Risk assessments, dive planning, project preparation and coordination of scientific-diving teams through my role supervising scientific-diving operations.</p>
               </div>
             </article>
           </div>
 
-          <div class="dive-row dive-row--reverse">
-            <article class="card dive-card dive-card--portrait">
-              <div class="dive-card-media-wrap">
-                <img class="dive-card-media" src="./assets/sswd-monitoring-diver.jpg?v=4" alt="Scientific diver during underwater monitoring fieldwork" loading="eager" decoding="async" />
+          <!-- Row 2: portrait + landscape -->
+          <div class="sd-row-v6">
+            <article class="sd-card-v6 sd-portrait-v6">
+              <div class="sd-portrait-media-v6">
+                <img src="./assets/sswd-monitoring-diver.jpg?v=6" alt="Scientific diver during underwater monitoring fieldwork" loading="eager" decoding="async" />
               </div>
-              <div class="dive-card-copy">
+              <div class="sd-copy-v6">
                 <h3>Field-to-data practice</h3>
                 <p>Underwater observations are documented through photography, video, sampling and structured monitoring methods so field observations can feed directly into later analysis.</p>
               </div>
             </article>
 
-            <article class="card dive-card dive-card--landscape">
-              <img class="dive-card-media" src="./assets/WhatsApp Image 2026-09-23 at 22.24.48.jpeg?v=4" alt="Scientific diver conducting underwater fieldwork" loading="eager" decoding="async" />
-              <div class="dive-card-copy">
+            <article class="sd-card-v6 sd-landscape-v6">
+              <img src="./assets/WhatsApp Image 2026-09-23 at 22.24.48.jpeg?v=6" alt="Scientific diver conducting underwater fieldwork" loading="eager" decoding="async" />
+              <div class="sd-copy-v6">
                 <h3>Diving operations & monitoring</h3>
                 <p>Experience includes population-disease and reef-health assessments, underwater documentation, seagrass-meadow pore-water sampling, underwater infrastructure work and archaeological documentation of an underwater section of a UNESCO World Heritage Site.</p>
               </div>
