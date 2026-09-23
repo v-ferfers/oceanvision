@@ -100,6 +100,32 @@
     }
     .spotlight h3 { font-size: 1.75rem; margin: .2rem 0 .7rem; }
     .spotlight p { color: var(--muted); }
+
+    .expedition-feature {
+      margin-top: 1rem;
+      overflow: hidden;
+      background: rgba(13,37,48,.82);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+    }
+    .expedition-feature img {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+      display: block;
+    }
+    .expedition-copy { padding: 1.35rem 1.5rem 1.5rem; }
+    .expedition-copy h3 { margin: .15rem 0 .4rem; font-size: 1.45rem; }
+    .expedition-copy p { margin: 0; color: var(--muted); }
+    .photo-credit { margin-top: .65rem !important; font-size: .82rem; color: #91abb1 !important; }
+
+
+    .photo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .photo-card { overflow: hidden; background: rgba(13,37,48,.82); border: 1px solid var(--line); border-radius: 22px; }
+    .photo-card img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; }
+    .photo-card figcaption { padding: 1rem 1.1rem 1.2rem; color: var(--muted); font-size: .95rem; }
+    .photo-card strong { color: var(--text); display: block; margin-bottom: .3rem; }
+
     .mini-list { margin: .7rem 0 0; padding-left: 1.15rem; color: #d8e8ea; }
     .mini-list li { margin: .4rem 0; }
 
@@ -219,6 +245,16 @@
             </ul>
           </div>
         </div>
+
+        <figure class="expedition-feature">
+          <img src="assets/wascal-floating-university-polarstern.jpg" alt="WASCAL Floating University fieldwork at sea with RV Polarstern in the background" />
+          <figcaption class="expedition-copy">
+            <div class="eyebrow">WASCAL Floating University · 2026</div>
+            <h3>Field experience aboard RV Polarstern</h3>
+            <p>FYORD / WASCAL Floating-University experience aboard RV Polarstern (PS 154/2 / WASCAL-IV), April–May 2026.</p>
+            <p class="photo-credit">Photo: © Barbara Dombrowski</p>
+          </figcaption>
+        </figure>
       </div>
     </section>
 
@@ -237,9 +273,26 @@
               <p>
                 Investigated sea-star responses to future ocean temperatures and Sea Star Wasting Disease symptoms,
                 including flow-cytometry work, coelomocyte measurements, camera-based population surveys and
-                microbiological measurements of <em>Vibrio</em> densities.
+                microbiological measurements of <em>Vibrio</em> densities. I contributed to field data collection,
+                underwater monitoring and analysis for the co-authored Sea Star Wasting Disease study.
               </p>
-              <div class="actions"><a class="button" href="https://doi.org/10.64898/2026.01.16.699924" target="_blank" rel="noopener">Co-authored research ↗</a></div>
+              <div class="actions"><a class="button" href="https://www.biorxiv.org/content/10.64898/2026.01.16.699924v1.full" target="_blank" rel="noopener">Co-authored paper on bioRxiv ↗</a></div>
+              <div class="photo-grid">
+                <figure class="photo-card">
+                  <img src="assets/sswd-monitoring-diver.jpg" alt="Scientific diver during Sea Star Wasting Disease monitoring" />
+                  <figcaption>
+                    <strong>SSWD field monitoring</strong>
+                    Scientific-diving work during monitoring and field data collection.
+                  </figcaption>
+                </figure>
+                <figure class="photo-card">
+                  <img src="assets/sswd-monitoring-sea-star.jpg" alt="Underwater image of Asterias rubens during Sea Star Wasting Disease monitoring" />
+                  <figcaption>
+                    <strong><em>Asterias rubens</em></strong>
+                    Underwater observation image connected to Sea Star Wasting Disease monitoring.
+                  </figcaption>
+                </figure>
+              </div>
             </div>
           </article>
 
