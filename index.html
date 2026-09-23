@@ -145,6 +145,79 @@
     .stat-card .big { font-size: 2.4rem; font-weight: 850; letter-spacing: -.04em; color: var(--accent); }
     .stat-card p { color: var(--muted); margin: .2rem 0 0; }
 
+    .globe-section {
+      margin-top: 1rem;
+      background: linear-gradient(135deg, rgba(13,37,48,.92), rgba(6,25,34,.96));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 1.35rem;
+      overflow: hidden;
+    }
+    .globe-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .25rem .25rem 1rem;
+    }
+    .globe-head h3 { margin: .1rem 0 .25rem; font-size: 1.55rem; }
+    .globe-head p { margin: 0; color: var(--muted); max-width: 680px; }
+    .globe-hint { color: #91abb1; font-size: .82rem; white-space: nowrap; }
+    #globeViz {
+      width: 100%;
+      min-height: 540px;
+      border-radius: 22px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 45%, rgba(25,85,100,.18), transparent 36%),
+        #031118;
+      position: relative;
+    }
+    #globeViz canvas { display: block; }
+    .scene-tooltip {
+      pointer-events: none;
+      z-index: 30;
+    }
+    .globe-tooltip {
+      width: 280px;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(5,24,32,.96);
+      box-shadow: 0 18px 55px rgba(0,0,0,.42);
+      color: var(--text);
+      backdrop-filter: blur(14px);
+    }
+    .globe-tooltip img {
+      width: 100%;
+      height: 145px;
+      object-fit: cover;
+      display: block;
+    }
+    .globe-tooltip-copy { padding: .85rem .95rem 1rem; }
+    .globe-tooltip-kicker {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .68rem;
+      font-weight: 850;
+      margin-bottom: .28rem;
+    }
+    .globe-tooltip strong { display: block; font-size: 1rem; margin-bottom: .2rem; }
+    .globe-tooltip p { margin: 0; color: #bfd0d4; font-size: .86rem; line-height: 1.45; }
+    .globe-mobile-card {
+      display: none;
+      margin-top: 1rem;
+      background: rgba(255,255,255,.045);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+    .globe-mobile-card.active { display: grid; grid-template-columns: 180px 1fr; }
+    .globe-mobile-card img { width: 100%; height: 100%; min-height: 150px; object-fit: cover; }
+    .globe-mobile-copy { padding: 1rem; }
+    .globe-mobile-copy h4 { margin: .15rem 0 .35rem; font-size: 1.08rem; }
+    .globe-mobile-copy p { margin: 0; color: var(--muted); }
     .contact-box { padding: 2rem; border-radius: 28px; border: 1px solid var(--line); background: linear-gradient(135deg, rgba(112,214,197,.12), rgba(158,201,255,.07)); }
     .contact-box .section-intro { margin-bottom: 1.3rem; }
 
@@ -157,8 +230,13 @@
       .hero { min-height: auto; }
       .nav-links { display: none; }
       .timeline-item { grid-template-columns: 1fr; gap: .25rem; }
+      .globe-head { align-items: flex-start; flex-direction: column; }
+      #globeViz { min-height: 430px; }
+      .globe-mobile-card.active { grid-template-columns: 1fr; }
+      .globe-mobile-card img { max-height: 240px; }
     }
   </style>
+  <script src="https://unpkg.com/globe.gl"></script>
 </head>
 <body>
   <header>
@@ -355,9 +433,23 @@
             <p>Experience aboard RV Polarstern, RV Alkor and RV Littorina, with offshore sampling and observation systems including CTD, Multinet, Van Veen Grab, Box Corer, ARGO float, drop-down camera, weather balloon, dredge and mini-RUV.</p>
           </div>
         </div>
+
+        <div class="globe-section" aria-labelledby="globe-title">
+          <div class="globe-head">
+            <div>
+              <div class="eyebrow">International experience</div>
+              <h3 id="globe-title">Study, research & fieldwork around the world.</h3>
+              <p>Explore places where I studied, worked, collaborated or joined marine-science projects.</p>
+            </div>
+            <div class="globe-hint">Drag to rotate · Scroll to zoom · Hover or tap a pin</div>
+          </div>
+          <div id="globeViz" role="img" aria-label="Interactive globe showing Vinzent Ferfers' international study, research and project locations"></div>
+          <div id="globeMobileCard" class="globe-mobile-card" aria-live="polite"></div>
+        </div>
+
         <div class="grid" style="margin-top:1rem">
           <article class="card"><h3>Scientific diving</h3><p>Population disease and reef-health assessments, underwater documentation, seagrass-meadow pore-water sampling, underwater infrastructure work and archaeological documentation at a UNESCO World Heritage Site.</p></article>
-          <article class="card"><h3>International experience</h3><p>Study, work, field research and community projects across Hawai‘i, Israel, Colombia, Scotland, Indonesia, the Azores, Sweden and Germany.</p></article>
+          <article class="card"><h3>Field-to-data workflow</h3><p>Connecting underwater observations with image documentation, ecological monitoring, quantitative analysis and emerging computer-vision workflows.</p></article>
         </div>
       </div>
     </section>
@@ -417,5 +509,136 @@
   <footer>
     <div class="wrap">© 2026 Vinzent Ferfers · Ocean Vision</div>
   </footer>
+
+  <script>
+    (function () {
+      const globeElement = document.getElementById('globeViz');
+      if (!globeElement || typeof Globe === 'undefined') return;
+
+      const locations = [
+        {
+          name: 'GEOMAR / Kiel University',
+          place: 'Kiel, Germany',
+          type: 'Study · Research · Scientific diving',
+          lat: 54.3233,
+          lng: 10.1228,
+          info: 'M.Sc. Biological Oceanography, research-assistant work, Sea Star Wasting Disease monitoring and scientific-diving operations.',
+          image: 'assets/sswd-monitoring-sea-star.jpg'
+        },
+        {
+          name: 'University of Aberdeen',
+          place: 'Aberdeen, Scotland',
+          type: 'Study abroad',
+          lat: 57.1497,
+          lng: -2.0943,
+          info: 'ERASMUS+ semester abroad during my B.Sc. studies.',
+          image: ''
+        },
+        {
+          name: 'University of the Azores',
+          place: 'Ponta Delgada, Azores, Portugal',
+          type: 'Study abroad',
+          lat: 37.7412,
+          lng: -25.6756,
+          info: 'ERASMUS+ semester abroad as part of my M.Sc. in Biological Oceanography.',
+          image: ''
+        },
+        {
+          name: 'University of Gothenburg / SUBSIM',
+          place: 'Gothenburg, Sweden',
+          type: 'Computer vision · Marine monitoring',
+          lat: 57.7089,
+          lng: 11.9746,
+          info: 'Subsea computer-vision work for benthic assessment and automated marine monitoring.',
+          image: ''
+        },
+        {
+          name: 'Luminocean',
+          place: 'Banda Neira, Indonesia',
+          type: 'International internship',
+          lat: -4.5250,
+          lng: 129.8990,
+          info: 'DAAD-supported internship and marine field experience in Indonesia.',
+          image: ''
+        },
+        {
+          name: 'Scripps Institution of Oceanography',
+          place: 'La Jolla, California, USA',
+          type: 'Scientific collaboration',
+          lat: 32.8670,
+          lng: -117.2530,
+          info: 'Knowledge exchange connected to sea-urchin culture work, including live-animal transfer to Germany.',
+          image: ''
+        },
+        {
+          name: 'WASCAL Floating University',
+          place: 'Cape Verde · RV Polarstern',
+          type: 'Floating university · Research vessel',
+          lat: 15.1201,
+          lng: -23.6052,
+          info: 'FYORD / WASCAL Floating-University experience aboard RV Polarstern (PS 154/2 / WASCAL-IV).',
+          image: 'assets/wascal-floating-university-polarstern.jpg'
+        }
+      ];
+
+      function tooltipHTML(d) {
+        const image = d.image ? `<img src="${d.image}" alt="">` : '';
+        return `<div class="globe-tooltip">
+          ${image}
+          <div class="globe-tooltip-copy">
+            <div class="globe-tooltip-kicker">${d.type}</div>
+            <strong>${d.name}</strong>
+            <p><b>${d.place}</b><br>${d.info}</p>
+          </div>
+        </div>`;
+      }
+
+      const world = Globe()(globeElement)
+        .backgroundColor('rgba(0,0,0,0)')
+        .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+        .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
+        .showAtmosphere(true)
+        .atmosphereColor('#70d6c5')
+        .atmosphereAltitude(0.16)
+        .pointsData(locations)
+        .pointLat('lat')
+        .pointLng('lng')
+        .pointColor(() => '#70d6c5')
+        .pointAltitude(0.045)
+        .pointRadius(0.42)
+        .pointResolution(16)
+        .pointLabel(tooltipHTML)
+        .onPointHover(point => {
+          world.controls().autoRotate = !point;
+          globeElement.style.cursor = point ? 'pointer' : 'grab';
+        })
+        .onPointClick(point => {
+          const card = document.getElementById('globeMobileCard');
+          if (!card || !point) return;
+          const image = point.image ? `<img src="${point.image}" alt="${point.name}">` : '';
+          card.innerHTML = `${image}<div class="globe-mobile-copy">
+            <div class="globe-tooltip-kicker">${point.type}</div>
+            <h4>${point.name}</h4>
+            <p><strong>${point.place}</strong><br>${point.info}</p>
+          </div>`;
+          card.classList.add('active');
+          world.pointOfView({ lat: point.lat, lng: point.lng, altitude: 1.55 }, 900);
+        });
+
+      world.controls().autoRotate = true;
+      world.controls().autoRotateSpeed = 0.32;
+      world.controls().enableDamping = true;
+      world.pointOfView({ lat: 18, lng: 5, altitude: 2.25 }, 0);
+
+      function resizeGlobe() {
+        const w = globeElement.clientWidth;
+        const h = Math.max(window.innerWidth < 850 ? 430 : 540, Math.min(650, w * 0.62));
+        world.width(w).height(h);
+      }
+
+      resizeGlobe();
+      window.addEventListener('resize', resizeGlobe);
+    })();
+  </script>
 </body>
 </html>
