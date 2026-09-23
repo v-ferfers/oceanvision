@@ -101,6 +101,26 @@
     .spotlight h3 { font-size: 1.75rem; margin: .2rem 0 .7rem; }
     .spotlight p { color: var(--muted); }
 
+    .cv-video-wrap {
+      margin-top: 1rem;
+      overflow: hidden;
+      background: rgba(13,37,48,.82);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+    }
+    .cv-video-wrap video {
+      width: 100%;
+      display: block;
+      background: #000;
+      max-height: 680px;
+      object-fit: contain;
+    }
+    .cv-video-caption {
+      padding: 1rem 1.25rem 1.2rem;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
     .expedition-feature {
       margin-top: 1rem;
       overflow: hidden;
@@ -279,11 +299,11 @@
         <a class="brand" href="#top">VINZENT <span>FERFERS</span></a>
         <div class="nav-links">
           <a href="#about">About</a>
-          <a href="#current">Current</a>
-          <a href="#experience">Experience</a>
-          <a href="#diving">Fieldwork</a>
+          <a href="#computer-vision">Computer Vision</a>
+          <a href="#diving">Scientific Diving</a>
+          <a href="#open-ocean">Open Ocean</a>
           <a href="#photography">Photography</a>
-          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
           <a href="#contact">Contact</a>
         </div>
       </nav>
@@ -302,7 +322,7 @@
           </p>
           <p class="hero-note">Field science, ecological monitoring and technology for understanding marine environments.</p>
           <div class="actions">
-            <a class="button primary" href="#current">See current work</a>
+            <a class="button primary" href="#computer-vision">See current work</a>
             <a class="button" href="CV_Vinzent_Ferfers_09_2026_Leadership.pdf" download>Download CV</a>
             <a class="button" href="mailto:vinzent.ferfers@gmx.de">Email me</a>
           </div>
@@ -329,45 +349,200 @@
           habitat documentation, ecological surveys and automated benthic assessment.
         </p>
         <div class="grid three">
-          <article class="card"><h3>Marine science</h3><p>Biological oceanography, ecophysiology, microbiology and long-term organism culture.</p></article>
-          <article class="card"><h3>Underwater fieldwork</h3><p>Scientific diving, habitat documentation, reef-health monitoring, seagrass sampling and operational dive work.</p></article>
-          <article class="card"><h3>Ocean technology</h3><p>Computer vision, image annotation, mini-RUV piloting and automated monitoring workflows.</p></article>
+          <article class="card"><h3>Computer vision & monitoring</h3><p>Image annotation, model training, spatial analysis and emerging digital workflows for scalable marine monitoring.</p></article>
+          <article class="card"><h3>Scientific diving</h3><p>Underwater surveys, documentation, reef-health monitoring, sampling and operational scientific-diving work.</p></article>
+          <article class="card"><h3>Open-ocean research</h3><p>Biological oceanography, research-vessel operations and oceanographic observations from the water column to the seafloor.</p></article>
         </div>
       </div>
     </section>
 
-    <section id="current">
+    <section id="computer-vision">
       <div class="wrap">
-        <div class="eyebrow">Current focus</div>
-        <h2 class="section-title">Subsea computer vision for benthic monitoring.</h2>
+        <div class="eyebrow">Computer vision · benthic habitat assessment</div>
+        <h2 class="section-title">From underwater imagery to spatial monitoring.</h2>
+        <p class="section-intro">
+          I work with image-based monitoring workflows that connect manual ecological annotation, machine learning,
+          high-performance computing and geospatial analysis. My current work in Sweden focuses on turning benthic
+          imagery into reproducible information that can support marine monitoring and management.
+        </p>
+
         <div class="spotlight">
           <div>
-            <div class="eyebrow">SUBSIM · Sweden · 2026</div>
-            <h3>Computer vision meets benthic assessment.</h3>
+            <div class="eyebrow">LST project · SUBSIM · Sweden</div>
+            <h3>Computer vision for benthic habitat assessment.</h3>
             <p>
-              My current project focuses on training subsea computer-vision models for benthic assessment and
-              automated marine monitoring as part of a SUBSIM internship supported by Erasmus+.
+              I participated in an LST project for the <strong>Länsstyrelsen Skåne</strong> (County Administrative Board of Skåne),
+              using the SUBSIM computer-vision workflow integrated into Digital Twin Ocean. The work focused on analysing
+              underwater transect imagery to quantify algae coverage and translate image observations into spatial monitoring products.
             </p>
           </div>
           <div class="card">
-            <h3>Current academic context</h3>
+            <h3>Monitoring workflow</h3>
             <ul class="mini-list">
-              <li>M.Sc. in Biological Oceanography at GEOMAR / Kiel University.</li>
-              <li>WASCAL Floating-University / FYORD experience aboard RV Polarstern (PS 154/2 / WASCAL-IV).</li>
-              <li>Building on field monitoring, underwater imaging and data-analysis experience in R and Python.</li>
+              <li>Polygon annotation of benthic imagery in <strong>BIIGLE</strong>.</li>
+              <li>Preparation of annotated data for training a <strong>YOLO</strong> computer-vision model.</li>
+              <li>Use of <strong>LUMI</strong> supercomputing resources within the model-analysis workflow.</li>
+              <li>Analysis of transect imagery for algae-cover estimates.</li>
+              <li>Creation of a <strong>QGIS</strong> map from geolocated computer-vision annotations.</li>
             </ul>
           </div>
         </div>
 
+        <figure class="cv-video-wrap">
+          <video id="benthicCvVideo" autoplay muted loop playsinline preload="metadata">
+            <source src="assets/clip_LST_Skan_Transekt_M4_annotated.mp4" type="video/mp4" />
+            Your browser does not support embedded MP4 video.
+          </video>
+          <figcaption class="cv-video-caption">Annotated benthic transect imagery from the computer-vision monitoring workflow. Playback speed: 1.8×.</figcaption>
+        </figure>
+
+        <div class="card" style="margin-top:1rem">
+          <div class="date">Environmental DNA monitoring · Sweden</div>
+          <h3>Environmental DNA monitoring.</h3>
+          <p>
+            Alongside image-based monitoring, I participated in environmental DNA (eDNA) field sampling along the Swedish coast,
+            collecting water samples and scrapings from submerged settling plates. This work complements visual and image-based
+            monitoring with molecular methods for detecting biological signals in the marine environment.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="diving">
+      <div class="wrap">
+        <div class="eyebrow">Scientific diving</div>
+        <h2 class="section-title">Working where the data are collected.</h2>
+        <p class="section-intro">
+          Scientific diving is a core part of my fieldwork. I combine underwater observation and sampling with project planning,
+          risk assessment, documentation and team coordination, linking what happens below the surface directly to ecological data.
+        </p>
+
+        <div class="vessels">
+          <div class="stat-card">
+            <div class="big">Since 2022</div>
+            <p>Scientific Diver (KFT), with later responsibility supervising scientific-diving operations.</p>
+          </div>
+          <div class="card">
+            <h3>Diving operations & monitoring</h3>
+            <p>Experience includes population-disease and reef-health assessments, underwater documentation, seagrass-meadow pore-water sampling, underwater infrastructure work and archaeological documentation of an underwater section of a UNESCO World Heritage Site.</p>
+          </div>
+        </div>
+
+        <div class="grid" style="margin-top:1rem">
+          <article class="card"><h3>Operational responsibility</h3><p>Risk assessments, dive planning, project preparation and coordination of scientific-diving teams through my role supervising scientific-diving operations.</p></article>
+          <article class="card"><h3>Field-to-data practice</h3><p>Underwater observations are documented through photography, video, sampling and structured monitoring methods so field observations can feed directly into later analysis.</p></article>
+        </div>
+
+        <div class="globe-section" aria-labelledby="globe-title">
+          <div class="globe-head">
+            <div>
+              <div class="eyebrow">International experience</div>
+              <h3 id="globe-title">Study, research & fieldwork around the world.</h3>
+              <p>Explore places where I studied, worked, collaborated, dived or joined marine-science projects.</p>
+            </div>
+            <div class="globe-hint">Drag to rotate · Scroll to zoom · Hover or tap a pin</div>
+          </div>
+          <div id="globeViz" role="img" aria-label="Interactive globe showing Vinzent Ferfers' international study, research and project locations"></div>
+          <div id="globeMobileCard" class="globe-mobile-card" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="open-ocean">
+      <div class="wrap">
+        <div class="eyebrow">Open-ocean research & oceanography</div>
+        <h2 class="section-title">Oceanography at sea.</h2>
+        <p class="section-intro">
+          My open-ocean experience combines research-vessel operations with hands-on oceanographic sampling and observation.
+          During the WASCAL Floating University and other cruises, I worked with instruments and workflows that connect physical,
+          biological and atmospheric observations across the marine environment.
+        </p>
+
         <figure class="expedition-feature">
           <img src="assets/wascal-floating-university-polarstern.jpg" alt="WASCAL Floating University fieldwork at sea with RV Polarstern in the background" />
           <figcaption class="expedition-copy">
-            <div class="eyebrow">WASCAL Floating University · 2026</div>
-            <h3>Field experience aboard RV Polarstern</h3>
-            <p>FYORD / WASCAL Floating-University experience aboard RV Polarstern (PS 154/2 / WASCAL-IV), April–May 2026.</p>
+            <div class="eyebrow">WASCAL Floating University · RV Polarstern · 2026</div>
+            <h3>Field oceanography aboard RV Polarstern.</h3>
+            <p>FYORD / WASCAL Floating-University experience aboard RV Polarstern (PS 154/2 / WASCAL-IV), combining training, shipboard operations and practical oceanographic fieldwork.</p>
             <p class="photo-credit">Photo: © Barbara Dombrowski</p>
           </figcaption>
         </figure>
+
+        <div class="grid three" style="margin-top:1rem">
+          <article class="card">
+            <div class="date">Water column</div>
+            <h3>CTD & Multinet</h3>
+            <p>Hands-on experience with CTD operations and Multinet deployments for sampling and observing the structure of the open-ocean water column.</p>
+          </article>
+          <article class="card">
+            <div class="date">Autonomous observations</div>
+            <h3>ARGO floats & weather balloons</h3>
+            <p>Participation in ARGO-float deployment and weather-balloon operations, extending observations beyond the ship and into autonomous ocean-atmosphere monitoring.</p>
+          </article>
+          <article class="card">
+            <div class="date">Seafloor mapping</div>
+            <h3>Multibeam hydroacoustics</h3>
+            <p>Experience with multibeam-based seafloor mapping as part of broader research-vessel survey operations and oceanographic data collection.</p>
+          </article>
+        </div>
+
+        <div class="card" style="margin-top:1rem">
+          <h3>Research-vessel experience</h3>
+          <p>Field experience aboard <strong>RV Polarstern</strong>, <strong>RV Alkor</strong> and <strong>RV Littorina</strong>, alongside additional offshore sampling tools including Van Veen Grab, Box Corer, drop-down camera, dredge and mini-RUV.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="photography">
+      <div class="wrap">
+        <div class="eyebrow">Underwater photography</div>
+        <div class="photography-head">
+          <div>
+            <h2 class="section-title">A view below the surface.</h2>
+            <p class="section-intro">
+              Underwater photography is part of how I document marine environments, field experiences and the organisms I encounter while diving.
+              Scroll through a selection of images from below the surface.
+            </p>
+          </div>
+          <div class="gallery-controls" aria-label="Underwater gallery controls">
+            <button class="gallery-button" type="button" id="galleryPrev" aria-label="Previous photographs">&#8592;</button>
+            <button class="gallery-button" type="button" id="galleryNext" aria-label="Next photographs">&#8594;</button>
+          </div>
+        </div>
+
+        <!-- Gallery filenames below match the GitHub /assets folder exactly.
+             Keep capitalization exactly as written, especially R7_I2382.JPG. -->
+        <div class="underwater-gallery" id="underwaterGallery" tabindex="0" aria-label="Scrollable underwater photography gallery">
+          <figure class="underwater-shot">
+            <img src="./assets/WhatsApp Image 2026-09-23 at 22.13.18 (3).jpeg" alt="Shark swimming over a reef in Fuvahmulah, Maldives" loading="lazy" />
+            <figcaption>Fuvahmulah, Maldives · Underwater photography</figcaption>
+          </figure>
+          <figure class="underwater-shot">
+            <img src="./assets/R7_I2382.JPG" alt="Moray eel emerging from a rocky reef" loading="lazy" />
+            <figcaption>Underwater wildlife photography</figcaption>
+          </figure>
+          <figure class="underwater-shot">
+            <img src="./assets/WhatsApp Image 2026-09-23 at 22.13.18.jpeg" alt="Clownfish among a sea anemone" loading="lazy" />
+            <figcaption>Clownfish &amp; anemone</figcaption>
+          </figure>
+          <figure class="underwater-shot">
+            <img src="./assets/R7_I2318.jpg" alt="Reef fish photographed underwater" loading="lazy" />
+            <figcaption>Reef wildlife</figcaption>
+          </figure>
+          <figure class="underwater-shot">
+            <img src="./assets/R7_I2362.jpg" alt="Scuba diver exploring underwater at night with dive lights" loading="lazy" />
+            <figcaption>Night diving</figcaption>
+          </figure>
+          <figure class="underwater-shot">
+            <img src="./assets/WhatsApp Image 2026-09-23 at 22.13.18 (1).jpeg" alt="Divers framed by an underwater cavern opening in black and white" loading="lazy" />
+            <figcaption>Underwater exploration</figcaption>
+          </figure>
+          <figure class="underwater-shot">
+            <img src="./assets/WhatsApp Image 2026-09-23 at 22.13.18 (2).jpeg" alt="Diver documenting clownfish and sea anemones underwater" loading="lazy" />
+            <figcaption>Diving &amp; marine observation</figcaption>
+          </figure>
+        </div>
+        <p class="photo-note">Drag, swipe or use the arrows to move through the gallery.</p>
       </div>
     </section>
 
@@ -454,95 +629,6 @@
       </div>
     </section>
 
-    <section id="diving">
-      <div class="wrap">
-        <div class="eyebrow">Field operations & scientific diving</div>
-        <h2 class="section-title">Working where the data are collected.</h2>
-        <div class="vessels">
-          <div class="stat-card">
-            <div class="big">Since 2022</div>
-            <p>Scientific Diver (KFT), with later responsibility supervising scientific-diving operations.</p>
-          </div>
-          <div class="card">
-            <h3>Research-vessel & offshore experience</h3>
-            <p>Experience aboard RV Polarstern, RV Alkor and RV Littorina, with offshore sampling and observation systems including CTD, Multinet, Van Veen Grab, Box Corer, ARGO float, drop-down camera, weather balloon, dredge and mini-RUV.</p>
-          </div>
-        </div>
-
-        <div class="globe-section" aria-labelledby="globe-title">
-          <div class="globe-head">
-            <div>
-              <div class="eyebrow">International experience</div>
-              <h3 id="globe-title">Study, research & fieldwork around the world.</h3>
-              <p>Explore places where I studied, worked, collaborated or joined marine-science projects.</p>
-            </div>
-            <div class="globe-hint">Drag to rotate · Scroll to zoom · Hover or tap a pin</div>
-          </div>
-          <div id="globeViz" role="img" aria-label="Interactive globe showing Vinzent Ferfers' international study, research and project locations"></div>
-          <div id="globeMobileCard" class="globe-mobile-card" aria-live="polite"></div>
-        </div>
-
-        <div class="grid" style="margin-top:1rem">
-          <article class="card"><h3>Scientific diving</h3><p>Population disease and reef-health assessments, underwater documentation, seagrass-meadow pore-water sampling, underwater infrastructure work and archaeological documentation at a UNESCO World Heritage Site.</p></article>
-          <article class="card"><h3>Field-to-data workflow</h3><p>Connecting underwater observations with image documentation, ecological monitoring, quantitative analysis and emerging computer-vision workflows.</p></article>
-        </div>
-      </div>
-    </section>
-
-
-    <section id="photography">
-      <div class="wrap">
-        <div class="eyebrow">Underwater photography</div>
-        <div class="photography-head">
-          <div>
-            <h2 class="section-title">A view below the surface.</h2>
-            <p class="section-intro">
-              Underwater photography is part of how I document marine environments, field experiences and the organisms I encounter while diving.
-              Scroll through a selection of images from below the surface.
-            </p>
-          </div>
-          <div class="gallery-controls" aria-label="Underwater gallery controls">
-            <button class="gallery-button" type="button" id="galleryPrev" aria-label="Previous photographs">&#8592;</button>
-            <button class="gallery-button" type="button" id="galleryNext" aria-label="Next photographs">&#8594;</button>
-          </div>
-        </div>
-
-        <!-- Gallery filenames below match the GitHub /assets folder exactly.
-             Keep capitalization exactly as written, especially R7_I2382.JPG. -->
-        <div class="underwater-gallery" id="underwaterGallery" tabindex="0" aria-label="Scrollable underwater photography gallery">
-          <figure class="underwater-shot">
-            <img src="./assets/WhatsApp Image 2026-09-23 at 22.13.18 (3).jpeg" alt="Shark swimming over a reef in Fuvahmulah, Maldives" loading="lazy" />
-            <figcaption>Fuvahmulah, Maldives · Underwater photography</figcaption>
-          </figure>
-          <figure class="underwater-shot">
-            <img src="./assets/R7_I2382.JPG" alt="Moray eel emerging from a rocky reef" loading="lazy" />
-            <figcaption>Underwater wildlife photography</figcaption>
-          </figure>
-          <figure class="underwater-shot">
-            <img src="./assets/WhatsApp Image 2026-09-23 at 22.13.18.jpeg" alt="Clownfish among a sea anemone" loading="lazy" />
-            <figcaption>Clownfish &amp; anemone</figcaption>
-          </figure>
-          <figure class="underwater-shot">
-            <img src="./assets/R7_I2318.jpg" alt="Reef fish photographed underwater" loading="lazy" />
-            <figcaption>Reef wildlife</figcaption>
-          </figure>
-          <figure class="underwater-shot">
-            <img src="./assets/R7_I2362.jpg" alt="Scuba diver exploring underwater at night with dive lights" loading="lazy" />
-            <figcaption>Night diving</figcaption>
-          </figure>
-          <figure class="underwater-shot">
-            <img src="./assets/WhatsApp Image 2026-09-23 at 22.13.18 (1).jpeg" alt="Divers framed by an underwater cavern opening in black and white" loading="lazy" />
-            <figcaption>Underwater exploration</figcaption>
-          </figure>
-          <figure class="underwater-shot">
-            <img src="./assets/WhatsApp Image 2026-09-23 at 22.13.18 (2).jpeg" alt="Diver documenting clownfish and sea anemones underwater" loading="lazy" />
-            <figcaption>Diving &amp; marine observation</figcaption>
-          </figure>
-        </div>
-        <p class="photo-note">Drag, swipe or use the arrows to move through the gallery.</p>
-      </div>
-    </section>
-
     <section id="skills">
       <div class="wrap">
         <div class="eyebrow">Qualifications</div>
@@ -550,10 +636,13 @@
         <p class="section-intro">A compact overview of the skills listed in my current CV.</p>
         <div class="skill-cloud">
           <span class="tag">R</span><span class="tag">Python</span><span class="tag">Machine learning</span>
-          <span class="tag">Computer vision</span><span class="tag">Project planning</span><span class="tag">Risk assessment</span>
-          <span class="tag">Habitat mapping</span><span class="tag">Team coordination</span><span class="tag">mini-RUV piloting</span>
-          <span class="tag">BIIGLE annotation</span><span class="tag">Underwater documentation</span>
-          <span class="tag">Reef-health monitoring</span><span class="tag">Ship safety training</span><span class="tag">Intercultural communication</span>
+          <span class="tag">Computer vision</span><span class="tag">YOLO</span><span class="tag">BIIGLE annotation</span>
+          <span class="tag">QGIS</span><span class="tag">LUMI / HPC workflows</span><span class="tag">eDNA sampling</span>
+          <span class="tag">Project planning</span><span class="tag">Risk assessment</span><span class="tag">Habitat mapping</span>
+          <span class="tag">Team coordination</span><span class="tag">mini-RUV piloting</span><span class="tag">CTD</span>
+          <span class="tag">Multinet</span><span class="tag">ARGO deployment</span><span class="tag">Multibeam</span>
+          <span class="tag">Underwater documentation</span><span class="tag">Reef-health monitoring</span>
+          <span class="tag">Ship safety training</span><span class="tag">Intercultural communication</span>
         </div>
       </div>
     </section>
@@ -583,7 +672,7 @@
           <div class="eyebrow">Contact</div>
           <h2 class="section-title">Let’s talk ocean science.</h2>
           <p class="section-intro">
-            I’m interested in marine monitoring, scientific fieldwork, subsea imaging and computer-vision applications for ocean research.
+            I’m interested in marine monitoring, scientific diving, open-ocean fieldwork, subsea imaging and computer-vision applications for ocean research.
           </p>
           <div class="actions">
             <a class="button primary" href="mailto:vinzent.ferfers@gmx.de">vinzent.ferfers@gmx.de</a>
@@ -638,16 +727,16 @@
           type: 'Computer vision · Marine monitoring',
           lat: 57.7089,
           lng: 11.9746,
-          info: 'Subsea computer-vision work for benthic assessment and automated marine monitoring.',
+          info: 'SUBSIM computer-vision work for benthic monitoring, including BIIGLE annotations, YOLO workflows, QGIS mapping and eDNA field sampling for porpoise monitoring along the Swedish coast.',
           image: ''
         },
         {
           name: 'Luminocean',
           place: 'Banda Neira, Indonesia',
-          type: 'International internship',
+          type: 'International internship · Reef Check',
           lat: -4.5250,
           lng: 129.8990,
-          info: 'DAAD-supported internship and marine field experience in Indonesia.',
+          info: 'DAAD-supported internship and marine field experience in Indonesia, including participation in the Reef Check programme for coral-reef health monitoring.',
           image: ''
         },
         {
@@ -748,6 +837,16 @@
         galleryNext.addEventListener('click', () => moveGallery(1));
       }
     })();
+  </script>
+
+  <script>
+    const benthicCvVideo = document.getElementById('benthicCvVideo');
+    if (benthicCvVideo) {
+      const setBenthicPlaybackRate = () => { benthicCvVideo.playbackRate = 1.8; };
+      benthicCvVideo.addEventListener('loadedmetadata', setBenthicPlaybackRate);
+      benthicCvVideo.addEventListener('play', setBenthicPlaybackRate);
+      setBenthicPlaybackRate();
+    }
   </script>
 </body>
 </html>
