@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Vinzent Ferfers — Biological Oceanography, Scientific Diving, Marine Monitoring and Computer Vision." />
+  <meta name="theme-color" content="#071820" />
+  <title>Vinzent Ferfers | Ocean Vision</title>
+  <style>
+    :root {
+      --bg: #071820;
+      --surface: #0d2530;
+      --surface-2: #123441;
+      --text: #eef7f7;
+      --muted: #a9c0c5;
+      --accent: #70d6c5;
+      --accent-2: #9ec9ff;
+      --line: rgba(255,255,255,.12);
+      --max: 1140px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 90% 4%, rgba(112,214,197,.14), transparent 28rem),
+        radial-gradient(circle at 6% 45%, rgba(158,201,255,.06), transparent 26rem),
+        linear-gradient(180deg, #071820 0%, #081c25 100%);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--accent); }
+    .wrap { width: min(calc(100% - 2rem), var(--max)); margin: 0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(7,24,32,.82);
+      border-bottom: 1px solid var(--line);
+    }
+    nav {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand { font-weight: 850; letter-spacing: .025em; }
+    .brand span { color: var(--accent); }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 1rem; color: var(--muted); font-size: .92rem; }
+
+    .hero { min-height: 85vh; display: grid; place-items: center; padding: 5.5rem 0 4rem; }
+    .hero-grid { display: grid; grid-template-columns: 1.28fr .72fr; gap: 3.5rem; align-items: center; }
+    .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: .17em; font-size: .76rem; font-weight: 850; }
+    h1 { font-size: clamp(3.2rem, 8vw, 6.8rem); line-height: .94; margin: .7rem 0 1.4rem; letter-spacing: -.055em; }
+    h2 { letter-spacing: -.035em; }
+    .lead { font-size: clamp(1.08rem, 2vw, 1.38rem); color: var(--muted); max-width: 760px; }
+    .hero-note { margin-top: 1.2rem; color: #d2e5e8; font-size: .96rem; }
+
+    .actions { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: 2rem; }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: .45rem;
+      padding: .9rem 1.15rem; border-radius: 999px; border: 1px solid var(--line);
+      font-weight: 750; transition: transform .2s ease, border-color .2s ease;
+    }
+    .button.primary { background: var(--accent); color: #052029; border-color: transparent; }
+    .button:hover { transform: translateY(-2px); border-color: rgba(112,214,197,.65); }
+
+    .profile-card {
+      background: linear-gradient(180deg, rgba(18,52,65,.96), rgba(13,37,48,.96));
+      border: 1px solid var(--line); border-radius: 28px; padding: 1rem;
+      box-shadow: 0 30px 80px rgba(0,0,0,.28);
+    }
+    .profile-card img { width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 20%; border-radius: 20px; display: block; }
+    .profile-meta { padding: 1.1rem .5rem .4rem; }
+    .profile-meta strong { display: block; font-size: 1.15rem; }
+    .profile-meta span { color: var(--muted); font-size: .94rem; }
+
+    section { padding: 5rem 0; scroll-margin-top: 70px; }
+    .section-title { font-size: clamp(2rem, 4vw, 3.5rem); margin: 0 0 .75rem; }
+    .section-intro { color: var(--muted); max-width: 780px; margin: 0 0 2.25rem; }
+
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .card { background: rgba(13,37,48,.82); border: 1px solid var(--line); border-radius: 22px; padding: 1.5rem; }
+    .card h3 { margin: 0 0 .5rem; font-size: 1.18rem; }
+    .card p { color: var(--muted); margin: 0; }
+    .card .date { color: var(--accent); font-size: .78rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .6rem; }
+
+    .spotlight {
+      display: grid; grid-template-columns: .85fr 1.15fr; gap: 1rem; align-items: stretch;
+      background: linear-gradient(135deg, rgba(112,214,197,.10), rgba(158,201,255,.06));
+      border: 1px solid var(--line); border-radius: 28px; padding: 1.75rem;
+    }
+    .spotlight h3 { font-size: 1.75rem; margin: .2rem 0 .7rem; }
+    .spotlight p { color: var(--muted); }
+    .mini-list { margin: .7rem 0 0; padding-left: 1.15rem; color: #d8e8ea; }
+    .mini-list li { margin: .4rem 0; }
+
+    .timeline { display: grid; gap: 1rem; }
+    .timeline-item { display: grid; grid-template-columns: 150px 1fr; gap: 1.3rem; padding: 1.25rem 0; border-top: 1px solid var(--line); }
+    .timeline-item:first-child { border-top: 0; }
+    .timeline-date { color: var(--accent); font-weight: 800; font-size: .88rem; }
+    .timeline-copy h3 { margin: 0 0 .2rem; }
+    .timeline-copy .org { color: #d8e8ea; margin-bottom: .45rem; }
+    .timeline-copy p { margin: 0; color: var(--muted); }
+
+    .skill-cloud { display: flex; flex-wrap: wrap; gap: .65rem; }
+    .tag { padding: .58rem .82rem; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.05); color: #dcebed; font-size: .9rem; }
+
+    .vessels { display: grid; grid-template-columns: .8fr 1.2fr; gap: 1rem; }
+    .stat-card { background: rgba(13,37,48,.82); border: 1px solid var(--line); border-radius: 22px; padding: 1.5rem; }
+    .stat-card .big { font-size: 2.4rem; font-weight: 850; letter-spacing: -.04em; color: var(--accent); }
+    .stat-card p { color: var(--muted); margin: .2rem 0 0; }
+
+    .contact-box { padding: 2rem; border-radius: 28px; border: 1px solid var(--line); background: linear-gradient(135deg, rgba(112,214,197,.12), rgba(158,201,255,.07)); }
+    .contact-box .section-intro { margin-bottom: 1.3rem; }
+
+    footer { border-top: 1px solid var(--line); color: var(--muted); padding: 2rem 0 3rem; font-size: .9rem; }
+    .fineprint { font-size: .83rem; color: var(--muted); margin-top: 1rem; }
+
+    @media (max-width: 850px) {
+      .hero-grid, .grid, .grid.three, .spotlight, .vessels { grid-template-columns: 1fr; }
+      .profile-card { max-width: 420px; }
+      .hero { min-height: auto; }
+      .nav-links { display: none; }
+      .timeline-item { grid-template-columns: 1fr; gap: .25rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav>
+        <a class="brand" href="#top">VINZENT <span>FERFERS</span></a>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#current">Current</a>
+          <a href="#experience">Experience</a>
+          <a href="#diving">Fieldwork</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Biological Oceanography × Ocean Vision</div>
+          <h1>Science<br>below the<br>surface.</h1>
+          <p class="lead">
+            I’m Vinzent Ferfers, a biological oceanography M.Sc. student working across scientific diving,
+            marine monitoring, underwater imaging and computer vision.
+          </p>
+          <p class="hero-note">Field science, ecological monitoring and technology for understanding marine environments.</p>
+          <div class="actions">
+            <a class="button primary" href="#current">See current work</a>
+            <a class="button" href="CV_Vinzent_Ferfers_09_2026_Leadership.pdf" download>Download CV</a>
+            <a class="button" href="mailto:vinzent.ferfers@gmx.de">Email me</a>
+          </div>
+        </div>
+
+        <aside class="profile-card">
+          <img src="assets/vinzent-ferfers.jpg" alt="Portrait of Vinzent Ferfers" />
+          <div class="profile-meta">
+            <strong>Vinzent Ferfers</strong>
+            <span>Biological Oceanography · Scientific Diving · Marine Monitoring · Computer Vision</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="eyebrow">About</div>
+        <h2 class="section-title">Ocean observation, from fieldwork to algorithms.</h2>
+        <p class="section-intro">
+          My background combines biological oceanography with hands-on marine fieldwork. I’m interested in linking
+          scientific diving and underwater observation with reproducible monitoring methods, image-based data and
+          computer vision. My experience ranges from ecophysiology and microbiology to research-vessel operations,
+          habitat documentation, ecological surveys and automated benthic assessment.
+        </p>
+        <div class="grid three">
+          <article class="card"><h3>Marine science</h3><p>Biological oceanography, ecophysiology, microbiology and long-term organism culture.</p></article>
+          <article class="card"><h3>Underwater fieldwork</h3><p>Scientific diving, habitat documentation, reef-health monitoring, seagrass sampling and operational dive work.</p></article>
+          <article class="card"><h3>Ocean technology</h3><p>Computer vision, image annotation, mini-RUV piloting and automated monitoring workflows.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="current">
+      <div class="wrap">
+        <div class="eyebrow">Current focus</div>
+        <h2 class="section-title">Subsea computer vision for benthic monitoring.</h2>
+        <div class="spotlight">
+          <div>
+            <div class="eyebrow">SUBSIM · Sweden · 2026</div>
+            <h3>Computer vision meets benthic assessment.</h3>
+            <p>
+              My current project focuses on training subsea computer-vision models for benthic assessment and
+              automated marine monitoring as part of a SUBSIM internship supported by Erasmus+.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Current academic context</h3>
+            <ul class="mini-list">
+              <li>M.Sc. in Biological Oceanography at GEOMAR / Kiel University.</li>
+              <li>WASCAL Floating-University / FYORD experience aboard RV Polarstern (PS 154/2 / WASCAL-IV).</li>
+              <li>Building on field monitoring, underwater imaging and data-analysis experience in R and Python.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="wrap">
+        <div class="eyebrow">Selected experience</div>
+        <h2 class="section-title">Research, monitoring & leadership.</h2>
+        <p class="section-intro">A selection of experiences from my CV that best represent my scientific and technical profile.</p>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-date">2023 – 2025</div>
+            <div class="timeline-copy">
+              <h3>Research Assistant & B.Sc. Thesis</h3>
+              <div class="org">GEOMAR Helmholtz Centre for Ocean Research · Prof. Dr. Frank Melzner</div>
+              <p>
+                Investigated sea-star responses to future ocean temperatures and Sea Star Wasting Disease symptoms,
+                including flow-cytometry work, coelomocyte measurements, camera-based population surveys and
+                microbiological measurements of <em>Vibrio</em> densities.
+              </p>
+              <div class="actions"><a class="button" href="https://doi.org/10.64898/2026.01.16.699924" target="_blank" rel="noopener">Co-authored research ↗</a></div>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2023 – 2025</div>
+            <div class="timeline-copy">
+              <h3>Research Assistant · Sea Urchin Culture</h3>
+              <div class="org">Kiel University · Dr. Meike Stumpp, collaboration with Dr. Marian Hu</div>
+              <p>
+                Established and maintained a full-life-cycle rearing system for <em>Lytechinus pictus</em>, including seawater
+                manipulations and long-term culture maintenance, with scientific exchange involving Scripps Institution of Oceanography.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2025</div>
+            <div class="timeline-copy">
+              <h3>Research Assistant · GAME</h3>
+              <div class="org">GEOMAR Helmholtz Centre for Ocean Research · Dr. Mark Lenz</div>
+              <p>
+                Science communication and outreach, including lectures on light pollution, microplastics outreach events
+                and development of social-media strategies for public engagement.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">since 2024</div>
+            <div class="timeline-copy">
+              <h3>Supervisor for Scientific Diving Operations</h3>
+              <div class="org">Geological Institute · Kiel University</div>
+              <p>Risk assessments, project planning and coordination of scientific-diving teams.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">since 2020</div>
+            <div class="timeline-copy">
+              <h3>Student Representative</h3>
+              <div class="org">Kiel University · GEOMAR · FYORD</div>
+              <p>Representation and committee work involving budget allocation, programme evaluation, faculty appointments and student-council decision-making.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="diving">
+      <div class="wrap">
+        <div class="eyebrow">Field operations & scientific diving</div>
+        <h2 class="section-title">Working where the data are collected.</h2>
+        <div class="vessels">
+          <div class="stat-card">
+            <div class="big">Since 2022</div>
+            <p>Scientific Diver (KFT), with later responsibility supervising scientific-diving operations.</p>
+          </div>
+          <div class="card">
+            <h3>Research-vessel & offshore experience</h3>
+            <p>Experience aboard RV Polarstern, RV Alkor and RV Littorina, with offshore sampling and observation systems including CTD, Multinet, Van Veen Grab, Box Corer, ARGO float, drop-down camera, weather balloon, dredge and mini-RUV.</p>
+          </div>
+        </div>
+        <div class="grid" style="margin-top:1rem">
+          <article class="card"><h3>Scientific diving</h3><p>Population disease and reef-health assessments, underwater documentation, seagrass-meadow pore-water sampling, underwater infrastructure work and archaeological documentation at a UNESCO World Heritage Site.</p></article>
+          <article class="card"><h3>International experience</h3><p>Study, work, field research and community projects across Hawai‘i, Israel, Colombia, Scotland, Indonesia, the Azores, Sweden and Germany.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="eyebrow">Qualifications</div>
+        <h2 class="section-title">Methods & tools.</h2>
+        <p class="section-intro">A compact overview of the skills listed in my current CV.</p>
+        <div class="skill-cloud">
+          <span class="tag">R</span><span class="tag">Python</span><span class="tag">Machine learning</span>
+          <span class="tag">Computer vision</span><span class="tag">Project planning</span><span class="tag">Risk assessment</span>
+          <span class="tag">Habitat mapping</span><span class="tag">Team coordination</span><span class="tag">mini-RUV piloting</span>
+          <span class="tag">BIIGLE annotation</span><span class="tag">Underwater documentation</span>
+          <span class="tag">Reef-health monitoring</span><span class="tag">Ship safety training</span><span class="tag">Intercultural communication</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="wrap">
+        <div class="eyebrow">Education</div>
+        <h2 class="section-title">Biology → biological oceanography.</h2>
+        <div class="grid">
+          <article class="card">
+            <div class="date">since 2024</div>
+            <h3>M.Sc. Biological Oceanography</h3>
+            <p>GEOMAR / Kiel University, including international study and project experience.</p>
+          </article>
+          <article class="card">
+            <div class="date">2020 – 2025</div>
+            <h3>B.Sc. Biology</h3>
+            <p>Kiel University, with study abroad at the University of Aberdeen and an internship at Luminocean in Indonesia.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-box">
+          <div class="eyebrow">Contact</div>
+          <h2 class="section-title">Let’s talk ocean science.</h2>
+          <p class="section-intro">
+            I’m interested in marine monitoring, scientific fieldwork, subsea imaging and computer-vision applications for ocean research.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="mailto:vinzent.ferfers@gmx.de">vinzent.ferfers@gmx.de</a>
+            <a class="button" href="CV_Vinzent_Ferfers_09_2026_Leadership.pdf" download>Download full CV</a>
+          </div>
+          <p class="fineprint">For privacy, my street address and phone number are intentionally not displayed on this public page.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© 2026 Vinzent Ferfers · Ocean Vision</div>
+  </footer>
+</body>
+</html>
