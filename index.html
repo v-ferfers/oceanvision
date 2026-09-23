@@ -218,6 +218,38 @@
     .globe-mobile-copy { padding: 1rem; }
     .globe-mobile-copy h4 { margin: .15rem 0 .35rem; font-size: 1.08rem; }
     .globe-mobile-copy p { margin: 0; color: var(--muted); }
+    .photography-head { display: flex; align-items: end; justify-content: space-between; gap: 1.25rem; margin-bottom: 1.4rem; }
+    .photography-head .section-intro { margin-bottom: 0; }
+    .gallery-controls { display: flex; gap: .55rem; flex: 0 0 auto; }
+    .gallery-button {
+      width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line);
+      background: rgba(255,255,255,.05); color: var(--text); font-size: 1.25rem; cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+    .gallery-button:hover { transform: translateY(-2px); border-color: rgba(112,214,197,.65); background: rgba(112,214,197,.08); }
+    .underwater-gallery {
+      display: flex; gap: 1rem; overflow-x: auto; overscroll-behavior-inline: contain;
+      scroll-snap-type: x mandatory; scrollbar-width: thin; padding: .25rem 0 1.1rem;
+    }
+    .underwater-gallery::-webkit-scrollbar { height: 8px; }
+    .underwater-gallery::-webkit-scrollbar-track { background: rgba(255,255,255,.04); border-radius: 999px; }
+    .underwater-gallery::-webkit-scrollbar-thumb { background: rgba(112,214,197,.35); border-radius: 999px; }
+    .underwater-shot {
+      flex: 0 0 clamp(260px, 35vw, 430px); margin: 0; overflow: hidden;
+      border: 1px solid var(--line); border-radius: 24px; background: rgba(13,37,48,.82);
+      scroll-snap-align: start; position: relative;
+    }
+    .underwater-shot img {
+      width: 100%; height: clamp(360px, 52vw, 560px); object-fit: cover; display: block;
+      transition: transform .5s ease;
+    }
+    .underwater-shot:hover img { transform: scale(1.025); }
+    .underwater-shot figcaption {
+      position: absolute; inset: auto 0 0; padding: 2.6rem 1.05rem .95rem;
+      background: linear-gradient(transparent, rgba(2,16,22,.86)); color: #eaf5f6; font-size: .88rem;
+    }
+    .photo-note { color: var(--muted); font-size: .86rem; margin-top: .75rem; }
+
     .contact-box { padding: 2rem; border-radius: 28px; border: 1px solid var(--line); background: linear-gradient(135deg, rgba(112,214,197,.12), rgba(158,201,255,.07)); }
     .contact-box .section-intro { margin-bottom: 1.3rem; }
 
@@ -234,6 +266,8 @@
       #globeViz { min-height: 430px; }
       .globe-mobile-card.active { grid-template-columns: 1fr; }
       .globe-mobile-card img { max-height: 240px; }
+      .photography-head { align-items: flex-start; flex-direction: column; }
+      .underwater-shot { flex-basis: 82vw; }
     }
   </style>
   <script src="https://unpkg.com/globe.gl"></script>
@@ -248,6 +282,7 @@
           <a href="#current">Current</a>
           <a href="#experience">Experience</a>
           <a href="#diving">Fieldwork</a>
+          <a href="#photography">Photography</a>
           <a href="#skills">Skills</a>
           <a href="#contact">Contact</a>
         </div>
@@ -454,6 +489,58 @@
       </div>
     </section>
 
+
+    <section id="photography">
+      <div class="wrap">
+        <div class="eyebrow">Underwater photography</div>
+        <div class="photography-head">
+          <div>
+            <h2 class="section-title">A view below the surface.</h2>
+            <p class="section-intro">
+              Underwater photography is part of how I document marine environments, field experiences and the organisms I encounter while diving.
+              Scroll through a selection of images from below the surface.
+            </p>
+          </div>
+          <div class="gallery-controls" aria-label="Underwater gallery controls">
+            <button class="gallery-button" type="button" id="galleryPrev" aria-label="Previous photographs">&#8592;</button>
+            <button class="gallery-button" type="button" id="galleryNext" aria-label="Next photographs">&#8594;</button>
+          </div>
+        </div>
+
+        <div class="underwater-gallery" id="underwaterGallery" tabindex="0" aria-label="Scrollable underwater photography gallery">
+          <figure class="underwater-shot">
+            <img src="assets/underwater-01-fuvahmulah-shark.jpg" alt="Shark swimming above a sandy reef in Fuvahmulah, Maldives" loading="lazy" />
+            <figcaption>Fuvahmulah, Maldives · Underwater photography</figcaption>
+          </figure>
+          <figure class="underwater-shot">
+            <img src="assets/underwater-02-turtle.jpg" alt="Sea turtle swimming through blue water" loading="lazy" />
+            <figcaption>Underwater photography</figcaption>
+          </figure>
+          <figure class="underwater-shot">
+            <img src="assets/underwater-03-reef.jpg" alt="Coral reef scene with fish and rising bubbles" loading="lazy" />
+            <figcaption>Underwater photography</figcaption>
+          </figure>
+          <figure class="underwater-shot">
+            <img src="assets/underwater-04-reef-fish.jpg" alt="Large reef fish among corals" loading="lazy" />
+            <figcaption>Underwater photography</figcaption>
+          </figure>
+          <figure class="underwater-shot">
+            <img src="assets/underwater-05-wreck-diver.jpg" alt="Scuba diver exploring an underwater wreck" loading="lazy" />
+            <figcaption>Underwater photography</figcaption>
+          </figure>
+          <figure class="underwater-shot">
+            <img src="assets/underwater-06-clownfish.jpg" alt="Clownfish among the tentacles of a sea anemone" loading="lazy" />
+            <figcaption>Underwater photography</figcaption>
+          </figure>
+          <figure class="underwater-shot">
+            <img src="assets/underwater-07-shark-reef.jpg" alt="Shark swimming above a coral reef" loading="lazy" />
+            <figcaption>Underwater photography</figcaption>
+          </figure>
+        </div>
+        <p class="photo-note">Drag, swipe or use the arrows to move through the gallery.</p>
+      </div>
+    </section>
+
     <section id="skills">
       <div class="wrap">
         <div class="eyebrow">Qualifications</div>
@@ -537,10 +624,10 @@
         {
           name: 'University of the Azores',
           place: 'Ponta Delgada, Azores, Portugal',
-          type: 'Study abroad',
+          type: 'Study abroad · SSI-certified Divemaster',
           lat: 37.7412,
           lng: -25.6756,
-          info: 'ERASMUS+ semester abroad as part of my M.Sc. in Biological Oceanography.',
+          info: 'ERASMUS+ semester abroad as part of my M.Sc. in Biological Oceanography. During my time in the Azores, I also worked as an SSI-certified Divemaster.',
           image: ''
         },
         {
@@ -569,6 +656,15 @@
           lng: -117.2530,
           info: 'Knowledge exchange connected to sea-urchin culture work, including live-animal transfer to Germany.',
           image: ''
+        },
+        {
+          name: 'Fuvahmulah · Maldives',
+          place: 'Fuvahmulah, Maldives',
+          type: 'Underwater photography',
+          lat: -0.2988,
+          lng: 73.4240,
+          info: 'Underwater photography in the waters around Fuvahmulah, documenting marine life and the pelagic environment.',
+          image: 'assets/underwater-01-fuvahmulah-shark.jpg'
         },
         {
           name: 'WASCAL Floating University',
@@ -638,6 +734,17 @@
 
       resizeGlobe();
       window.addEventListener('resize', resizeGlobe);
+
+      const gallery = document.getElementById('underwaterGallery');
+      const galleryPrev = document.getElementById('galleryPrev');
+      const galleryNext = document.getElementById('galleryNext');
+      if (gallery && galleryPrev && galleryNext) {
+        const moveGallery = direction => {
+          gallery.scrollBy({ left: direction * Math.max(300, gallery.clientWidth * 0.72), behavior: 'smooth' });
+        };
+        galleryPrev.addEventListener('click', () => moveGallery(-1));
+        galleryNext.addEventListener('click', () => moveGallery(1));
+      }
     })();
   </script>
 </body>
