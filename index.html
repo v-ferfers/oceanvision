@@ -113,7 +113,7 @@
     .card .date { color: var(--accent); font-size: .78rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .6rem; }
     .stat-card .big { font-size: 2.4rem; font-weight: 850; letter-spacing: -.04em; color: var(--accent); }
 
-    /* Scientific diving image cards: compact 2 × 2 desktop layout */
+    /* Scientific diving image cards: preserve each photo's full composition */
     .dive-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -126,21 +126,41 @@
       display: flex;
       flex-direction: column;
       min-width: 0;
+      min-height: 100%;
     }
     .dive-card-media {
-      width: 100%;
-      height: 210px;
-      object-fit: cover;
       display: block;
       flex: 0 0 auto;
-      border-bottom: 1px solid var(--line);
       background: #06161d;
     }
-    .dive-card-media.landscape { object-position: center center; }
-    .dive-card-media.portrait { object-position: center 28%; }
+    /* Landscape images stay above the text and are never cropped. */
+    .dive-card--landscape .dive-card-media {
+      width: 100%;
+      height: 230px;
+      object-fit: contain;
+      object-position: center;
+      border-bottom: 1px solid var(--line);
+    }
+    /* Portrait images sit beside the copy so their full height remains visible. */
+    .dive-card--portrait {
+      flex-direction: row;
+      align-items: stretch;
+      min-height: 330px;
+    }
+    .dive-card--portrait .dive-card-media {
+      width: 42%;
+      height: 330px;
+      object-fit: contain;
+      object-position: center;
+      border-right: 1px solid var(--line);
+    }
     .dive-card-copy {
       padding: 1.3rem 1.4rem 1.45rem;
       flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .dive-card-copy .big { margin-bottom: .25rem; }
     .dive-card-copy h3 { margin-top: 0; }
@@ -315,7 +335,9 @@
       .photography-head { align-items: flex-start; flex-direction: column; }
       .underwater-shot { flex-basis: 82vw; }
       .photo-card img { min-height: 260px; }
-      .dive-card-media { height: 205px; }
+      .dive-card--landscape .dive-card-media { height: 210px; }
+      .dive-card--portrait { flex-direction: column; min-height: 0; }
+      .dive-card--portrait .dive-card-media { width: 100%; height: 300px; border-right: 0; border-bottom: 1px solid var(--line); }
     }
   </style>
 
@@ -439,32 +461,32 @@
         </p>
 
         <div class="dive-grid">
-          <article class="stat-card dive-card">
-            <img class="dive-card-media landscape" src="./assets/WhatsApp Image 2026-09-24 at 00.37.33.jpeg?v=3" alt="Scientific diving field team operating from a small boat" loading="eager" decoding="async" />
+          <article class="stat-card dive-card dive-card--landscape">
+            <img class="dive-card-media" src="./assets/WhatsApp Image 2026-09-24 at 00.37.33.jpeg?v=3" alt="Scientific diving field team operating from a small boat" loading="eager" decoding="async" />
             <div class="dive-card-copy">
               <div class="big">Since 2022</div>
               <p>Scientific Diver (KFT), with later responsibility supervising scientific-diving operations.</p>
             </div>
           </article>
 
-          <article class="card dive-card">
-            <img class="dive-card-media landscape" src="./assets/WhatsApp Image 2026-09-23 at 22.24.48.jpeg?v=3" alt="Scientific diver conducting underwater fieldwork" loading="eager" decoding="async" />
+          <article class="card dive-card dive-card--landscape">
+            <img class="dive-card-media" src="./assets/WhatsApp Image 2026-09-23 at 22.24.48.jpeg?v=3" alt="Scientific diver conducting underwater fieldwork" loading="eager" decoding="async" />
             <div class="dive-card-copy">
               <h3>Diving operations & monitoring</h3>
               <p>Experience includes population-disease and reef-health assessments, underwater documentation, seagrass-meadow pore-water sampling, underwater infrastructure work and archaeological documentation of an underwater section of a UNESCO World Heritage Site.</p>
             </div>
           </article>
 
-          <article class="card dive-card">
-            <img class="dive-card-media portrait" src="./assets/WhatsApp Image 2026-09-23 at 22.33.45.jpeg?v=3" alt="Scientific diver in full diving equipment" loading="eager" decoding="async" />
+          <article class="card dive-card dive-card--portrait">
+            <img class="dive-card-media" src="./assets/WhatsApp Image 2026-09-23 at 22.33.45.jpeg?v=3" alt="Scientific diver in full diving equipment" loading="eager" decoding="async" />
             <div class="dive-card-copy">
               <h3>Operational responsibility</h3>
               <p>Risk assessments, dive planning, project preparation and coordination of scientific-diving teams through my role supervising scientific-diving operations.</p>
             </div>
           </article>
 
-          <article class="card dive-card">
-            <img class="dive-card-media portrait" src="./assets/sswd-monitoring-diver.jpg?v=3" alt="Scientific diver during underwater monitoring fieldwork" loading="eager" decoding="async" />
+          <article class="card dive-card dive-card--portrait">
+            <img class="dive-card-media" src="./assets/sswd-monitoring-diver.jpg?v=3" alt="Scientific diver during underwater monitoring fieldwork" loading="eager" decoding="async" />
             <div class="dive-card-copy">
               <h3>Field-to-data practice</h3>
               <p>Underwater observations are documented through photography, video, sampling and structured monitoring methods so field observations can feed directly into later analysis.</p>
