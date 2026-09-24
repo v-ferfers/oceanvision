@@ -254,48 +254,70 @@
 
 
 
-    /* Scientific Diving v15 — single isolated layout; legacy diving CSS removed. */
-    #diving-v15 .dive15-layout {
-      display: flex;
-      flex-direction: column;
+    /* Scientific Diving v16 — isolated asymmetric grid; all images retain their natural aspect ratio. */
+    #diving-v15 .dive16-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(330px, .88fr);
+      grid-template-areas:
+        "main supervisor"
+        "main operations"
+        "divemaster divemaster";
       gap: 16px;
       width: 100%;
+      align-items: stretch;
     }
-    #diving-v15 .dive15-row {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 16px;
-      width: 100%;
-    }
-    #diving-v15 .dive15-card {
-      flex: 0 0 auto;
+
+    #diving-v15 .dive16-card {
       box-sizing: border-box;
       overflow: hidden;
       background: rgba(13,37,48,.82);
       border: 1px solid var(--line);
       border-radius: 22px;
-      align-self: flex-start;
+      min-width: 0;
     }
-    #diving-v15 .dive15-since { width: 526px; }
-    #diving-v15 .dive15-operational {
-      width: 365px;
-      display: grid;
-      grid-template-columns: 138px minmax(0,1fr);
-      align-items: start;
-    }
-    #diving-v15 .dive15-field {
-      width: 583px;
-      display: grid;
-      grid-template-columns: 220px minmax(0,1fr);
-      align-items: start;
-    }
-    #diving-v15 .dive15-operations { width: 350px; }
 
-    #diving-v15 .dive15-landscape-img,
-    #diving-v15 .dive15-portrait-img {
+    #diving-v15 .dive16-main {
+      grid-area: main;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #diving-v15 .dive16-supervisor {
+      grid-area: supervisor;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(145px, 36%);
+      align-items: start;
+    }
+
+    #diving-v15 .dive16-operations { grid-area: operations; }
+
+    #diving-v15 .dive16-divemaster {
+      grid-area: divemaster;
+      display: grid;
+      grid-template-columns: minmax(220px, .38fr) minmax(0, 1fr);
+      gap: 1.5rem;
+      align-items: center;
+      padding: 1.3rem 1.5rem;
+      background: linear-gradient(135deg, rgba(112,214,197,.08), rgba(158,201,255,.05));
+    }
+
+    #diving-v15 .dive16-media {
+      width: 100%;
+      min-width: 0;
+      overflow: hidden;
+      background: #06161d;
+    }
+
+    #diving-v15 .dive16-main > .dive16-media,
+    #diving-v15 .dive16-operations > .dive16-media {
+      border-bottom: 1px solid var(--line);
+    }
+
+    #diving-v15 .dive16-supervisor > .dive16-media {
+      border-left: 1px solid var(--line);
+    }
+
+    #diving-v15 .dive16-media img {
       display: block;
       width: 100%;
       height: auto;
@@ -306,80 +328,130 @@
       aspect-ratio: auto;
       margin: 0;
     }
-    #diving-v15 .dive15-landscape-img {
-      border-bottom: 1px solid var(--line);
-    }
-    #diving-v15 .dive15-portrait-media {
-      width: 100%;
-      min-width: 0;
-      background: #06161d;
-      border-right: 1px solid var(--line);
-      overflow: hidden;
-    }
-    #diving-v15 .dive15-copy {
-      padding: 16px 18px 18px;
+
+    #diving-v15 .dive16-copy {
+      padding: 1.25rem 1.35rem 1.4rem;
       min-width: 0;
     }
-    #diving-v15 .dive15-copy h3 {
-      margin: 0 0 7px;
-      font-size: 1.08rem;
-      line-height: 1.25;
+
+    #diving-v15 .dive16-main .dive16-copy {
+      padding: 1.45rem 1.55rem 1.55rem;
     }
-    #diving-v15 .dive15-copy p {
+
+    #diving-v15 .dive16-supervisor .dive16-copy {
+      padding: 1.2rem 1.25rem 1.3rem;
+    }
+
+    #diving-v15 .dive16-copy h3,
+    #diving-v15 .dive16-divemaster h3 {
+      margin: .12rem 0 .55rem;
+      font-size: 1.28rem;
+      line-height: 1.22;
+    }
+
+    #diving-v15 .dive16-main .dive16-copy h3 {
+      font-size: 1.7rem;
+      letter-spacing: -.025em;
+    }
+
+    #diving-v15 .dive16-copy p,
+    #diving-v15 .dive16-divemaster p {
       margin: 0;
       color: var(--muted);
     }
-    #diving-v15 .dive15-big {
-      margin: 0 0 7px;
-      font-size: 1.9rem;
-      line-height: 1.05;
-      font-weight: 850;
-      letter-spacing: -.035em;
+
+    #diving-v15 .dive16-copy p + p { margin-top: .8rem; }
+
+    #diving-v15 .dive16-kicker {
       color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      font-size: .72rem;
+      font-weight: 850;
+      margin-bottom: .35rem;
     }
-    #diving-v15 .dive15-operational .dive15-copy {
-      padding: 13px 14px 14px;
-      font-size: .88rem;
-      line-height: 1.46;
+
+    #diving-v15 .dive16-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin-top: 1.1rem;
     }
-    #diving-v15 .dive15-operational .dive15-copy h3 {
-      font-size: 1rem;
-      margin-bottom: 6px;
+
+    #diving-v15 .dive16-actions .button {
+      padding: .65rem .85rem;
+      font-size: .82rem;
     }
-    #diving-v15 .dive15-field .dive15-copy {
-      padding: 16px 16px 16px;
+
+    #diving-v15 .dive16-ops-list {
+      list-style: none;
+      padding: 0;
+      margin: .8rem 0 0;
+      display: grid;
+      gap: .8rem;
+    }
+
+    #diving-v15 .dive16-ops-list li {
+      color: var(--muted);
+      padding-top: .8rem;
+      border-top: 1px solid var(--line);
+    }
+
+    #diving-v15 .dive16-ops-list li:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    #diving-v15 .dive16-ops-list strong {
+      color: #dcebed;
+      display: block;
+      margin-bottom: .15rem;
+    }
+
+    #diving-v15 .dive16-divemaster .dive16-title-block {
+      min-width: 0;
     }
 
     @media (max-width: 980px) {
-      #diving-v15 .dive15-row {
-        flex-direction: column;
-        align-items: center;
+      #diving-v15 .dive16-layout {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "main"
+          "supervisor"
+          "operations"
+          "divemaster";
       }
-      #diving-v15 .dive15-since,
-      #diving-v15 .dive15-operational,
-      #diving-v15 .dive15-field,
-      #diving-v15 .dive15-operations {
-        width: min(100%, 583px);
+
+      #diving-v15 .dive16-supervisor {
+        grid-template-columns: minmax(0, 1fr) minmax(170px, 34%);
       }
-      #diving-v15 .dive15-operational {
-        grid-template-columns: minmax(145px, 34%) minmax(0,1fr);
-      }
-      #diving-v15 .dive15-field {
-        grid-template-columns: minmax(180px, 40%) minmax(0,1fr);
+
+      #diving-v15 .dive16-divemaster {
+        grid-template-columns: 1fr;
+        gap: .35rem;
       }
     }
-    @media (max-width: 560px) {
-      #diving-v15 .dive15-operational,
-      #diving-v15 .dive15-field {
+
+    @media (max-width: 620px) {
+      #diving-v15 .dive16-supervisor {
         grid-template-columns: 1fr;
       }
-      #diving-v15 .dive15-portrait-media {
-        border-right: 0;
-        border-bottom: 1px solid var(--line);
+
+      #diving-v15 .dive16-supervisor > .dive16-media {
+        border-left: 0;
+        border-top: 1px solid var(--line);
       }
-      #diving-v15 .dive15-portrait-img {
-        width: min(100%, 360px);
+
+      #diving-v15 .dive16-supervisor > .dive16-media img {
+        width: min(100%, 320px);
         margin: 0 auto;
+      }
+
+      #diving-v15 .dive16-main .dive16-copy,
+      #diving-v15 .dive16-copy,
+      #diving-v15 .dive16-supervisor .dive16-copy,
+      #diving-v15 .dive16-divemaster {
+        padding: 1.15rem;
       }
     }
 
@@ -656,52 +728,67 @@
         <div class="eyebrow">Scientific diving</div>
         <h2 class="section-title">Scientific diving, monitoring & underwater operations.</h2>
         <p class="section-intro">
-          Scientific diving is a core part of my fieldwork. I combine underwater observation and sampling with project planning, risk assessment, documentation and team coordination, linking what happens below the surface directly to ecological data.
+          Scientific diving is a core part of my fieldwork, combining underwater research methods with formal operational planning, safety procedures and team coordination. My work spans biological monitoring, environmental sampling, underwater archaeology and technical support for marine observing infrastructure.
         </p>
 
-        <div class="dive15-layout">
-          <div class="dive15-row">
-            <article class="dive15-card dive15-since">
-              <img class="dive15-landscape-img" src="./assets/WhatsApp%20Image%202026-09-24%20at%2000.37.33.jpeg?v=15" alt="Scientific diving field team operating from a small boat" loading="eager" decoding="async" />
-              <div class="dive15-copy">
-                <div class="dive15-big">Since 2022</div>
-                <p>Scientific Diver (KFT), with later responsibility supervising scientific-diving operations.</p>
+        <div class="dive16-layout">
+          <article class="dive16-card dive16-main">
+            <div class="dive16-media">
+              <img src="./assets/WhatsApp%20Image%202026-09-24%20at%2000.37.33.jpeg?v=16" alt="Scientific diving field team operating from a small boat" loading="eager" decoding="async" />
+            </div>
+            <div class="dive16-copy">
+              <div class="dive16-kicker">Certified Scientific Diver · since 2022</div>
+              <h3>Scientific Diving</h3>
+              <p>I am a Certified Scientific Diver, examined for scientific diving under the German DGUV framework. Scientific diving enables research tasks that must be carried out underwater — from ecological surveys and sampling to documentation and work on scientific infrastructure — within defined training, planning and safety procedures.</p>
+              <p>My scientific-diving operations follow the safety framework of <strong>DGUV Rule 101-023 “Forschungstauchen”</strong>.</p>
+              <div class="dive16-actions">
+                <a class="button primary" href="Certificate_Scientific_Diver_2022_Vinzent_Ferfers.pdf" target="_blank" rel="noopener">View diver certificate ↗</a>
+                <a class="button" href="https://publikationen.dguv.de/widgets/pdf/download/article/1018" target="_blank" rel="noopener">DGUV Rule 101-023 ↗</a>
               </div>
-            </article>
+            </div>
+          </article>
 
-            <article class="dive15-card dive15-operational">
-              <div class="dive15-portrait-media">
-                <img class="dive15-portrait-img" src="./assets/WhatsApp%20Image%202026-09-23%20at%2022.33.45.jpeg?v=15" alt="Scientific diver in full diving equipment" loading="eager" decoding="async" />
+          <article class="dive16-card dive16-supervisor">
+            <div class="dive16-copy">
+              <div class="dive16-kicker">Operational leadership · qualified 2024</div>
+              <h3>Diving Supervisor for Scientific Divers</h3>
+              <p>I completed the qualification as <em>Taucheinsatzleiter</em> / Diving Supervisor for Scientific Divers according to DGUV-R 101-023. The role covers risk assessment, dive planning, project preparation, operational briefings and the supervision and coordination of scientific-diving teams.</p>
+              <div class="dive16-actions">
+                <a class="button" href="Certificate_Supervisor_Scientific_Diving_2024_Vinzent_Ferfers.pdf" target="_blank" rel="noopener">View supervisor certificate ↗</a>
               </div>
-              <div class="dive15-copy">
-                <h3>Operational responsibility</h3>
-                <p>Risk assessments, dive planning, project preparation and coordination of scientific-diving teams through my role supervising scientific-diving operations.</p>
-              </div>
-            </article>
-          </div>
+            </div>
+            <div class="dive16-media">
+              <img src="./assets/WhatsApp%20Image%202026-09-23%20at%2022.33.45.jpeg?v=16" alt="Scientific diver in full diving equipment" loading="eager" decoding="async" />
+            </div>
+          </article>
 
-          <div class="dive15-row">
-            <article class="dive15-card dive15-field">
-              <div class="dive15-portrait-media">
-                <img class="dive15-portrait-img" src="./assets/sswd-monitoring-diver.jpg?v=15" alt="Scientific diver during underwater monitoring fieldwork" loading="eager" decoding="async" />
-              </div>
-              <div class="dive15-copy">
-                <h3>Field-to-data practice</h3>
-                <p>Underwater observations are documented through photography, video, sampling and structured monitoring methods so field observations can feed directly into later analysis.</p>
-              </div>
-            </article>
+          <article class="dive16-card dive16-operations">
+            <div class="dive16-media">
+              <img src="./assets/WhatsApp%20Image%202026-09-23%20at%2022.24.48.jpeg?v=16" alt="Scientific diver conducting underwater fieldwork" loading="eager" decoding="async" />
+            </div>
+            <div class="dive16-copy">
+              <div class="dive16-kicker">Biological · archaeological · technical</div>
+              <h3>Selected scientific-diving operations</h3>
+              <ul class="dive16-ops-list">
+                <li><strong>sea4soCiety · Seagrass porewater sampling</strong>Inserted sediment probes into seagrass sediments and collected porewater samples underwater using syringes.</li>
+                <li><strong>COSYNA · Technical diving</strong>Connected a heavy fibre-optic cable and additional underwater connections to a marine measurement node during functional testing after a detected fault.</li>
+                <li><strong>Maritime archaeology · Danewerk</strong>Documented submerged archaeological structures at the Reesholm section of the Danewerk, part of the UNESCO World Heritage Site Archaeological Border Complex of Hedeby and the Danevirke, including work in very low visibility.</li>
+                <li><strong>Biological monitoring</strong>Conducted Sea Star Wasting Disease population surveys and participated in Reef Check coral-reef health monitoring with Luminocean in Indonesia.</li>
+              </ul>
+            </div>
+          </article>
 
-            <article class="dive15-card dive15-operations">
-              <img class="dive15-landscape-img" src="./assets/WhatsApp%20Image%202026-09-23%20at%2022.24.48.jpeg?v=15" alt="Scientific diver conducting underwater fieldwork" loading="eager" decoding="async" />
-              <div class="dive15-copy">
-                <h3>Diving operations & monitoring</h3>
-                <p>Experience includes population-disease and reef-health assessments, underwater documentation, seagrass-meadow pore-water sampling, underwater infrastructure work and archaeological documentation of an underwater section of a UNESCO World Heritage Site.</p>
-              </div>
-            </article>
-          </div>
+          <article class="dive16-card dive16-divemaster">
+            <div class="dive16-title-block">
+              <div class="dive16-kicker">Recreational diving · citizen science</div>
+              <h3>SSI-certified Divemaster</h3>
+            </div>
+            <p>Trained and certified as an SSI Divemaster in the Azores, where I led groups of certified recreational divers and supported safe dive operations. Through the dive centre’s cooperation with Elasmobase Azores, I was introduced to baited-camera deployment and contributed elasmobranch observations and species identification from dives — an example of how recreational diving can support structured citizen-science monitoring.</p>
+          </article>
         </div>
       </div>
     </section>
+
 
     <!-- 3. OPEN OCEAN -->
     <section id="open-ocean">
