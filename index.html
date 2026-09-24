@@ -157,16 +157,6 @@
       aspect-ratio: auto;
       object-fit: contain;
     }
-    /* Open-ocean feature card: 75% of the usable content width on desktop. */
-    #open-ocean .oceanography-feature {
-      width: 75%;
-      max-width: none;
-      margin: 1rem auto 0;
-    }
-    @media (max-width: 900px) {
-      #open-ocean .oceanography-feature { width: 100%; }
-    }
-
     .expedition-copy { padding: 1.35rem 1.5rem 1.5rem; }
     .expedition-copy h3 { margin: .15rem 0 .4rem; font-size: 1.45rem; }
     .expedition-copy p { margin: 0; color: var(--muted); }
@@ -443,6 +433,38 @@
       }
     }
 
+
+    /* Open Ocean v16 — isolated feature sizing to prevent legacy CSS conflicts. */
+    #open-ocean .ocean16-feature {
+      width: 75% !important;
+      max-width: none !important;
+      margin: 1rem auto 0 !important;
+      overflow: hidden !important;
+      background: rgba(13,37,48,.82) !important;
+      border: 1px solid var(--line) !important;
+      border-radius: 28px !important;
+      box-sizing: border-box !important;
+    }
+    #open-ocean .ocean16-feature > img {
+      display: block !important;
+      width: 100% !important;
+      height: auto !important;
+      max-width: 100% !important;
+      max-height: none !important;
+      aspect-ratio: auto !important;
+      object-fit: contain !important;
+      object-position: center !important;
+      margin: 0 !important;
+    }
+    #open-ocean .ocean16-feature .expedition-copy {
+      padding: 1.35rem 1.5rem 1.5rem !important;
+    }
+    @media (max-width: 800px) {
+      #open-ocean .ocean16-feature {
+        width: 100% !important;
+      }
+    }
+
   </style>
 
   <script src="https://unpkg.com/globe.gl"></script>
@@ -617,8 +639,8 @@
           My open-ocean experience combines research-vessel operations with hands-on oceanographic sampling and observation. During the WASCAL Floating University and other cruises, I worked with instruments and workflows that connect physical, biological and atmospheric observations across the marine environment.
         </p>
 
-        <figure class="expedition-feature oceanography-feature">
-          <img src="assets/wascal-floating-university-polarstern.jpg" alt="WASCAL Floating University fieldwork at sea with RV Polarstern in the background" />
+        <figure class="ocean16-feature">
+          <img src="assets/wascal-floating-university-polarstern.jpg?v=16" alt="WASCAL Floating University fieldwork at sea with RV Polarstern in the background" />
           <figcaption class="expedition-copy">
             <div class="eyebrow">WASCAL Floating University · RV Polarstern · 2026</div>
             <h3>Field oceanography aboard RV Polarstern.</h3>
@@ -629,19 +651,19 @@
 
         <div class="grid three" style="margin-top:1rem">
           <article class="card">
-            <div class="date">Water-column profiling · to 4,000 m</div>
+            <div class="date">Water-column profiling & sampling</div>
             <h3>CTD</h3>
-            <p>Participated in CTD casts and water-column sampling down to approximately <strong>4,000 m</strong>, supporting vertical profiles of physical and oceanographic conditions across the water column.</p>
+            <p>Hands-on CTD operations and water-column sampling during open-ocean work, including casts and sampling down to approximately <strong>4,000 m</strong>.</p>
           </article>
           <article class="card">
-            <div class="date">Depth-resolved sampling · to 1,000 m</div>
+            <div class="date">Depth-resolved plankton sampling</div>
             <h3>Multinet</h3>
-            <p>Worked with Multinet deployments for depth-resolved biological sampling down to approximately <strong>1,000 m</strong>, collecting material from defined depth intervals in the open ocean.</p>
+            <p>Operation of Multinet systems for depth-resolved sampling of the water column, including deployments reaching approximately <strong>1,000 m</strong> depth.</p>
           </article>
           <article class="card">
             <div class="date">Autonomous ocean observations</div>
             <h3>Argo floats</h3>
-            <p>Participated in the deployment of <strong>three Argo floats</strong> and the recovery of <strong>two floats</strong>, gaining hands-on experience with autonomous observing platforms used for long-term ocean monitoring.</p>
+            <p>Practical experience with Argo-float operations during research cruises, including the <strong>deployment of three Argo floats</strong> and the <strong>recovery of two</strong>.</p>
           </article>
         </div>
 
