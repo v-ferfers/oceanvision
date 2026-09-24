@@ -517,14 +517,14 @@
     }
   
 
-    /* Scientific Diving v12 — isolated fixed desktop sizing. No legacy diving rules can override this. */
-    #diving[data-layout-version="sd-v12"] .sd12-layout {
+    /* Scientific Diving v13 — updated requested card sizes. */
+    #diving[data-layout-version="sd-v13"] .sd12-layout {
       display: flex !important;
       flex-direction: column !important;
       gap: 16px !important;
       width: 100% !important;
     }
-    #diving[data-layout-version="sd-v12"] .sd12-row {
+    #diving[data-layout-version="sd-v13"] .sd12-row {
       display: flex !important;
       flex-direction: row !important;
       flex-wrap: nowrap !important;
@@ -533,7 +533,7 @@
       justify-content: center !important;
       width: 100% !important;
     }
-    #diving[data-layout-version="sd-v12"] .sd12-card {
+    #diving[data-layout-version="sd-v13"] .sd12-card {
       display: block !important;
       flex-grow: 0 !important;
       flex-shrink: 0 !important;
@@ -547,38 +547,38 @@
       box-sizing: border-box !important;
     }
 
-    /* 1 — Since 2022: 584px (one third larger than 438px). */
-    #diving[data-layout-version="sd-v12"] .sd12-since {
-      width: 584px !important;
-      flex-basis: 584px !important;
+    /* 1 — Since 2022: 10% smaller than previous 584px. */
+    #diving[data-layout-version="sd-v13"] .sd12-since {
+      width: 526px !important;
+      flex-basis: 526px !important;
     }
 
-    /* 2 — Operational responsibility: 243px total card width (half of 486px). */
-    #diving[data-layout-version="sd-v12"] .sd12-operational {
-      width: 243px !important;
-      flex-basis: 243px !important;
+    /* 2 — Operational responsibility: 50% bigger than previous 243px. */
+    #diving[data-layout-version="sd-v13"] .sd12-operational {
+      width: 365px !important;
+      flex-basis: 365px !important;
       display: grid !important;
       grid-template-columns: 43% 57% !important;
       align-items: start !important;
     }
 
-    /* 3 — Field-to-data: 648px (10% smaller than 720px). */
-    #diving[data-layout-version="sd-v12"] .sd12-field {
-      width: 648px !important;
-      flex-basis: 648px !important;
+    /* 3 — Field-to-data: 10% smaller than previous 648px. */
+    #diving[data-layout-version="sd-v13"] .sd12-field {
+      width: 583px !important;
+      flex-basis: 583px !important;
       display: grid !important;
       grid-template-columns: 46% 54% !important;
       align-items: start !important;
     }
 
     /* 4 — Diving operations: unchanged compact landscape width. */
-    #diving[data-layout-version="sd-v12"] .sd12-operations {
+    #diving[data-layout-version="sd-v13"] .sd12-operations {
       width: 350px !important;
       flex-basis: 350px !important;
     }
 
-    #diving[data-layout-version="sd-v12"] .sd12-landscape > img,
-    #diving[data-layout-version="sd-v12"] .sd12-portrait-media > img {
+    #diving[data-layout-version="sd-v13"] .sd12-landscape > img,
+    #diving[data-layout-version="sd-v13"] .sd12-portrait-media > img {
       display: block !important;
       width: 100% !important;
       height: auto !important;
@@ -589,10 +589,10 @@
       object-position: center !important;
       margin: 0 !important;
     }
-    #diving[data-layout-version="sd-v12"] .sd12-landscape > img {
+    #diving[data-layout-version="sd-v13"] .sd12-landscape > img {
       border-bottom: 1px solid var(--line) !important;
     }
-    #diving[data-layout-version="sd-v12"] .sd12-portrait-media {
+    #diving[data-layout-version="sd-v13"] .sd12-portrait-media {
       width: 100% !important;
       min-width: 0 !important;
       height: auto !important;
@@ -601,21 +601,21 @@
       border-right: 1px solid var(--line) !important;
       overflow: hidden !important;
     }
-    #diving[data-layout-version="sd-v12"] .sd12-copy {
+    #diving[data-layout-version="sd-v13"] .sd12-copy {
       padding: 16px 18px 18px !important;
       min-width: 0 !important;
       align-self: start !important;
     }
-    #diving[data-layout-version="sd-v12"] .sd12-copy h3 {
+    #diving[data-layout-version="sd-v13"] .sd12-copy h3 {
       margin: 0 0 7px !important;
       font-size: 1.12rem !important;
       line-height: 1.25 !important;
     }
-    #diving[data-layout-version="sd-v12"] .sd12-copy p {
+    #diving[data-layout-version="sd-v13"] .sd12-copy p {
       margin: 0 !important;
       color: var(--muted) !important;
     }
-    #diving[data-layout-version="sd-v12"] .sd12-big {
+    #diving[data-layout-version="sd-v13"] .sd12-big {
       margin: 0 0 7px !important;
       font-size: 1.9rem !important;
       line-height: 1.05 !important;
@@ -623,12 +623,12 @@
       letter-spacing: -.035em !important;
       color: var(--accent) !important;
     }
-    #diving[data-layout-version="sd-v12"] .sd12-operational .sd12-copy {
+    #diving[data-layout-version="sd-v13"] .sd12-operational .sd12-copy {
       padding: 10px 10px 11px !important;
       font-size: .78rem !important;
       line-height: 1.38 !important;
     }
-    #diving[data-layout-version="sd-v12"] .sd12-operational .sd12-copy h3 {
+    #diving[data-layout-version="sd-v13"] .sd12-operational .sd12-copy h3 {
       font-size: .9rem !important;
       line-height: 1.15 !important;
       margin-bottom: 5px !important;
@@ -636,28 +636,28 @@
 
     /* Stack only on genuinely small screens; laptop widths keep the requested desktop proportions. */
     @media (max-width: 760px) {
-      #diving[data-layout-version="sd-v12"] .sd12-row {
+      #diving[data-layout-version="sd-v13"] .sd12-row {
         flex-direction: column !important;
         align-items: center !important;
       }
-      #diving[data-layout-version="sd-v12"] .sd12-since,
-      #diving[data-layout-version="sd-v12"] .sd12-operational,
-      #diving[data-layout-version="sd-v12"] .sd12-field,
-      #diving[data-layout-version="sd-v12"] .sd12-operations {
-        width: min(100%, 584px) !important;
+      #diving[data-layout-version="sd-v13"] .sd12-since,
+      #diving[data-layout-version="sd-v13"] .sd12-operational,
+      #diving[data-layout-version="sd-v13"] .sd12-field,
+      #diving[data-layout-version="sd-v13"] .sd12-operations {
+        width: min(100%, 583px) !important;
         flex-basis: auto !important;
       }
-      #diving[data-layout-version="sd-v12"] .sd12-operational,
-      #diving[data-layout-version="sd-v12"] .sd12-field {
+      #diving[data-layout-version="sd-v13"] .sd12-operational,
+      #diving[data-layout-version="sd-v13"] .sd12-field {
         grid-template-columns: minmax(150px, 42%) minmax(0, 1fr) !important;
       }
     }
     @media (max-width: 520px) {
-      #diving[data-layout-version="sd-v12"] .sd12-operational,
-      #diving[data-layout-version="sd-v12"] .sd12-field {
+      #diving[data-layout-version="sd-v13"] .sd12-operational,
+      #diving[data-layout-version="sd-v13"] .sd12-field {
         grid-template-columns: 1fr !important;
       }
-      #diving[data-layout-version="sd-v12"] .sd12-portrait-media {
+      #diving[data-layout-version="sd-v13"] .sd12-portrait-media {
         border-right: 0 !important;
         border-bottom: 1px solid var(--line) !important;
       }
@@ -776,7 +776,7 @@
     </section>
 
     <!-- 2. SCIENTIFIC DIVING -->
-    <section id="diving" data-layout-version="sd-v12">
+    <section id="diving" data-layout-version="sd-v13">
       <div class="wrap">
         <div class="eyebrow">Scientific diving</div>
         <h2 class="section-title">Scientific diving, monitoring & underwater operations.</h2>
@@ -922,7 +922,7 @@
 
           <div class="photo-grid">
             <figure class="photo-card">
-              <img src="assets/sswd-monitoring-diver.jpg" alt="Scientific diver during Sea Star Wasting Disease monitoring" />
+              <img src="assets/WhatsApp Image 2026-09-24 at 01.55.07.jpeg?v=13" alt="Scientific diver during Sea Star Wasting Disease monitoring" />
             </figure>
             <figure class="photo-card">
               <img src="assets/sswd-monitoring-sea-star.jpg" alt="Asterias rubens photographed underwater during Sea Star Wasting Disease monitoring" />
