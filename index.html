@@ -254,20 +254,16 @@
 
 
 
-    /* Scientific Diving v24 — isolated layout with image-fill and supervisor certificate placement. */
-    #diving-v15 .dive24-grid {
+    /* Scientific Diving v25 — clean isolated rebuild for GitHub Pages. */
+    #diving-v15 .sd25-top {
       display: grid !important;
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
-      grid-template-areas:
-        "scientific supervisor"
-        "operations operations"
-        "divemaster divemaster" !important;
       gap: 16px !important;
+      align-items: stretch !important;
       width: 100% !important;
-      align-items: start !important;
     }
 
-    #diving-v15 .dive24-card {
+    #diving-v15 .sd25-card {
       min-width: 0 !important;
       overflow: hidden !important;
       box-sizing: border-box !important;
@@ -276,120 +272,86 @@
       border-radius: 22px !important;
     }
 
-    #diving-v15 .dive24-scientific {
-      grid-area: scientific !important;
+    #diving-v15 .sd25-scientific {
+      display: flex !important;
+      flex-direction: column !important;
+      height: 100% !important;
+    }
+
+    #diving-v15 .sd25-scientific-media {
+      width: 100% !important;
+      border-bottom: 1px solid var(--line) !important;
+      line-height: 0 !important;
+    }
+
+    #diving-v15 .sd25-scientific-media img {
+      display: block !important;
+      width: 100% !important;
+      height: auto !important;
+      max-width: none !important;
+      max-height: none !important;
+      object-fit: contain !important;
+      margin: 0 !important;
+    }
+
+    #diving-v15 .sd25-supervisor {
+      display: grid !important;
+      grid-template-columns: minmax(0, 52.5%) minmax(0, 47.5%) !important;
+      height: 100% !important;
+      min-height: 0 !important;
+    }
+
+    #diving-v15 .sd25-supervisor-copy {
+      min-width: 0 !important;
+      padding: 1.25rem 1.2rem !important;
       display: flex !important;
       flex-direction: column !important;
     }
 
-    #diving-v15 .dive24-supervisor {
-      grid-area: supervisor !important;
-      display: grid !important;
-      grid-template-columns: minmax(0, 56%) minmax(0, 44%) !important;
-      align-items: stretch !important;
-    }
-
-    #diving-v15 .dive24-operations {
-      grid-area: operations !important;
-      display: grid !important;
-      grid-template-columns: minmax(280px, 40%) minmax(0, 1fr) !important;
-      align-items: stretch !important;
-    }
-
-    #diving-v15 .dive24-divemaster {
-      grid-area: divemaster !important;
-      display: grid !important;
-      grid-template-columns: minmax(220px, .34fr) minmax(0, 1fr) !important;
-      gap: 1.25rem !important;
-      align-items: center !important;
-      padding: 1.1rem 1.35rem !important;
-      background: linear-gradient(135deg, rgba(112,214,197,.08), rgba(158,201,255,.05)) !important;
-    }
-
-    #diving-v15 .dive24-media {
+    #diving-v15 .sd25-supervisor-media {
       min-width: 0 !important;
+      width: 100% !important;
       overflow: hidden !important;
-      background: transparent !important;
-    }
-
-    #diving-v15 .dive24-scientific > .dive24-media {
-      border-bottom: 1px solid var(--line) !important;
-    }
-
-    #diving-v15 .dive24-supervisor > .dive24-media {
       border-left: 1px solid var(--line) !important;
-      padding: 0 !important;
-      margin: 0 !important;
-      align-self: stretch !important;
-      display: block !important;
+      background: transparent !important;
       line-height: 0 !important;
+      align-self: stretch !important;
     }
 
-    #diving-v15 .dive24-supervisor > .dive24-media > img {
+    #diving-v15 .sd25-supervisor-media img {
       display: block !important;
       width: 100% !important;
-      min-width: 100% !important;
-      max-width: none !important;
       height: auto !important;
+      min-width: 100% !important;
+      max-width: 100% !important;
       max-height: none !important;
-      aspect-ratio: auto !important;
       object-fit: contain !important;
       object-position: top center !important;
       margin: 0 !important;
       padding: 0 !important;
     }
 
-    #diving-v15 .dive24-operations > .dive24-media {
-      border-right: 1px solid var(--line) !important;
-      display: flex !important;
-      align-items: flex-start !important;
-      justify-content: center !important;
-    }
-
-    #diving-v15 .dive24-scientific > .dive24-media > img,
-    #diving-v15 .dive24-operations > .dive24-media > img {
-      display: block !important;
-      width: 100% !important;
-      height: auto !important;
-      max-width: 100% !important;
-      max-height: none !important;
-      aspect-ratio: auto !important;
-      object-fit: contain !important;
-      object-position: center !important;
-      margin: 0 !important;
-    }
-
-    #diving-v15 .dive24-copy {
-      min-width: 0 !important;
-      padding: 1.2rem 1.3rem 1.3rem !important;
-    }
-
-    #diving-v15 .dive24-scientific .dive24-copy {
-      padding: 1.3rem 1.45rem 1.4rem !important;
-    }
-
-    #diving-v15 .dive24-supervisor .dive24-copy {
-      padding: 1.25rem 1.2rem 1.25rem !important;
-      display: flex !important;
-      flex-direction: column !important;
-      min-height: 100% !important;
-    }
-
-    #diving-v15 .dive24-supervisor .dive24-actions {
+    #diving-v15 .sd25-cert-zone {
       flex: 1 1 auto !important;
-      width: 100% !important;
-      min-height: 5.5rem !important;
-      margin: .7rem 0 0 !important;
+      min-height: 5rem !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
+      padding-top: .7rem !important;
     }
 
-    #diving-v15 .dive24-operations .dive24-copy {
-      padding: 1.25rem 1.4rem 1.35rem !important;
+    #diving-v15 .sd25-cert-zone .button {
+      padding: .72rem 1rem !important;
+      font-size: .84rem !important;
+      white-space: nowrap !important;
     }
 
-    #diving-v15 .dive24-kicker {
+    #diving-v15 .sd25-copy {
+      min-width: 0 !important;
+      padding: 1.3rem 1.45rem 1.4rem !important;
+    }
+
+    #diving-v15 .sd25-kicker {
       margin: 0 0 .3rem !important;
       color: var(--accent) !important;
       text-transform: uppercase !important;
@@ -398,31 +360,59 @@
       font-weight: 850 !important;
     }
 
-    #diving-v15 .dive24-copy h3,
-    #diving-v15 .dive24-divemaster h3 {
+    #diving-v15 .sd25-copy h3,
+    #diving-v15 .sd25-supervisor-copy h3,
+    #diving-v15 .sd25-divemaster h3 {
       margin: .1rem 0 .48rem !important;
-      font-size: 1.22rem !important;
       line-height: 1.22 !important;
     }
 
-    #diving-v15 .dive24-scientific .dive24-copy h3 {
+    #diving-v15 .sd25-copy h3 {
       font-size: 1.62rem !important;
       letter-spacing: -.025em !important;
     }
 
-    #diving-v15 .dive24-copy p,
-    #diving-v15 .dive24-divemaster p {
+    #diving-v15 .sd25-supervisor-copy h3,
+    #diving-v15 .sd25-divemaster h3 {
+      font-size: 1.22rem !important;
+    }
+
+    #diving-v15 .sd25-copy p,
+    #diving-v15 .sd25-supervisor-copy p,
+    #diving-v15 .sd25-divemaster p {
       margin: 0 !important;
       color: var(--muted) !important;
     }
 
-    #diving-v15 .dive24-actions .button {
-      padding: .72rem 1rem !important;
-      font-size: .84rem !important;
-      white-space: nowrap !important;
+    #diving-v15 .sd25-operations {
+      margin-top: 16px !important;
+      display: grid !important;
+      grid-template-columns: minmax(280px, 40%) minmax(0, 1fr) !important;
+      align-items: stretch !important;
     }
 
-    #diving-v15 .dive24-ops-list {
+    #diving-v15 .sd25-operations-media {
+      min-width: 0 !important;
+      border-right: 1px solid var(--line) !important;
+      line-height: 0 !important;
+    }
+
+    #diving-v15 .sd25-operations-media img {
+      display: block !important;
+      width: 100% !important;
+      height: auto !important;
+      max-width: none !important;
+      max-height: none !important;
+      object-fit: contain !important;
+      margin: 0 !important;
+    }
+
+    #diving-v15 .sd25-operations-copy {
+      min-width: 0 !important;
+      padding: 1.25rem 1.4rem 1.35rem !important;
+    }
+
+    #diving-v15 .sd25-ops-list {
       list-style: none !important;
       padding: 0 !important;
       margin: .6rem 0 0 !important;
@@ -431,84 +421,73 @@
       gap: .72rem 1.1rem !important;
     }
 
-    #diving-v15 .dive24-ops-list li {
+    #diving-v15 .sd25-ops-list li {
       margin: 0 !important;
       padding-top: .7rem !important;
       border-top: 1px solid var(--line) !important;
       color: var(--muted) !important;
     }
 
-    #diving-v15 .dive24-ops-list strong {
+    #diving-v15 .sd25-ops-list strong {
       display: block !important;
       margin-bottom: .1rem !important;
       color: #dcebed !important;
     }
 
+    #diving-v15 .sd25-divemaster {
+      margin-top: 16px !important;
+      display: grid !important;
+      grid-template-columns: minmax(220px, .34fr) minmax(0, 1fr) !important;
+      gap: 1.25rem !important;
+      align-items: center !important;
+      padding: 1.1rem 1.35rem !important;
+      background: linear-gradient(135deg, rgba(112,214,197,.08), rgba(158,201,255,.05)) !important;
+    }
+
     @media (max-width: 980px) {
-      #diving-v15 .dive24-grid {
+      #diving-v15 .sd25-top {
         grid-template-columns: 1fr !important;
-        grid-template-areas:
-          "scientific"
-          "supervisor"
-          "operations"
-          "divemaster" !important;
       }
 
-      #diving-v15 .dive24-supervisor {
-        grid-template-columns: minmax(0, 58%) minmax(180px, 42%) !important;
+      #diving-v15 .sd25-supervisor {
+        grid-template-columns: minmax(0, 56%) minmax(0, 44%) !important;
       }
 
-      #diving-v15 .dive24-operations {
+      #diving-v15 .sd25-operations {
         grid-template-columns: minmax(240px, 38%) minmax(0, 1fr) !important;
       }
 
-      #diving-v15 .dive24-divemaster {
+      #diving-v15 .sd25-divemaster {
         grid-template-columns: 1fr !important;
         gap: .25rem !important;
       }
     }
 
     @media (max-width: 700px) {
-      #diving-v15 .dive24-operations {
+      #diving-v15 .sd25-supervisor,
+      #diving-v15 .sd25-operations {
         grid-template-columns: 1fr !important;
       }
 
-      #diving-v15 .dive24-operations > .dive24-media {
-        border-right: 0 !important;
-        border-bottom: 1px solid var(--line) !important;
-      }
-
-      #diving-v15 .dive24-ops-list {
-        grid-template-columns: 1fr !important;
-      }
-    }
-
-    @media (max-width: 620px) {
-      #diving-v15 .dive24-supervisor {
-        grid-template-columns: 1fr !important;
-      }
-
-      #diving-v15 .dive24-supervisor > .dive24-media {
+      #diving-v15 .sd25-supervisor-media {
         border-left: 0 !important;
         border-top: 1px solid var(--line) !important;
       }
 
-      #diving-v15 .dive24-supervisor > .dive24-media > img {
-        width: min(72%, 260px) !important;
+      #diving-v15 .sd25-supervisor-media img {
+        width: min(78%, 330px) !important;
         min-width: 0 !important;
-        max-width: 260px !important;
-        height: auto !important;
+        max-width: 330px !important;
         margin: 0 auto !important;
       }
 
-      #diving-v15 .dive24-supervisor .dive24-actions {
-        min-height: 4.5rem !important;
+      #diving-v15 .sd25-operations-media {
+        border-right: 0 !important;
+        border-bottom: 1px solid var(--line) !important;
       }
 
-      #diving-v15 .dive24-scientific .dive24-copy,
-      #diving-v15 .dive24-copy,
-      #diving-v15 .dive24-divemaster {
-        padding: 1.05rem !important;
+      #diving-v15 .sd25-ops-list {
+        grid-template-columns: 1fr !important;
       }
     }
 
@@ -779,8 +758,8 @@
     </section>
 
     <!-- 2. SCIENTIFIC DIVING -->
-    <!-- SCIENTIFIC DIVING BUILD 24 -->
-    <section id="diving-v15" data-diving-build="24">
+    <!-- SCIENTIFIC DIVING BUILD 25 -->
+    <section id="diving-v15" data-diving-build="25">
       <div class="wrap">
         <div class="eyebrow">Scientific diving</div>
         <h2 class="section-title">Scientific diving, monitoring &amp; underwater operations.</h2>
@@ -788,56 +767,56 @@
           Scientific diving combines underwater research with formal training, operational planning and safety procedures.
         </p>
 
-        <div class="dive24-grid">
-          <article class="dive24-card dive24-scientific">
-            <div class="dive24-media">
-              <img src="./assets/WhatsApp%20Image%202026-09-24%20at%2000.37.33.jpeg?v=24" alt="Scientific diving field team operating from a small boat" loading="eager" decoding="async" />
+        <div class="sd25-top">
+          <article class="sd25-card sd25-scientific">
+            <div class="sd25-scientific-media">
+              <img src="./assets/WhatsApp%20Image%202026-09-24%20at%2000.37.33.jpeg?v=25" alt="Scientific diving field team operating from a small boat" loading="eager" decoding="async" />
             </div>
-            <div class="dive24-copy">
-              <div class="dive24-kicker">Certified Scientific Diver · since 2022</div>
+            <div class="sd25-copy">
+              <div class="sd25-kicker">Certified Scientific Diver · since 2022</div>
               <h3>Scientific Diving</h3>
               <p>I am a Certified Scientific Diver trained for underwater research, monitoring, sampling and documentation. Training and operations follow the safety standards of <strong>DGUV Rule 101-023 Forschungstauchen</strong>.</p>
             </div>
           </article>
 
-          <article class="dive24-card dive24-supervisor">
-            <div class="dive24-copy">
-              <div class="dive24-kicker">Operational leadership · qualified 2024</div>
+          <article class="sd25-card sd25-supervisor" style="display:grid!important;grid-template-columns:minmax(0,52.5%) minmax(0,47.5%)!important;align-items:stretch!important;height:100%!important;overflow:hidden!important;">
+            <div class="sd25-supervisor-copy" style="min-width:0!important;padding:1.25rem 1.2rem!important;display:flex!important;flex-direction:column!important;">
+              <div class="sd25-kicker">Operational leadership · qualified 2024</div>
               <h3>Supervisor for Scientific Diving</h3>
               <p>Qualified as a <em>Taucheinsatzleiter</em>, with responsibility for risk assessment, dive planning and supervision of scientific-diving teams. The role also includes project preparation, operational briefings and team coordination.</p>
-              <div class="dive24-actions">
+              <div class="sd25-cert-zone" style="flex:1 1 auto!important;min-height:5rem!important;display:flex!important;align-items:center!important;justify-content:center!important;padding-top:.7rem!important;">
                 <a class="button primary" href="Certificate%20Scinetific%20Diver%2BSupervisor.pdf" target="_blank" rel="noopener">View Diving Certificates</a>
               </div>
             </div>
-            <div class="dive24-media" style="padding:0!important;margin:0!important;display:block!important;background:transparent!important;line-height:0!important;">
-              <img src="./assets/WhatsApp%20Image%202026-09-23%20at%2022.33.45.jpeg?v=24" alt="Scientific diver in full diving equipment" loading="eager" decoding="async" style="display:block!important;width:100%!important;min-width:100%!important;max-width:none!important;height:auto!important;max-height:none!important;margin:0!important;padding:0!important;object-fit:contain!important;object-position:top center!important;" />
+            <div class="sd25-supervisor-media" style="min-width:0!important;width:100%!important;overflow:hidden!important;border-left:1px solid var(--line)!important;background:transparent!important;line-height:0!important;align-self:stretch!important;">
+              <img src="./assets/WhatsApp%20Image%202026-09-23%20at%2022.33.45.jpeg?v=25" alt="Scientific diver in full diving equipment" loading="eager" decoding="async" style="display:block!important;width:100%!important;height:auto!important;min-width:100%!important;max-width:100%!important;max-height:none!important;object-fit:contain!important;object-position:top center!important;margin:0!important;padding:0!important;" />
             </div>
-          </article>
-
-          <article class="dive24-card dive24-operations">
-            <div class="dive24-media">
-              <img src="./assets/WhatsApp%20Image%202026-09-23%20at%2022.24.48.jpeg?v=24" alt="Scientific diver conducting underwater fieldwork" loading="eager" decoding="async" />
-            </div>
-            <div class="dive24-copy">
-              <div class="dive24-kicker">Biological · archaeological · technical</div>
-              <h3>Selected scientific-diving operations</h3>
-              <ul class="dive24-ops-list">
-                <li><strong>sea4soCiety</strong>Seagrass porewater sampling with sediment probes and syringes.</li>
-                <li><strong>COSYNA</strong>Underwater fibre-optic and system connections during measurement-hub troubleshooting.</li>
-                <li><strong>Maritime archaeology</strong>Underwater documentation at the Danewerk section of the UNESCO World Heritage Site Hedeby and the Danevirke.</li>
-                <li><strong>Biological monitoring</strong>Sea Star Wasting Disease surveys and Reef Check coral-reef monitoring in Indonesia.</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="dive24-card dive24-divemaster">
-            <div>
-              <div class="dive24-kicker">Recreational diving · citizen science</div>
-              <h3>SSI-certified Divemaster</h3>
-            </div>
-            <p>SSI-certified Divemaster with experience leading recreational divers. This experience can also support citizen-science monitoring, for example through elasmobranch observations with Elasmobase Azores.</p>
           </article>
         </div>
+
+        <article class="sd25-card sd25-operations">
+          <div class="sd25-operations-media">
+            <img src="./assets/WhatsApp%20Image%202026-09-23%20at%2022.24.48.jpeg?v=25" alt="Scientific diver conducting underwater fieldwork" loading="eager" decoding="async" />
+          </div>
+          <div class="sd25-operations-copy">
+            <div class="sd25-kicker">Biological · archaeological · technical</div>
+            <h3>Selected scientific-diving operations</h3>
+            <ul class="sd25-ops-list">
+              <li><strong>sea4soCiety</strong>Seagrass porewater sampling with sediment probes and syringes.</li>
+              <li><strong>COSYNA</strong>Underwater fibre-optic and system connections during measurement-hub troubleshooting.</li>
+              <li><strong>Maritime archaeology</strong>Underwater documentation at the Danewerk section of the UNESCO World Heritage Site Hedeby and the Danevirke.</li>
+              <li><strong>Biological monitoring</strong>Sea Star Wasting Disease surveys and Reef Check coral-reef monitoring in Indonesia.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="sd25-card sd25-divemaster">
+          <div>
+            <div class="sd25-kicker">Recreational diving · citizen science</div>
+            <h3>SSI-certified Divemaster</h3>
+          </div>
+          <p>SSI-certified Divemaster with experience leading recreational divers. This experience can also support citizen-science monitoring, for example through elasmobranch observations with Elasmobase Azores.</p>
+        </article>
       </div>
     </section>
 
