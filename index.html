@@ -157,31 +157,20 @@
       aspect-ratio: auto;
       object-fit: contain;
     }
+    /* Open-ocean feature card: 75% of the usable content width on desktop. */
+    #open-ocean .oceanography-feature {
+      width: 75%;
+      max-width: none;
+      margin: 1rem auto 0;
+    }
+    @media (max-width: 900px) {
+      #open-ocean .oceanography-feature { width: 100%; }
+    }
+
     .expedition-copy { padding: 1.35rem 1.5rem 1.5rem; }
     .expedition-copy h3 { margin: .15rem 0 .4rem; font-size: 1.45rem; }
     .expedition-copy p { margin: 0; color: var(--muted); }
     .photo-credit { margin-top: .65rem !important; font-size: .82rem; color: #91abb1 !important; }
-
-
-    /* Open-ocean feature card: 75% of available content width on desktop. */
-    #open-ocean .expedition-feature-v8 {
-      width: 75%;
-      margin: 1rem auto 0;
-      overflow: hidden;
-      background: rgba(13,37,48,.82);
-      border: 1px solid var(--line);
-      border-radius: 28px;
-    }
-    #open-ocean .expedition-feature-v8 img {
-      display: block;
-      width: 100%;
-      height: auto;
-      aspect-ratio: auto;
-      object-fit: contain;
-    }
-    @media (max-width: 760px) {
-      #open-ocean .expedition-feature-v8 { width: 100%; }
-    }
 
     .globe-section {
       background: linear-gradient(135deg, rgba(13,37,48,.92), rgba(6,25,34,.96));
@@ -628,7 +617,7 @@
           My open-ocean experience combines research-vessel operations with hands-on oceanographic sampling and observation. During the WASCAL Floating University and other cruises, I worked with instruments and workflows that connect physical, biological and atmospheric observations across the marine environment.
         </p>
 
-        <figure class="expedition-feature-v8">
+        <figure class="expedition-feature oceanography-feature">
           <img src="assets/wascal-floating-university-polarstern.jpg" alt="WASCAL Floating University fieldwork at sea with RV Polarstern in the background" />
           <figcaption class="expedition-copy">
             <div class="eyebrow">WASCAL Floating University · RV Polarstern · 2026</div>
@@ -640,19 +629,19 @@
 
         <div class="grid three" style="margin-top:1rem">
           <article class="card">
-            <div class="date">Deep water-column profiling</div>
-            <h3>CTD · to 4,000 m</h3>
-            <p>Participation in CTD deployments and water-column sampling to depths of approximately 4,000 m, gaining hands-on experience with deep-ocean profiling and shipboard oceanographic operations.</p>
+            <div class="date">Water-column profiling · to 4,000 m</div>
+            <h3>CTD</h3>
+            <p>Participated in CTD casts and water-column sampling down to approximately <strong>4,000 m</strong>, supporting vertical profiles of physical and oceanographic conditions across the water column.</p>
           </article>
           <article class="card">
-            <div class="date">Depth-stratified sampling</div>
-            <h3>Multinet · to 1,000 m</h3>
-            <p>Multinet deployments and depth-resolved sampling down to approximately 1,000 m, collecting biological samples from defined layers of the open-ocean water column.</p>
+            <div class="date">Depth-resolved sampling · to 1,000 m</div>
+            <h3>Multinet</h3>
+            <p>Worked with Multinet deployments for depth-resolved biological sampling down to approximately <strong>1,000 m</strong>, collecting material from defined depth intervals in the open ocean.</p>
           </article>
           <article class="card">
-            <div class="date">Autonomous ocean observation</div>
+            <div class="date">Autonomous ocean observations</div>
             <h3>Argo floats</h3>
-            <p>Hands-on participation in Argo-float operations at sea, including the deployment of three Argo floats and the recovery of two floats during the cruise.</p>
+            <p>Participated in the deployment of <strong>three Argo floats</strong> and the recovery of <strong>two floats</strong>, gaining hands-on experience with autonomous observing platforms used for long-term ocean monitoring.</p>
           </article>
         </div>
 
