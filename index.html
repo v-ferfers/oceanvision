@@ -254,7 +254,7 @@
 
 
 
-    /* Scientific Diving v19 — isolated layout to avoid stale/legacy GitHub Pages conflicts. */
+    /* Scientific Diving v20 — certificate action rebalanced in supervisor card. */
     #diving-v15 .dive19-grid {
       display: grid !important;
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
@@ -319,8 +319,14 @@
     #diving-v15 .dive19-supervisor > .dive19-media {
       border-left: 1px solid var(--line) !important;
       display: flex !important;
-      align-items: flex-start !important;
+      align-items: center !important;
       justify-content: center !important;
+      padding: 1rem .75rem !important;
+    }
+
+    #diving-v15 .dive19-supervisor > .dive19-media img {
+      width: 84% !important;
+      max-width: 300px !important;
     }
 
     #diving-v15 .dive19-operations > .dive19-media {
@@ -353,6 +359,18 @@
 
     #diving-v15 .dive19-supervisor .dive19-copy {
       padding: 1.15rem 1.05rem 1.2rem !important;
+      display: flex !important;
+      flex-direction: column !important;
+      min-height: 100% !important;
+    }
+
+    #diving-v15 .dive19-supervisor .dive19-actions {
+      flex: 1 1 auto !important;
+      width: 100% !important;
+      margin-top: .8rem !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
     }
 
     #diving-v15 .dive19-operations .dive19-copy {
@@ -470,7 +488,7 @@
       }
 
       #diving-v15 .dive19-supervisor > .dive19-media img {
-        width: min(100%, 360px) !important;
+        width: min(84%, 300px) !important;
         margin: 0 auto !important;
       }
 
@@ -749,7 +767,7 @@
     </section>
 
     <!-- 2. SCIENTIFIC DIVING -->
-    <section id="diving-v15" data-diving-build="19">
+    <section id="diving-v15" data-diving-build="20">
       <div class="wrap">
         <div class="eyebrow">Scientific diving</div>
         <h2 class="section-title">Scientific diving, monitoring &amp; underwater operations.</h2>
@@ -760,15 +778,13 @@
         <div class="dive19-grid">
           <article class="dive19-card dive19-scientific">
             <div class="dive19-media">
-              <img src="./assets/WhatsApp%20Image%202026-09-24%20at%2000.37.33.jpeg?v=19" alt="Scientific diving field team operating from a small boat" loading="eager" decoding="async" />
+              <img src="./assets/WhatsApp%20Image%202026-09-24%20at%2000.37.33.jpeg?v=20" alt="Scientific diving field team operating from a small boat" loading="eager" decoding="async" />
             </div>
             <div class="dive19-copy">
               <div class="dive19-kicker">Certified Scientific Diver · since 2022</div>
               <h3>Scientific Diving</h3>
               <p>I am a Certified Scientific Diver trained for underwater research, monitoring, sampling and documentation. Training and operations follow the safety standards of <strong>DGUV Rule 101-023 Forschungstauchen</strong>.</p>
-              <div class="dive19-actions">
-                <a class="button primary" href="Certificate%20Scinetific%20Diver%2BSupervisor.pdf" target="_blank" rel="noopener">View Diving Certificates</a>
-              </div>
+
             </div>
           </article>
 
@@ -778,16 +794,17 @@
               <h3>Supervisor for Scientific Diving</h3>
               <p>Qualified as a <em>Taucheinsatzleiter</em>, with responsibility for risk assessment, dive planning and supervision of scientific-diving teams.</p>
               <div class="dive19-actions">
+                <a class="button primary" href="Certificate%20Scinetific%20Diver%2BSupervisor.pdf" target="_blank" rel="noopener">View Diving Certificates</a>
               </div>
             </div>
             <div class="dive19-media">
-              <img src="./assets/WhatsApp%20Image%202026-09-23%20at%2022.33.45.jpeg?v=19" alt="Scientific diver in full diving equipment" loading="eager" decoding="async" />
+              <img src="./assets/WhatsApp%20Image%202026-09-23%20at%2022.33.45.jpeg?v=20" alt="Scientific diver in full diving equipment" loading="eager" decoding="async" />
             </div>
           </article>
 
           <article class="dive19-card dive19-operations">
             <div class="dive19-media">
-              <img src="./assets/WhatsApp%20Image%202026-09-23%20at%2022.24.48.jpeg?v=19" alt="Scientific diver conducting underwater fieldwork" loading="eager" decoding="async" />
+              <img src="./assets/WhatsApp%20Image%202026-09-23%20at%2022.24.48.jpeg?v=20" alt="Scientific diver conducting underwater fieldwork" loading="eager" decoding="async" />
             </div>
             <div class="dive19-copy">
               <div class="dive19-kicker">Biological · archaeological · technical</div>
