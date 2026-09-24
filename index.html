@@ -466,6 +466,119 @@
       }
     }
 
+
+    /* Underwater Photography v2 — isolated gallery layout to prevent legacy overrides. */
+    #photography .photo-v2-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1.25rem;
+      margin-bottom: 1.4rem;
+    }
+    #photography .photo-v2-head .section-intro { margin-bottom: 0; }
+    #photography .photo-v2-controls {
+      display: flex;
+      gap: .55rem;
+      flex: 0 0 auto;
+    }
+    #photography .photo-v2-button {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+    #photography .photo-v2-button:hover {
+      transform: translateY(-2px);
+      border-color: rgba(112,214,197,.65);
+      background: rgba(112,214,197,.08);
+    }
+    #photography .photo-v2-gallery {
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      gap: 16px !important;
+      width: 100% !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      overscroll-behavior-inline: contain;
+      scroll-snap-type: x proximity;
+      scrollbar-width: thin;
+      padding: .25rem 0 1.1rem;
+    }
+    #photography .photo-v2-gallery::-webkit-scrollbar { height: 8px; }
+    #photography .photo-v2-gallery::-webkit-scrollbar-track {
+      background: rgba(255,255,255,.04);
+      border-radius: 999px;
+    }
+    #photography .photo-v2-gallery::-webkit-scrollbar-thumb {
+      background: rgba(112,214,197,.35);
+      border-radius: 999px;
+    }
+    #photography .photo-v2-shot {
+      /* ~3 full cards plus a noticeable slice of card 4 at desktop width. */
+      flex: 0 0 29.5% !important;
+      width: 29.5% !important;
+      min-width: 0 !important;
+      max-width: none !important;
+      margin: 0 !important;
+      overflow: hidden !important;
+      border: 1px solid var(--line) !important;
+      border-radius: 22px !important;
+      background: rgba(13,37,48,.82) !important;
+      scroll-snap-align: start;
+      position: relative;
+    }
+    #photography .photo-v2-shot img {
+      display: block !important;
+      width: 100% !important;
+      height: clamp(285px, 31vw, 405px) !important;
+      object-fit: cover !important;
+      object-position: center !important;
+      transition: transform .5s ease;
+    }
+    #photography .photo-v2-shot:hover img { transform: scale(1.025); }
+    #photography .photo-v2-shot figcaption {
+      position: absolute;
+      inset: auto 0 0;
+      padding: 2.4rem 1rem .9rem;
+      background: linear-gradient(transparent, rgba(2,16,22,.86));
+      color: #eaf5f6;
+      font-size: .84rem;
+    }
+    #photography .photo-v2-note {
+      color: var(--muted);
+      font-size: .86rem;
+      margin-top: .75rem;
+    }
+
+    @media (max-width: 900px) {
+      #photography .photo-v2-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      #photography .photo-v2-shot {
+        flex-basis: 46% !important;
+        width: 46% !important;
+      }
+      #photography .photo-v2-shot img {
+        height: clamp(300px, 55vw, 430px) !important;
+      }
+    }
+    @media (max-width: 560px) {
+      #photography .photo-v2-shot {
+        flex-basis: 82vw !important;
+        width: 82vw !important;
+      }
+      #photography .photo-v2-shot img {
+        height: clamp(330px, 105vw, 500px) !important;
+      }
+    }
+
+
   </style>
 
   <script src="https://unpkg.com/globe.gl"></script>
@@ -822,50 +935,50 @@
     <section id="photography">
       <div class="wrap">
         <div class="eyebrow">Underwater photography</div>
-        <div class="photography-head">
+        <div class="photo-v2-head">
           <div>
             <h2 class="section-title">A view below the surface.</h2>
             <p class="section-intro">
               Underwater photography is part of how I document marine environments, field experiences and the organisms I encounter while diving. Scroll through a selection of images from below the surface.
             </p>
           </div>
-          <div class="gallery-controls" aria-label="Underwater gallery controls">
-            <button class="gallery-button" type="button" id="galleryPrev" aria-label="Previous photographs">&#8592;</button>
-            <button class="gallery-button" type="button" id="galleryNext" aria-label="Next photographs">&#8594;</button>
+          <div class="photo-v2-controls" aria-label="Underwater gallery controls">
+            <button class="photo-v2-button" type="button" id="galleryPrev" aria-label="Previous photographs">&#8592;</button>
+            <button class="photo-v2-button" type="button" id="galleryNext" aria-label="Next photographs">&#8594;</button>
           </div>
         </div>
 
-        <div class="underwater-gallery" id="underwaterGallery" tabindex="0" aria-label="Scrollable underwater photography gallery">
-          <figure class="underwater-shot">
+        <div class="photo-v2-gallery" id="underwaterGallery" tabindex="0" aria-label="Scrollable underwater photography gallery">
+          <figure class="photo-v2-shot">
             <img src="assets/WhatsApp Image 2026-09-23 at 22.13.18 (3).jpeg" alt="Shark swimming over a reef in Fuvahmulah, Maldives" loading="lazy" />
             <figcaption>Fuvahmulah, Maldives · Underwater photography</figcaption>
           </figure>
-          <figure class="underwater-shot">
+          <figure class="photo-v2-shot">
             <img src="assets/R7_I2362.jpg" alt="Scuba diver exploring underwater at night with dive lights" loading="lazy" />
             <figcaption>Night diving</figcaption>
           </figure>
-          <figure class="underwater-shot">
+          <figure class="photo-v2-shot">
             <img src="assets/R7_I2382.JPG" alt="Moray eel emerging from a rocky reef" loading="lazy" />
             <figcaption>Underwater wildlife photography</figcaption>
           </figure>
-          <figure class="underwater-shot">
+          <figure class="photo-v2-shot">
             <img src="assets/WhatsApp Image 2026-09-23 at 22.13.18.jpeg" alt="Clownfish among a sea anemone" loading="lazy" />
             <figcaption>Clownfish &amp; anemone</figcaption>
           </figure>
-          <figure class="underwater-shot">
+          <figure class="photo-v2-shot">
             <img src="assets/R7_I2318.jpg" alt="Reef fish photographed underwater" loading="lazy" />
             <figcaption>Reef wildlife</figcaption>
           </figure>
-          <figure class="underwater-shot">
+          <figure class="photo-v2-shot">
             <img src="assets/WhatsApp Image 2026-09-23 at 22.13.18 (1).jpeg" alt="Divers framed by an underwater cavern opening in black and white" loading="lazy" />
             <figcaption>Underwater exploration</figcaption>
           </figure>
-          <figure class="underwater-shot">
+          <figure class="photo-v2-shot">
             <img src="assets/WhatsApp Image 2026-09-23 at 22.13.18 (2).jpeg" alt="Diver documenting clownfish and sea anemones underwater" loading="lazy" />
             <figcaption>Diving &amp; marine observation</figcaption>
           </figure>
         </div>
-        <p class="photo-note">Drag, swipe or use the arrows to move through the gallery.</p>
+        <p class="photo-v2-note">Drag, swipe or use the arrows to move through the gallery.</p>
       </div>
     </section>
 
