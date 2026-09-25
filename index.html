@@ -1080,13 +1080,13 @@
 
     <section id="education">
       <div class="wrap">
-        <div class="eyebrow">Education</div>
-        <h2 class="section-title">Biology → biological oceanography.</h2>
+        <div class="eyebrow">University Education</div>
+        <h2 class="section-title">Academic Foundation.</h2>
         <div class="grid">
           <article class="card">
             <div class="date">since 10/2024</div>
             <h3>M.Sc. Biological Oceanography</h3>
-            <p>GEOMAR / Kiel University, including an ERASMUS+ semester at the University of the Azores and international field and project experience.</p>
+            <p>GEOMAR / Kiel University, including an ERASMUS+ semester at the University of the Azores, an ERASMUS+ internship at the University of Gothenburg, and participation in the WASCAL Floating University aboard RV Polarstern.</p>
           </article>
           <article class="card">
             <div class="date">10/2020 – 09/2025</div>
@@ -1259,14 +1259,17 @@
         .pointLng('lng')
         .pointColor(() => '#70d6c5')
         .pointAltitude(0.045)
-        .pointRadius(0.42)
-        .pointResolution(16)
+        .pointRadius(() => window.matchMedia('(pointer: coarse)').matches ? 0.50 : 0.441)
+        .pointResolution(18)
         .pointLabel(tooltipHTML)
         .onPointHover(point => {
-          world.controls().autoRotate = !point;
+          if (!window.matchMedia('(pointer: coarse)').matches) {
+            world.controls().autoRotate = !point;
+          }
           globeElement.style.cursor = point ? 'pointer' : 'grab';
         })
         .onPointClick(point => {
+          world.controls().autoRotate = false;
           const card = document.getElementById('globeMobileCard');
           if (!card || !point) return;
           const image = point.image ? `<img src="${point.image}" alt="${point.name}">` : '';
@@ -1284,10 +1287,17 @@
       world.controls().enableDamping = true;
       world.pointOfView({ lat: 18, lng: 5, altitude: 2.25 }, 0);
 
+      globeElement.addEventListener('pointerdown', event => {
+        if (event.pointerType === 'touch' || event.pointerType === 'pen') {
+          world.controls().autoRotate = false;
+        }
+      }, { passive: true });
+
       const resizeGlobe = () => {
         const w = globeElement.clientWidth;
         const h = Math.max(window.innerWidth < 900 ? 430 : 540, Math.min(650, w * 0.62));
         world.width(w).height(h);
+        world.pointRadius(() => window.matchMedia('(pointer: coarse)').matches ? 0.50 : 0.441);
       };
 
       resizeGlobe();
