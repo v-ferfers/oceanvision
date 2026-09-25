@@ -1247,7 +1247,76 @@
         </div>`;
       };
 
-      const world = Globe()(globeElement)
+      const coarsePointer = window.matchMedia('(pointer: coarse)').matches || window.innerWidth <= 700;
+      let world;
+
+      const showLocation = point => {
+        if (!point) return;
+        if (world) {
+          world.controls().autoRotate = false;
+          world.pointOfView({ lat: point.lat, lng: point.lng, altitude: 1.55 }, 900);
+        }
+
+        const card = document.getElementById('globeMobileCard');
+        if (!card) return;
+        const image = point.image ? `<img src="${point.image}" alt="${point.name}">` : '';
+        card.innerHTML = `${image}<div class="globe-mobile-copy">
+          <div class="globe-tooltip-kicker">${point.type}</div>
+          <h4>${point.name}</h4>
+          <p><strong>${point.place}</strong><br>${point.info}</p>
+        </div>`;
+        card.classList.add('active');
+      };
+
+      // Touch targets are larger than the visible pins on phones, but automatically
+      // shrink for geographically close locations to reduce overlap in Europe.
+      const radians = degrees => degrees * Math.PI / 180;
+      const distanceKm = (a, b) => {
+        const earthRadiusKm = 6371;
+        const dLat = radians(b.lat - a.lat);
+        const dLng = radians(b.lng - a.lng);
+        const lat1 = radians(a.lat);
+        const lat2 = radians(b.lat);
+        const h = Math.sin(dLat / 2) ** 2 + Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) ** 2;
+        return 2 * earthRadiusKm * Math.asin(Math.min(1, Math.sqrt(h)));
+      };
+
+      const touchTargetSize = point => {
+        const nearest = locations
+          .filter(other => other !== point)
+          .reduce((min, other) => Math.min(min, distanceKm(point, other)), Infinity);
+        return nearest < 1100 ? 28 : 36;
+      };
+
+      const makeTouchTarget = point => {
+        const target = document.createElement('button');
+        const size = touchTargetSize(point);
+        target.type = 'button';
+        target.tabIndex = -1;
+        target.setAttribute('aria-label', `Open ${point.name}`);
+        target.style.width = `${size}px`;
+        target.style.height = `${size}px`;
+        target.style.padding = '0';
+        target.style.margin = '0';
+        target.style.border = '0';
+        target.style.borderRadius = '50%';
+        target.style.background = 'rgba(112,214,197,0.001)';
+        target.style.cursor = 'pointer';
+        target.style.touchAction = 'manipulation';
+        target.style.pointerEvents = 'auto';
+        target.addEventListener('pointerdown', event => {
+          event.stopPropagation();
+          if (world) world.controls().autoRotate = false;
+        });
+        target.addEventListener('click', event => {
+          event.preventDefault();
+          event.stopPropagation();
+          showLocation(point);
+        });
+        return target;
+      };
+
+      world = Globe()(globeElement)
         .backgroundColor('rgba(0,0,0,0)')
         .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
         .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
@@ -1259,45 +1328,49 @@
         .pointLng('lng')
         .pointColor(() => '#70d6c5')
         .pointAltitude(0.045)
-        .pointRadius(() => window.matchMedia('(pointer: coarse)').matches ? 0.50 : 0.441)
+        .pointRadius(0.441)
         .pointResolution(18)
         .pointLabel(tooltipHTML)
         .onPointHover(point => {
-          if (!window.matchMedia('(pointer: coarse)').matches) {
-            world.controls().autoRotate = !point;
-          }
+          if (!coarsePointer) world.controls().autoRotate = !point;
           globeElement.style.cursor = point ? 'pointer' : 'grab';
         })
-        .onPointClick(point => {
-          world.controls().autoRotate = false;
-          const card = document.getElementById('globeMobileCard');
-          if (!card || !point) return;
-          const image = point.image ? `<img src="${point.image}" alt="${point.name}">` : '';
-          card.innerHTML = `${image}<div class="globe-mobile-copy">
-            <div class="globe-tooltip-kicker">${point.type}</div>
-            <h4>${point.name}</h4>
-            <p><strong>${point.place}</strong><br>${point.info}</p>
-          </div>`;
-          card.classList.add('active');
-          world.pointOfView({ lat: point.lat, lng: point.lng, altitude: 1.55 }, 900);
-        });
+        .onPointClick(point => showLocation(point));
+
+      // Invisible, screen-sized touch targets make phone taps much easier without
+      // changing the visible marker size. Desktop keeps the normal point hit area.
+      if (coarsePointer && typeof world.htmlElementsData === 'function') {
+        world
+          .htmlElementsData(locations)
+          .htmlLat('lat')
+          .htmlLng('lng')
+          .htmlAltitude(0.052)
+          .htmlElement(makeTouchTarget)
+          .htmlElementVisibilityModifier((element, isVisible) => {
+            element.style.display = isVisible ? 'block' : 'none';
+          })
+          .htmlTransitionDuration(0);
+      }
 
       world.controls().autoRotate = true;
       world.controls().autoRotateSpeed = 0.32;
       world.controls().enableDamping = true;
       world.pointOfView({ lat: 18, lng: 5, altitude: 2.25 }, 0);
 
-      globeElement.addEventListener('pointerdown', event => {
-        if (event.pointerType === 'touch' || event.pointerType === 'pen') {
+      const stopTouchRotation = event => {
+        if (event.pointerType === 'touch' || event.pointerType === 'pen' || coarsePointer) {
           world.controls().autoRotate = false;
         }
+      };
+      globeElement.addEventListener('pointerdown', stopTouchRotation, { passive: true });
+      globeElement.addEventListener('touchstart', () => {
+        world.controls().autoRotate = false;
       }, { passive: true });
 
       const resizeGlobe = () => {
         const w = globeElement.clientWidth;
         const h = Math.max(window.innerWidth < 900 ? 430 : 540, Math.min(650, w * 0.62));
         world.width(w).height(h);
-        world.pointRadius(() => window.matchMedia('(pointer: coarse)').matches ? 0.50 : 0.441);
       };
 
       resizeGlobe();
