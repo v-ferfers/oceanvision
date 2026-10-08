@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- PORTFOLIO BUILD: 2026-10-08-links-seo-lightbox-globe-v2 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -15,7 +16,6 @@
     "@id": "https://v-ferfers.github.io/oceanvision/#profile",
     "url": "https://v-ferfers.github.io/oceanvision/",
     "name": "Vinzent Ferfers | Ocean Vision",
-    "dateModified": "2026-10-08",
     "mainEntity": {
       "@type": "Person",
       "@id": "https://v-ferfers.github.io/oceanvision/#vinzent-ferfers",
@@ -39,18 +39,11 @@
         "name": "Kiel University",
         "url": "https://www.uni-kiel.de/"
       },
-      "subjectOf": [
-        {
-          "@type": "Article",
-          "name": "FYORD Floating University Grant: Vinzent Ferfers on the Polarstern with WASCAL Floating University",
-          "url": "https://www.uni-kiel.de/en/fyord/details/news/fyord-floating-university-grant-vinzent-ferfers-on-the-polarstern-with-wascal-floating-university"
-        },
-        {
-          "@type": "CreativeWork",
-          "name": "Expedition Programme PS154/1-2",
-          "url": "https://epic.awi.de/id/eprint/60614/1/Expeditionprogramme_PS154_1_2.pdf"
-        }
-      ]
+      "subjectOf": {
+        "@type": "Article",
+        "name": "FYORD Floating University Grant: Vinzent Ferfers on the Polarstern with WASCAL Floating University",
+        "url": "https://www.uni-kiel.de/en/fyord/details/news/fyord-floating-university-grant-vinzent-ferfers-on-the-polarstern-with-wascal-floating-university"
+      }
     }
   }
   </script>
@@ -231,8 +224,6 @@
     }
     #globeViz canvas { display: block; }
     .scene-tooltip { pointer-events: none; z-index: 30; }
-    .globe-hit-tooltip { position: absolute; top: 1rem; right: 1rem; z-index: 40; pointer-events: none; display: none; }
-    .globe-hit-tooltip.active { display: block; }
     .globe-tooltip {
       width: 280px;
       overflow: hidden;
@@ -695,73 +686,80 @@
       }
     }
 
-    /* Underwater gallery lightbox — activated only after an intentional photo click/tap. */
+
+    /* Underwater photography lightbox — interaction only; gallery layout stays unchanged. */
+    body.uwp-lightbox-open { overflow: hidden; }
     .uwp-lightbox {
       position: fixed;
       inset: 0;
-      z-index: 200;
+      z-index: 1000;
       display: none;
       align-items: center;
       justify-content: center;
-      padding: clamp(1rem, 3vw, 2.5rem);
-      background: rgba(2, 13, 18, .72);
+      padding: 2rem;
+      background: rgba(2, 12, 18, .72);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
     }
     .uwp-lightbox.active { display: flex; }
     .uwp-lightbox-stage {
       position: relative;
-      width: min(94vw, 1500px);
-      height: min(90vh, 1000px);
       display: flex;
       align-items: center;
       justify-content: center;
+      width: min(94vw, 1500px);
+      height: min(90vh, 1100px);
     }
     .uwp-lightbox-image {
       display: block;
-      width: auto;
-      height: auto;
       max-width: 100%;
       max-height: 100%;
+      width: auto;
+      height: auto;
       object-fit: contain;
       border-radius: 14px;
-      box-shadow: 0 24px 90px rgba(0,0,0,.55);
+      box-shadow: 0 24px 80px rgba(0,0,0,.5);
+      user-select: none;
+      -webkit-user-drag: none;
     }
-    .uwp-lightbox-close,
-    .uwp-lightbox-nav {
+    .uwp-lightbox-close, .uwp-lightbox-nav {
       position: absolute;
-      border: 1px solid rgba(255,255,255,.25);
-      background: rgba(4,20,28,.74);
+      z-index: 2;
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(7,24,32,.84);
       color: #fff;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
       cursor: pointer;
-      display: grid;
-      place-items: center;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
     .uwp-lightbox-close {
-      top: .4rem;
-      right: .4rem;
+      top: .5rem;
+      right: .5rem;
       width: 44px;
       height: 44px;
       border-radius: 50%;
-      font-size: 1.55rem;
+      font-size: 1.65rem;
       line-height: 1;
     }
     .uwp-lightbox-nav {
       top: 50%;
-      width: 48px;
-      height: 54px;
-      border-radius: 999px;
       transform: translateY(-50%);
-      font-size: 1.55rem;
+      width: 48px;
+      height: 58px;
+      border-radius: 999px;
+      font-size: 2rem;
+      line-height: 1;
     }
-    .uwp-lightbox-prev { left: .4rem; }
-    .uwp-lightbox-next { right: .4rem; }
+    .uwp-lightbox-prev { left: .5rem; }
+    .uwp-lightbox-next { right: .5rem; }
+    #photography-v3 .uwp3-shot img { cursor: zoom-in; }
     @media (max-width: 560px) {
-      .uwp-lightbox { padding: .75rem; }
-      .uwp-lightbox-stage { width: 96vw; height: 88vh; }
-      .uwp-lightbox-nav { width: 44px; height: 50px; }
+      .uwp-lightbox { padding: .65rem; }
+      .uwp-lightbox-stage { width: 97vw; height: 90vh; }
+      .uwp-lightbox-close { top: .25rem; right: .25rem; }
+      .uwp-lightbox-nav { width: 42px; height: 50px; font-size: 1.7rem; }
+      .uwp-lightbox-prev { left: .2rem; }
+      .uwp-lightbox-next { right: .2rem; }
     }
 
   </style>
@@ -1264,101 +1262,88 @@
       if (promise && typeof promise.catch === 'function') promise.catch(() => {});
     })();
 
-    // Photography gallery controls.
+    // Photography gallery controls + original-image lightbox.
     (function () {
       const gallery = document.getElementById('underwaterGalleryV3');
       const prev = document.getElementById('galleryPrevV3');
       const next = document.getElementById('galleryNextV3');
-      if (!gallery || !prev || !next) return;
+      if (gallery && prev && next) {
+        const move = direction => {
+          gallery.scrollBy({ left: direction * Math.max(300, gallery.clientWidth * 0.72), behavior: 'smooth' });
+        };
+        prev.addEventListener('click', () => move(-1));
+        next.addEventListener('click', () => move(1));
+      }
 
-      const move = direction => {
-        gallery.scrollBy({ left: direction * Math.max(300, gallery.clientWidth * 0.72), behavior: 'smooth' });
-      };
-      prev.addEventListener('click', () => move(-1));
-      next.addEventListener('click', () => move(1));
-    })();
-
-    // Photography lightbox: preserve the existing gallery layout, enlarge only on intentional click/tap.
-    (function () {
-      const gallery = document.getElementById('underwaterGalleryV3');
       const lightbox = document.getElementById('uwpLightbox');
       const stage = document.getElementById('uwpLightboxStage');
       const image = document.getElementById('uwpLightboxImage');
-      const closeButton = document.getElementById('uwpLightboxClose');
-      const prevButton = document.getElementById('uwpLightboxPrev');
-      const nextButton = document.getElementById('uwpLightboxNext');
-      if (!gallery || !lightbox || !stage || !image || !closeButton || !prevButton || !nextButton) return;
+      const close = document.getElementById('uwpLightboxClose');
+      const lbPrev = document.getElementById('uwpLightboxPrev');
+      const lbNext = document.getElementById('uwpLightboxNext');
+      if (!gallery || !lightbox || !stage || !image || !close || !lbPrev || !lbNext) return;
 
-      const photos = Array.from(gallery.querySelectorAll('.uwp3-shot img'));
-      let currentIndex = -1;
-      let touchStartX = 0;
-      let touchStartY = 0;
+      const shots = Array.from(gallery.querySelectorAll('.uwp3-shot img'));
+      let currentIndex = 0;
+      let touchStartX = null;
 
       const show = index => {
-        if (!photos.length) return;
-        currentIndex = (index + photos.length) % photos.length;
-        const source = photos[currentIndex];
+        if (!shots.length) return;
+        currentIndex = (index + shots.length) % shots.length;
+        const source = shots[currentIndex];
         image.src = source.currentSrc || source.src;
-        image.alt = source.alt || 'Underwater photograph';
+        image.alt = source.alt || '';
         lightbox.classList.add('active');
         lightbox.setAttribute('aria-hidden', 'false');
-        closeButton.focus({ preventScroll: true });
+        document.body.classList.add('uwp-lightbox-open');
+        close.focus({ preventScroll: true });
       };
 
-      const close = () => {
-        if (!lightbox.classList.contains('active')) return;
+      const hide = () => {
         lightbox.classList.remove('active');
         lightbox.setAttribute('aria-hidden', 'true');
-        image.src = '';
-        if (currentIndex >= 0) photos[currentIndex].focus?.({ preventScroll: true });
+        document.body.classList.remove('uwp-lightbox-open');
+        image.removeAttribute('src');
       };
 
-      photos.forEach((photo, index) => {
-        photo.style.cursor = 'zoom-in';
-        photo.setAttribute('tabindex', '0');
-        photo.setAttribute('role', 'button');
-        photo.setAttribute('aria-label', `${photo.alt || 'Underwater photograph'} — open full image`);
-        photo.addEventListener('click', () => show(index));
-        photo.addEventListener('keydown', event => {
-          if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault();
-            show(index);
-          }
+      shots.forEach((shot, index) => {
+        shot.addEventListener('click', event => {
+          event.preventDefault();
+          show(index);
         });
       });
 
-      closeButton.addEventListener('click', close);
-      prevButton.addEventListener('click', event => { event.stopPropagation(); show(currentIndex - 1); });
-      nextButton.addEventListener('click', event => { event.stopPropagation(); show(currentIndex + 1); });
-      stage.addEventListener('click', event => {
-        if (event.target === stage) close();
-      });
+      close.addEventListener('click', hide);
+      lbPrev.addEventListener('click', event => { event.stopPropagation(); show(currentIndex - 1); });
+      lbNext.addEventListener('click', event => { event.stopPropagation(); show(currentIndex + 1); });
+
       lightbox.addEventListener('click', event => {
-        if (event.target === lightbox) close();
+        if (event.target === lightbox) hide();
       });
+      stage.addEventListener('click', event => event.stopPropagation());
 
       document.addEventListener('keydown', event => {
         if (!lightbox.classList.contains('active')) return;
-        if (event.key === 'Escape') close();
-        else if (event.key === 'ArrowLeft') show(currentIndex - 1);
-        else if (event.key === 'ArrowRight') show(currentIndex + 1);
+        if (event.key === 'Escape') hide();
+        if (event.key === 'ArrowLeft') show(currentIndex - 1);
+        if (event.key === 'ArrowRight') show(currentIndex + 1);
       });
 
-      window.addEventListener('wheel', () => {
-        if (lightbox.classList.contains('active')) close();
+      lightbox.addEventListener('touchstart', event => {
+        touchStartX = event.changedTouches[0]?.clientX ?? null;
+      }, { passive: true });
+      lightbox.addEventListener('touchend', event => {
+        if (touchStartX === null) return;
+        const endX = event.changedTouches[0]?.clientX ?? touchStartX;
+        const delta = endX - touchStartX;
+        touchStartX = null;
+        if (Math.abs(delta) < 45) return;
+        show(currentIndex + (delta < 0 ? 1 : -1));
       }, { passive: true });
 
-      stage.addEventListener('touchstart', event => {
-        const touch = event.changedTouches[0];
-        touchStartX = touch.clientX;
-        touchStartY = touch.clientY;
-      }, { passive: true });
-      stage.addEventListener('touchend', event => {
-        const touch = event.changedTouches[0];
-        const dx = touch.clientX - touchStartX;
-        const dy = touch.clientY - touchStartY;
-        if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy)) show(currentIndex + (dx < 0 ? 1 : -1));
-        else if (Math.abs(dy) > 80 && Math.abs(dy) > Math.abs(dx)) close();
+      // Scrolling while enlarged is treated as a quick way to return to the page.
+      window.addEventListener('wheel', () => {
+        if (lightbox.classList.contains('active')) hide();
       }, { passive: true });
     })();
 
@@ -1366,9 +1351,6 @@
     (function () {
       const globeElement = document.getElementById('globeViz');
       if (!globeElement || typeof Globe === 'undefined') return;
-      const hitTooltip = document.createElement('div');
-      hitTooltip.className = 'globe-hit-tooltip';
-      globeElement.appendChild(hitTooltip);
 
       const locations = [
         {
@@ -1387,7 +1369,7 @@
           lat: 57.1497,
           lng: -2.0943,
           info: 'ERASMUS+ semester abroad during my B.Sc. studies.',
-          image: 'assets/scotland.jpeg'
+          image: 'assets/scotland.jpeg?v=20261008'
         },
         {
           name: 'University of the Azores',
@@ -1396,7 +1378,7 @@
           lat: 37.7412,
           lng: -25.6756,
           info: 'ERASMUS+ semester abroad during my M.Sc. studies. I also worked in the Azores as an SSI-certified Divemaster.',
-          image: 'assets/azoren.jpeg'
+          image: 'assets/azoren.jpeg?v=20261008'
         },
         {
           name: 'SUBSIM / Gothenburg',
@@ -1405,7 +1387,7 @@
           lat: 57.7089,
           lng: 11.9746,
           info: 'SUBSIM computer-vision work for benthic monitoring, including BIIGLE annotations, YOLO workflows, LUMI computing, QGIS mapping and environmental-DNA sampling using water samples and scrapings from submerged settling plates.',
-          image: 'assets/sweden1.jpeg'
+          image: 'assets/sweden1.jpeg?v=20261008'
         },
         {
           name: 'Luminocean',
@@ -1414,7 +1396,7 @@
           lat: -4.5250,
           lng: 129.8990,
           info: 'DAAD-supported marine internship, including participation in the Reef Check programme for coral-reef health monitoring.',
-          image: 'assets/indonesia.jpeg'
+          image: 'assets/indonesia.jpeg?v=20261008'
         },
         {
           name: 'Ciénega, Boyacá',
@@ -1423,7 +1405,7 @@
           lat: 5.4087,
           lng: -73.2957,
           info: 'Worked as an English teaching assistant and supported community initiatives, including organizing first-aid training in collaboration with local authorities and medical students.',
-          image: 'assets/colombia.jpeg'
+          image: 'assets/colombia.jpeg?v=20261008'
         },
         {
           name: 'Scripps Institution of Oceanography',
@@ -1432,7 +1414,7 @@
           lat: 32.8670,
           lng: -117.2530,
           info: 'Knowledge exchange connected to sea-urchin culture work, including live-animal transfer to Germany.',
-          image: 'assets/sandiego.jpeg'
+          image: 'assets/sandiego.jpeg?v=20261008'
         },
         {
           name: 'Fuvahmulah',
@@ -1523,23 +1505,12 @@
         target.style.cursor = 'pointer';
         target.style.touchAction = 'manipulation';
         target.style.pointerEvents = 'auto';
-        const showHitTooltip = () => {
+        target.addEventListener('pointerenter', () => {
           if (world) world.controls().autoRotate = false;
-          globeElement.style.cursor = 'pointer';
-          if (!coarsePointer && hitTooltip) {
-            hitTooltip.innerHTML = tooltipHTML(point);
-            hitTooltip.classList.add('active');
-          }
-        };
-        const hideHitTooltip = () => {
-          if (!coarsePointer && world) world.controls().autoRotate = true;
-          globeElement.style.cursor = 'grab';
-          if (hitTooltip) hitTooltip.classList.remove('active');
-        };
-        target.addEventListener('pointerenter', showHitTooltip);
-        target.addEventListener('pointerleave', hideHitTooltip);
-        target.addEventListener('focus', showHitTooltip);
-        target.addEventListener('blur', hideHitTooltip);
+        });
+        target.addEventListener('pointerleave', () => {
+          if (world && !coarsePointer) world.controls().autoRotate = true;
+        });
         target.addEventListener('pointerdown', event => {
           event.stopPropagation();
           if (world) world.controls().autoRotate = false;
@@ -1573,8 +1544,7 @@
         })
         .onPointClick(point => showLocation(point));
 
-      // Invisible, enlarged interaction targets make hovering/clicking/tapping easier
-      // on desktop and mobile without changing the visible marker size.
+      // Invisible enlarged hitboxes make pins easier to hover/click/tap without changing their visible size.
       if (typeof world.htmlElementsData === 'function') {
         world
           .htmlElementsData(locations)
