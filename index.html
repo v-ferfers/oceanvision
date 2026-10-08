@@ -6,6 +6,54 @@
   <meta name="description" content="Vinzent Ferfers — Biological Oceanography, Scientific Diving, Marine Monitoring and Computer Vision." />
   <meta name="theme-color" content="#071820" />
   <title>Vinzent Ferfers | Ocean Vision</title>
+  <link rel="canonical" href="https://v-ferfers.github.io/oceanvision/" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": "https://v-ferfers.github.io/oceanvision/#profile",
+    "url": "https://v-ferfers.github.io/oceanvision/",
+    "name": "Vinzent Ferfers | Ocean Vision",
+    "dateModified": "2026-10-08",
+    "mainEntity": {
+      "@type": "Person",
+      "@id": "https://v-ferfers.github.io/oceanvision/#vinzent-ferfers",
+      "name": "Vinzent Ferfers",
+      "url": "https://v-ferfers.github.io/oceanvision/",
+      "image": "https://v-ferfers.github.io/oceanvision/assets/vinzent-ferfers.jpg",
+      "description": "Biological oceanography M.Sc. student working across scientific diving, marine monitoring, underwater imaging and computer vision.",
+      "sameAs": [
+        "https://www.linkedin.com/in/vinzent-ferfers-b74500411/?locale=de",
+        "https://www.researchgate.net/profile/Vinzent-Ferfers"
+      ],
+      "knowsAbout": [
+        "Biological oceanography",
+        "Scientific diving",
+        "Marine monitoring",
+        "Underwater imaging",
+        "Computer vision"
+      ],
+      "affiliation": {
+        "@type": "CollegeOrUniversity",
+        "name": "Kiel University",
+        "url": "https://www.uni-kiel.de/"
+      },
+      "subjectOf": [
+        {
+          "@type": "Article",
+          "name": "FYORD Floating University Grant: Vinzent Ferfers on the Polarstern with WASCAL Floating University",
+          "url": "https://www.uni-kiel.de/en/fyord/details/news/fyord-floating-university-grant-vinzent-ferfers-on-the-polarstern-with-wascal-floating-university"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Expedition Programme PS154/1-2",
+          "url": "https://epic.awi.de/id/eprint/60614/1/Expeditionprogramme_PS154_1_2.pdf"
+        }
+      ]
+    }
+  }
+  </script>
 
   <style>
     :root {
@@ -183,6 +231,8 @@
     }
     #globeViz canvas { display: block; }
     .scene-tooltip { pointer-events: none; z-index: 30; }
+    .globe-hit-tooltip { position: absolute; top: 1rem; right: 1rem; z-index: 40; pointer-events: none; display: none; }
+    .globe-hit-tooltip.active { display: block; }
     .globe-tooltip {
       width: 280px;
       overflow: hidden;
@@ -645,6 +695,75 @@
       }
     }
 
+    /* Underwater gallery lightbox — activated only after an intentional photo click/tap. */
+    .uwp-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(1rem, 3vw, 2.5rem);
+      background: rgba(2, 13, 18, .72);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .uwp-lightbox.active { display: flex; }
+    .uwp-lightbox-stage {
+      position: relative;
+      width: min(94vw, 1500px);
+      height: min(90vh, 1000px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .uwp-lightbox-image {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 14px;
+      box-shadow: 0 24px 90px rgba(0,0,0,.55);
+    }
+    .uwp-lightbox-close,
+    .uwp-lightbox-nav {
+      position: absolute;
+      border: 1px solid rgba(255,255,255,.25);
+      background: rgba(4,20,28,.74);
+      color: #fff;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+    }
+    .uwp-lightbox-close {
+      top: .4rem;
+      right: .4rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 1.55rem;
+      line-height: 1;
+    }
+    .uwp-lightbox-nav {
+      top: 50%;
+      width: 48px;
+      height: 54px;
+      border-radius: 999px;
+      transform: translateY(-50%);
+      font-size: 1.55rem;
+    }
+    .uwp-lightbox-prev { left: .4rem; }
+    .uwp-lightbox-next { right: .4rem; }
+    @media (max-width: 560px) {
+      .uwp-lightbox { padding: .75rem; }
+      .uwp-lightbox-stage { width: 96vw; height: 88vh; }
+      .uwp-lightbox-nav { width: 44px; height: 50px; }
+    }
+
   </style>
 
   <script src="https://unpkg.com/globe.gl"></script>
@@ -835,6 +954,10 @@
             <div class="eyebrow">WASCAL Floating University · RV Polarstern · 2026</div>
             <h3>Field oceanography aboard RV Polarstern.</h3>
             <p>FYORD / WASCAL Floating-University experience aboard RV Polarstern (PS 154/2 / WASCAL-IV), combining training, shipboard operations and practical oceanographic fieldwork.</p>
+            <div class="actions">
+              <a class="button primary" href="https://www.uni-kiel.de/en/fyord/details/news/fyord-floating-university-grant-vinzent-ferfers-on-the-polarstern-with-wascal-floating-university" target="_blank" rel="noopener">Read my FYORD feature ↗</a>
+              <a class="button" href="https://epic.awi.de/id/eprint/60614/1/Expeditionprogramme_PS154_1_2.pdf" target="_blank" rel="noopener">Explore the Expedition program ↗</a>
+            </div>
             <p class="photo-credit">Photo: © Barbara Dombrowski</p>
           </figcaption>
         </figure>
@@ -1059,6 +1182,15 @@
       </div>
     </section>
 
+    <div class="uwp-lightbox" id="uwpLightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Enlarged underwater photograph">
+      <div class="uwp-lightbox-stage" id="uwpLightboxStage">
+        <img class="uwp-lightbox-image" id="uwpLightboxImage" src="" alt="" />
+        <button class="uwp-lightbox-close" id="uwpLightboxClose" type="button" aria-label="Close enlarged photograph">×</button>
+        <button class="uwp-lightbox-nav uwp-lightbox-prev" id="uwpLightboxPrev" type="button" aria-label="Previous photograph">‹</button>
+        <button class="uwp-lightbox-nav uwp-lightbox-next" id="uwpLightboxNext" type="button" aria-label="Next photograph">›</button>
+      </div>
+    </div>
+
     <!-- Everything below is retained, only moved after the main portfolio sections. -->
     <section id="skills">
       <div class="wrap">
@@ -1146,10 +1278,97 @@
       next.addEventListener('click', () => move(1));
     })();
 
+    // Photography lightbox: preserve the existing gallery layout, enlarge only on intentional click/tap.
+    (function () {
+      const gallery = document.getElementById('underwaterGalleryV3');
+      const lightbox = document.getElementById('uwpLightbox');
+      const stage = document.getElementById('uwpLightboxStage');
+      const image = document.getElementById('uwpLightboxImage');
+      const closeButton = document.getElementById('uwpLightboxClose');
+      const prevButton = document.getElementById('uwpLightboxPrev');
+      const nextButton = document.getElementById('uwpLightboxNext');
+      if (!gallery || !lightbox || !stage || !image || !closeButton || !prevButton || !nextButton) return;
+
+      const photos = Array.from(gallery.querySelectorAll('.uwp3-shot img'));
+      let currentIndex = -1;
+      let touchStartX = 0;
+      let touchStartY = 0;
+
+      const show = index => {
+        if (!photos.length) return;
+        currentIndex = (index + photos.length) % photos.length;
+        const source = photos[currentIndex];
+        image.src = source.currentSrc || source.src;
+        image.alt = source.alt || 'Underwater photograph';
+        lightbox.classList.add('active');
+        lightbox.setAttribute('aria-hidden', 'false');
+        closeButton.focus({ preventScroll: true });
+      };
+
+      const close = () => {
+        if (!lightbox.classList.contains('active')) return;
+        lightbox.classList.remove('active');
+        lightbox.setAttribute('aria-hidden', 'true');
+        image.src = '';
+        if (currentIndex >= 0) photos[currentIndex].focus?.({ preventScroll: true });
+      };
+
+      photos.forEach((photo, index) => {
+        photo.style.cursor = 'zoom-in';
+        photo.setAttribute('tabindex', '0');
+        photo.setAttribute('role', 'button');
+        photo.setAttribute('aria-label', `${photo.alt || 'Underwater photograph'} — open full image`);
+        photo.addEventListener('click', () => show(index));
+        photo.addEventListener('keydown', event => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            show(index);
+          }
+        });
+      });
+
+      closeButton.addEventListener('click', close);
+      prevButton.addEventListener('click', event => { event.stopPropagation(); show(currentIndex - 1); });
+      nextButton.addEventListener('click', event => { event.stopPropagation(); show(currentIndex + 1); });
+      stage.addEventListener('click', event => {
+        if (event.target === stage) close();
+      });
+      lightbox.addEventListener('click', event => {
+        if (event.target === lightbox) close();
+      });
+
+      document.addEventListener('keydown', event => {
+        if (!lightbox.classList.contains('active')) return;
+        if (event.key === 'Escape') close();
+        else if (event.key === 'ArrowLeft') show(currentIndex - 1);
+        else if (event.key === 'ArrowRight') show(currentIndex + 1);
+      });
+
+      window.addEventListener('wheel', () => {
+        if (lightbox.classList.contains('active')) close();
+      }, { passive: true });
+
+      stage.addEventListener('touchstart', event => {
+        const touch = event.changedTouches[0];
+        touchStartX = touch.clientX;
+        touchStartY = touch.clientY;
+      }, { passive: true });
+      stage.addEventListener('touchend', event => {
+        const touch = event.changedTouches[0];
+        const dx = touch.clientX - touchStartX;
+        const dy = touch.clientY - touchStartY;
+        if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy)) show(currentIndex + (dx < 0 ? 1 : -1));
+        else if (Math.abs(dy) > 80 && Math.abs(dy) > Math.abs(dx)) close();
+      }, { passive: true });
+    })();
+
     // International-experience globe.
     (function () {
       const globeElement = document.getElementById('globeViz');
       if (!globeElement || typeof Globe === 'undefined') return;
+      const hitTooltip = document.createElement('div');
+      hitTooltip.className = 'globe-hit-tooltip';
+      globeElement.appendChild(hitTooltip);
 
       const locations = [
         {
@@ -1168,7 +1387,7 @@
           lat: 57.1497,
           lng: -2.0943,
           info: 'ERASMUS+ semester abroad during my B.Sc. studies.',
-          image: ''
+          image: 'assets/scotland.jpeg'
         },
         {
           name: 'University of the Azores',
@@ -1177,7 +1396,7 @@
           lat: 37.7412,
           lng: -25.6756,
           info: 'ERASMUS+ semester abroad during my M.Sc. studies. I also worked in the Azores as an SSI-certified Divemaster.',
-          image: ''
+          image: 'assets/azoren.jpeg'
         },
         {
           name: 'SUBSIM / Gothenburg',
@@ -1186,7 +1405,7 @@
           lat: 57.7089,
           lng: 11.9746,
           info: 'SUBSIM computer-vision work for benthic monitoring, including BIIGLE annotations, YOLO workflows, LUMI computing, QGIS mapping and environmental-DNA sampling using water samples and scrapings from submerged settling plates.',
-          image: ''
+          image: 'assets/sweden1.jpeg'
         },
         {
           name: 'Luminocean',
@@ -1195,7 +1414,7 @@
           lat: -4.5250,
           lng: 129.8990,
           info: 'DAAD-supported marine internship, including participation in the Reef Check programme for coral-reef health monitoring.',
-          image: ''
+          image: 'assets/indonesia.jpeg'
         },
         {
           name: 'Ciénega, Boyacá',
@@ -1204,7 +1423,7 @@
           lat: 5.4087,
           lng: -73.2957,
           info: 'Worked as an English teaching assistant and supported community initiatives, including organizing first-aid training in collaboration with local authorities and medical students.',
-          image: ''
+          image: 'assets/colombia.jpeg'
         },
         {
           name: 'Scripps Institution of Oceanography',
@@ -1213,7 +1432,7 @@
           lat: 32.8670,
           lng: -117.2530,
           info: 'Knowledge exchange connected to sea-urchin culture work, including live-animal transfer to Germany.',
-          image: ''
+          image: 'assets/sandiego.jpeg'
         },
         {
           name: 'Fuvahmulah',
@@ -1285,14 +1504,14 @@
         const nearest = locations
           .filter(other => other !== point)
           .reduce((min, other) => Math.min(min, distanceKm(point, other)), Infinity);
-        return nearest < 1100 ? 28 : 36;
+        return nearest < 1100 ? 60 : 76;
       };
 
       const makeTouchTarget = point => {
         const target = document.createElement('button');
         const size = touchTargetSize(point);
         target.type = 'button';
-        target.tabIndex = -1;
+        target.tabIndex = 0;
         target.setAttribute('aria-label', `Open ${point.name}`);
         target.style.width = `${size}px`;
         target.style.height = `${size}px`;
@@ -1304,6 +1523,23 @@
         target.style.cursor = 'pointer';
         target.style.touchAction = 'manipulation';
         target.style.pointerEvents = 'auto';
+        const showHitTooltip = () => {
+          if (world) world.controls().autoRotate = false;
+          globeElement.style.cursor = 'pointer';
+          if (!coarsePointer && hitTooltip) {
+            hitTooltip.innerHTML = tooltipHTML(point);
+            hitTooltip.classList.add('active');
+          }
+        };
+        const hideHitTooltip = () => {
+          if (!coarsePointer && world) world.controls().autoRotate = true;
+          globeElement.style.cursor = 'grab';
+          if (hitTooltip) hitTooltip.classList.remove('active');
+        };
+        target.addEventListener('pointerenter', showHitTooltip);
+        target.addEventListener('pointerleave', hideHitTooltip);
+        target.addEventListener('focus', showHitTooltip);
+        target.addEventListener('blur', hideHitTooltip);
         target.addEventListener('pointerdown', event => {
           event.stopPropagation();
           if (world) world.controls().autoRotate = false;
@@ -1337,9 +1573,9 @@
         })
         .onPointClick(point => showLocation(point));
 
-      // Invisible, screen-sized touch targets make phone taps much easier without
-      // changing the visible marker size. Desktop keeps the normal point hit area.
-      if (coarsePointer && typeof world.htmlElementsData === 'function') {
+      // Invisible, enlarged interaction targets make hovering/clicking/tapping easier
+      // on desktop and mobile without changing the visible marker size.
+      if (typeof world.htmlElementsData === 'function') {
         world
           .htmlElementsData(locations)
           .htmlLat('lat')
