@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- PORTFOLIO BUILD: 2026-11-04-cv-vasskant-fishtv-readme -->
+<!-- PORTFOLIO BUILD: 2026-11-05-cv-vasskant-fishtv-v3 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -180,6 +180,11 @@
     .cv-video-wrap video { width: 100%; display: block; background: #000; max-height: 680px; object-fit: contain; }
     .cv-video-caption { padding: 1rem 1.25rem 1.2rem; color: var(--muted); font-size: .92rem; }
 
+    .skill-category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    @media (max-width: 700px) {
+      .skill-category-grid { grid-template-columns: 1fr; }
+    }
+
     .cv-media-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.95fr) minmax(290px, 1fr);
@@ -224,6 +229,9 @@
       min-height: 100%;
       object-fit: cover;
       display: block;
+    }
+    @media (max-width: 900px) {
+      .vasskant-card img { height: auto; max-height: 440px; object-fit: cover; object-position: center 45%; }
     }
     .vasskant-copy { padding: 1.2rem 1.25rem 1.25rem; }
     .vasskant-copy h3 { margin: .1rem 0 .55rem; }
@@ -1276,7 +1284,7 @@
         <div class="eyebrow">Qualifications</div>
         <h2 class="section-title">Methods &amp; tools.</h2>
         <p class="section-intro">A grouped overview of the skills and methods highlighted in my current CV.</p>
-        <div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;">
+        <div class="grid skill-category-grid">
           <article class="card">
             <div class="date">Computational methods &amp; AI</div>
             <h3>Computer-based workflows</h3>
@@ -1328,7 +1336,7 @@
           <p class="section-intro">I’m interested in marine monitoring, scientific diving, open-ocean fieldwork, subsea imaging and computer-vision applications for ocean research.</p>
           <div class="actions">
             <a class="button primary" href="mailto:vinzent.ferfers@gmx.de">vinzent.ferfers@gmx.de</a>
-            <a class="button" href="CV_Vinzent_Ferfers_11_2026(5).pdf" download>Download full CV</a>
+            <a class="button" href="CV_Vinzent_Ferfers_11_2026.pdf" download>Download full CV</a>
           </div>
           <p class="fineprint">For privacy, my street address and phone number are intentionally not displayed on this public page.</p>
         </div>
