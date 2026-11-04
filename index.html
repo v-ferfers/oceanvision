@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- PORTFOLIO BUILD: 2026-10-08-links-seo-lightbox-globe-v2 -->
+<!-- PORTFOLIO BUILD: 2026-11-04-cv-vasskant-fishtv-readme -->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -180,6 +180,55 @@
     .cv-video-wrap video { width: 100%; display: block; background: #000; max-height: 680px; object-fit: contain; }
     .cv-video-caption { padding: 1rem 1.25rem 1.2rem; color: var(--muted); font-size: .92rem; }
 
+    .cv-media-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.95fr) minmax(290px, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+      align-items: stretch;
+    }
+    .cv-media-grid .cv-video-wrap { margin-top: 0; height: 100%; }
+    .cv-side-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background: rgba(13,37,48,.82);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      min-height: 100%;
+    }
+    .cv-side-card video {
+      width: 100%;
+      display: block;
+      background: #000;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+    .cv-side-copy { padding: 1rem 1.1rem 1.15rem; }
+    .cv-side-copy h3 { margin: 0 0 .5rem; font-size: 1.12rem; }
+    .cv-side-copy p { margin: 0; color: var(--muted); }
+    .cv-side-copy .actions { margin-top: .9rem; }
+    .cv-subgrid { display: grid; gap: 1rem; margin-top: 1rem; }
+    .vasskant-card {
+      display: grid;
+      grid-template-columns: minmax(220px, 35%) minmax(0, 1fr);
+      gap: 0;
+      overflow: hidden;
+      background: rgba(13,37,48,.82);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+    }
+    .vasskant-card img {
+      width: 100%;
+      height: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .vasskant-copy { padding: 1.2rem 1.25rem 1.25rem; }
+    .vasskant-copy h3 { margin: .1rem 0 .55rem; }
+    .vasskant-copy p { color: var(--muted); margin: 0; }
+
 
     .vessels { display: grid; grid-template-columns: .8fr 1.2fr; gap: 1rem; }
 
@@ -274,7 +323,7 @@
 
     @media (max-width: 900px) {
       .nav-links { display: none; }
-      .hero-grid, .grid, .grid.three, .spotlight, .vessels, .sswd-layout { grid-template-columns: 1fr; }
+      .hero-grid, .grid, .grid.three, .spotlight, .vessels, .sswd-layout, .cv-media-grid, .vasskant-card { grid-template-columns: 1fr; }
       .profile-card { max-width: 420px; }
       .hero { min-height: auto; }
       .timeline-item { grid-template-columns: 1fr; gap: .25rem; }
@@ -797,7 +846,7 @@
           <p class="hero-note">Field science, ecological monitoring and technology for understanding marine environments.</p>
           <div class="actions">
             <a class="button primary" href="#computer-vision">See current work</a>
-            <a class="button" href="CV_Vinzent_Ferfers_09_2026_Leadership.pdf" download>Download CV</a>
+            <a class="button" href="CV_Vinzent_Ferfers_11_2026.pdf" download>Download CV</a>
             <a class="button" href="mailto:vinzent.ferfers@gmx.de">Email me</a>
           </div>
         </div>
@@ -856,21 +905,53 @@
           </div>
         </div>
 
-        <figure class="cv-video-wrap">
-          <video id="benthicCvVideo" autoplay muted loop playsinline preload="auto">
-            <source src="assets/clip_LST_Skan_Transekt_M4_annotated.mp4" type="video/mp4" />
-            Your browser does not support embedded MP4 video.
-          </video>
-          <figcaption class="cv-video-caption">Annotated benthic transect imagery from the computer-vision monitoring workflow · playback speed 1.8×.</figcaption>
-        </figure>
+        <div class="cv-media-grid">
+          <figure class="cv-video-wrap">
+            <video id="benthicCvVideo" autoplay muted loop playsinline preload="auto">
+              <source src="assets/clip_LST_Skan_Transekt_M4_annotated.mp4" type="video/mp4" />
+              Your browser does not support embedded MP4 video.
+            </video>
+            <figcaption class="cv-video-caption">Annotated benthic transect imagery from the computer-vision monitoring workflow · playback speed 1.8×.</figcaption>
+          </figure>
 
-        <article class="card" style="margin-top:1rem">
-          <div class="date">Environmental DNA monitoring · Sweden</div>
-          <h3>Environmental DNA monitoring.</h3>
-          <p>
-            Alongside image-based monitoring, I participated in environmental DNA (eDNA) field sampling along the Swedish coast, collecting water samples and scrapings from submerged settling plates. This complements visual and image-based monitoring with molecular methods for detecting biological signals in the marine environment.
-          </p>
-        </article>
+          <article class="cv-side-card">
+            <video autoplay muted loop playsinline preload="metadata" aria-label="Fish detection clip from the FiskTV Byfjorden monitoring camera">
+              <source src="assets/FiskTV_Byfjorden_2026-08-22_06-27-00_60s_det_short_clip.mp4" type="video/mp4" />
+              Your browser does not support embedded MP4 video.
+            </video>
+            <div class="cv-side-copy">
+              <div class="date">FishTV · Byfjorden</div>
+              <h3>Fish detection from a stationary monitoring camera.</h3>
+              <p>
+                Example output from a base fish-detection workflow used in <strong>SUBSIM</strong>. This model is a foundation model that can be expanded for future fish-detection and monitoring applications based on long-term stationary camera footage.
+              </p>
+              <div class="actions">
+                <a class="button" href="https://fisktv.se" target="_blank" rel="noopener">Visit live FiskTV feed ↗</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="cv-subgrid">
+          <article class="card">
+            <div class="date">Environmental DNA monitoring · Sweden</div>
+            <h3>Environmental DNA monitoring.</h3>
+            <p>
+              Alongside image-based monitoring, I participated in environmental DNA (eDNA) field sampling along the Swedish coast, collecting water samples and scrapings from submerged settling plates. This complements visual and image-based monitoring with molecular methods for detecting biological signals in the marine environment.
+            </p>
+          </article>
+
+          <article class="vasskant-card">
+            <img src="assets/20260924_132246.jpg" alt="Vinzent Ferfers with collaborators at the Vasskant waterfront development site in Gothenburg" loading="lazy" />
+            <div class="vasskant-copy">
+              <div class="date">Vasskant · waterfront development · Gothenburg</div>
+              <h3>Biodiverse waterfront development.</h3>
+              <p>
+                Within my SUBSIM internship, I also contributed to the <strong>Vasskant</strong> initiative in Gothenburg. My role focused on biodiversity-oriented monitoring design and <strong>ROV scouting</strong> in an interdisciplinary setting involving multiple organisations, including partners connected to <strong>Skanska</strong> and Gothenburg.
+              </p>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -1058,7 +1139,7 @@
             <div class="timeline-copy">
               <h3>SUBSIM Internship · Computer Vision & Marine Monitoring</h3>
               <div class="org">Sweden · Erasmus+</div>
-              <p>Subsea computer-vision model training for benthic habitat assessment and automated monitoring, including BIIGLE annotation, YOLO workflows, LUMI computing and QGIS-based spatial products.</p>
+              <p>Computer-vision assisted benthic habitat assessment and automated monitoring in Skåne, alongside contributions to Vasskant biodiversity-monitoring design and ROV scouting, plus eDNA, plankton and water sampling within SeAnalytics.</p>
             </div>
           </article>
 
@@ -1193,17 +1274,29 @@
     <section id="skills">
       <div class="wrap">
         <div class="eyebrow">Qualifications</div>
-        <h2 class="section-title">Methods & tools.</h2>
-        <p class="section-intro">A compact overview of the skills listed in my current CV.</p>
-        <div class="skill-cloud">
-          <span class="tag">R</span><span class="tag">Python</span><span class="tag">Machine learning</span>
-          <span class="tag">Computer vision</span><span class="tag">YOLO</span><span class="tag">BIIGLE annotation</span>
-          <span class="tag">QGIS</span><span class="tag">LUMI / HPC workflows</span><span class="tag">eDNA sampling</span>
-          <span class="tag">Project planning</span><span class="tag">Risk assessment</span><span class="tag">Habitat mapping</span>
-          <span class="tag">Team coordination</span><span class="tag">mini-RUV piloting</span><span class="tag">CTD</span>
-          <span class="tag">Multinet</span><span class="tag">ARGO deployment</span><span class="tag">Multibeam</span>
-          <span class="tag">Underwater documentation</span><span class="tag">Reef-health monitoring</span>
-          <span class="tag">Ship safety training</span><span class="tag">Intercultural communication</span>
+        <h2 class="section-title">Methods &amp; tools.</h2>
+        <p class="section-intro">A grouped overview of the skills and methods highlighted in my current CV.</p>
+        <div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;">
+          <article class="card">
+            <div class="date">Computational methods &amp; AI</div>
+            <h3>Computer-based workflows</h3>
+            <p>R · Python · computer vision · YOLO · BIIGLE annotation · QGIS · habitat mapping · LUMI / HPC workflows · AI-aided app &amp; web development.</p>
+          </article>
+          <article class="card">
+            <div class="date">Field &amp; monitoring operations</div>
+            <h3>Field methods</h3>
+            <p>Scientific diving · reef-health monitoring · underwater documentation · eDNA filtration and water sampling · plankton sampling · ROV piloting (FIFISH) · camera-based ecological surveys.</p>
+          </article>
+          <article class="card">
+            <div class="date">Shipboard &amp; oceanographic work</div>
+            <h3>Vessel-based methods</h3>
+            <p>CTD · Multinet · ARGO-float operations · Van Veen Grab · Box Corer · drop-down camera · dredge · mini-RUV · ship safety training.</p>
+          </article>
+          <article class="card">
+            <div class="date">Project work &amp; collaboration</div>
+            <h3>Coordination &amp; communication</h3>
+            <p>Risk assessments · project planning · permit and rescue-chain coordination · team coordination · intercultural communication · science communication and outreach.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -1235,7 +1328,7 @@
           <p class="section-intro">I’m interested in marine monitoring, scientific diving, open-ocean fieldwork, subsea imaging and computer-vision applications for ocean research.</p>
           <div class="actions">
             <a class="button primary" href="mailto:vinzent.ferfers@gmx.de">vinzent.ferfers@gmx.de</a>
-            <a class="button" href="CV_Vinzent_Ferfers_09_2026_Leadership.pdf" download>Download full CV</a>
+            <a class="button" href="CV_Vinzent_Ferfers_11_2026(5).pdf" download>Download full CV</a>
           </div>
           <p class="fineprint">For privacy, my street address and phone number are intentionally not displayed on this public page.</p>
         </div>
