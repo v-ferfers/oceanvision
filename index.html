@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<!-- PORTFOLIO BUILD: 2026-11-05-SUBSIM-VASSKANT-v6 -->
-<html lang="en" data-portfolio-build="2026-11-05-SUBSIM-VASSKANT-v6">
+<!-- PORTFOLIO BUILD: 2026-11-05-VASSKANT-SCREENSHOT-v7 -->
+<html lang="en" data-portfolio-build="2026-11-05-VASSKANT-SCREENSHOT-v7">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Vinzent Ferfers — Biological Oceanography, Scientific Diving, Marine Monitoring and Computer Vision." />
-  <meta name="portfolio-build" content="2026-11-05-SUBSIM-VASSKANT-v6" />
+  <meta name="portfolio-build" content="2026-11-05-VASSKANT-SCREENSHOT-v7" />
   <meta name="theme-color" content="#071820" />
   <title>Vinzent Ferfers | Ocean Vision</title>
   <link rel="canonical" href="https://v-ferfers.github.io/oceanvision/" />
@@ -218,13 +218,17 @@
       font-size: .75rem;
       font-weight: 800;
     }
-    .vasskant-preview-media {
+    /* The preview is a screenshot: show its full proportions rather than cropping it.
+       This selector must override .vasskant-card img below. */
+    .vasskant-card .vasskant-preview img.vasskant-preview-media {
       display: block;
       width: 100%;
-      height: 138px;
-      object-fit: cover;
-      object-position: center top;
-      background: #dbe4ef;
+      height: auto;
+      min-height: 0;
+      max-height: 170px;
+      object-fit: contain;
+      object-position: center center;
+      background: #f7f9fc;
       border-bottom: 1px solid rgba(10,34,71,.12);
     }
     .vasskant-preview-body { display: block; padding: .75rem .85rem .8rem; }
@@ -1033,7 +1037,7 @@
               </p>
               <a class="vasskant-preview" href="https://www.gu.se/forskning/fran-vass-kant-till-vasskant-borjan-av-en-ny-era" target="_blank" rel="noopener noreferrer" aria-label="Read the Vasskant research project page at the University of Gothenburg">
                 <span class="vasskant-preview-header"><span>Göteborgs universitet</span><span aria-hidden="true">↗</span></span>
-                <img class="vasskant-preview-media" src="assets/vasskant-gu-preview.png?v=20261105" alt="Preview of the University of Gothenburg Vasskant project page" loading="lazy" />
+                <img class="vasskant-preview-media" src="assets/Screenshot%20Vasskant%20project.jpg?v=20261105" alt="Preview of the University of Gothenburg Vasskant project page" loading="lazy" />
                 <span class="vasskant-preview-body">
                   <span class="vasskant-preview-type">Research project · 2026–2028</span>
                   <span class="vasskant-preview-title" lang="sv">Från vass kant till vasskant – början av en ny era</span>
