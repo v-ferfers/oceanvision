@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<!-- PORTFOLIO BUILD: 2026-11-05-VASSKANT-SCREENSHOT-v7 -->
-<html lang="en" data-portfolio-build="2026-11-05-VASSKANT-SCREENSHOT-v7">
+<!-- PORTFOLIO BUILD: 2026-11-05-SUBSIM-RESEARCH-v8.1 -->
+<html lang="en" data-portfolio-build="2026-11-05-SUBSIM-RESEARCH-v8.1">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Vinzent Ferfers — Biological Oceanography, Scientific Diving, Marine Monitoring and Computer Vision." />
-  <meta name="portfolio-build" content="2026-11-05-VASSKANT-SCREENSHOT-v7" />
+  <meta name="portfolio-build" content="2026-11-05-SUBSIM-RESEARCH-v8.1" />
   <meta name="theme-color" content="#071820" />
   <title>Vinzent Ferfers | Ocean Vision</title>
   <link rel="canonical" href="https://v-ferfers.github.io/oceanvision/" />
@@ -231,7 +231,8 @@
       background: #f7f9fc;
       border-bottom: 1px solid rgba(10,34,71,.12);
     }
-    .vasskant-preview-body { display: block; padding: .75rem .85rem .8rem; }
+    .vasskant-preview-credit { display: block; padding: .28rem .85rem .12rem; background: #f7f9fc; color: #476078; font-size: .64rem; line-height: 1.4; }
+    .vasskant-preview-body { display: block; padding: .55rem .85rem .8rem; }
     .vasskant-preview-type {
       display: block;
       color: #48658b;
@@ -389,6 +390,9 @@
     .timeline-copy h3 { margin: 0 0 .2rem; }
     .timeline-copy .org { color: #d8e8ea; margin-bottom: .45rem; }
     .timeline-copy p { margin: 0; color: var(--muted); }
+    .timeline-copy .timeline-resource { margin-top: .5rem; font-size: .9rem; }
+    .timeline-resource a { color: var(--accent); text-decoration: underline; text-underline-offset: .18em; text-decoration-color: rgba(112,214,197,.5); }
+    .timeline-resource a:hover { text-decoration-color: var(--accent); }
 
 
     .skill-cloud { display: flex; flex-wrap: wrap; gap: .65rem; }
@@ -969,17 +973,17 @@
             <div class="eyebrow">LST project · SUBSIM · Sweden</div>
             <h3>Computer vision for benthic habitat assessment.</h3>
             <p>
-              I participated in an LST project for <strong>Länsstyrelsen Skåne</strong> (County Administrative Board of Skåne), using the SUBSIM computer-vision workflow integrated into Digital Twin Ocean. The work focused on analysing underwater transect imagery to quantify algae coverage and translate image observations into spatial monitoring products.
+              During my work with SUBSIM on an LST project for <strong>Länsstyrelsen Skåne</strong> (County Administrative Board of Skåne), I used and extended its existing computer-vision segmentation pipeline to assess benthic algal cover. I annotated underwater images in BIIGLE, trained and iteratively refined a new model, ran inference on transect footage, and extended the pipeline to combine segmentation outputs with GPX data for georeferenced coverage mapping in QGIS.
             </p>
           </div>
           <div class="card">
             <h3>Monitoring workflow</h3>
             <ul class="mini-list">
               <li>Polygon annotation of benthic imagery in <strong>BIIGLE</strong>.</li>
-              <li>Preparation of annotated data for training a <strong>YOLO</strong> computer-vision model.</li>
-              <li>Use of <strong>LUMI</strong> supercomputing resources within the model-analysis workflow.</li>
-              <li>Analysis of transect imagery for algae-cover estimates.</li>
-              <li>Creation of a <strong>QGIS</strong> map from geolocated computer-vision annotations.</li>
+              <li>Training and iterative refinement of a new <strong>YOLO</strong> segmentation model.</li>
+              <li>Model inference on underwater transect video for algae-cover estimation.</li>
+              <li>Extending SUBSIM pipeline components to link segmentation outputs with <strong>GPX</strong> position data.</li>
+              <li>Mapping georeferenced transect coverage in <strong>QGIS</strong>, with <strong>LUMI</strong> HPC resources used in the workflow.</li>
             </ul>
           </div>
         </div>
@@ -993,7 +997,7 @@
             <figcaption class="cv-video-caption">Annotated benthic transect imagery from the computer-vision monitoring workflow · playback speed 1.8×.</figcaption>
             <div class="cv-subsim-credit">
               <strong>Computer-vision segmentation · SUBSIM</strong>
-              <p>This footage illustrates the computer-vision segmentation workflow used through SUBSIM to analyse underwater imagery for marine habitat monitoring.</p>
+              <p>This footage shows the SUBSIM segmentation workflow in action. I used and extended the pipeline from image annotation and model refinement through video inference and GPX-linked QGIS coverage mapping.</p>
               <div class="actions">
                 <a class="button primary" href="https://subsim.se/" target="_blank" rel="noopener noreferrer">Explore SUBSIM ↗</a>
               </div>
@@ -1009,7 +1013,7 @@
               <div class="date">FishTV · Byfjorden</div>
               <h3>Fish detection from a stationary monitoring camera.</h3>
               <p>
-                Example output from a base fish-detection workflow used in <strong>SUBSIM</strong>. This foundation model can be expanded for future fish-detection and monitoring applications.
+                Example output from a fish-detection workflow used in <strong>SUBSIM</strong>. The baseline detection model can be refined and expanded for future fish-detection and monitoring applications.
               </p>
               <div class="actions">
                 <a class="button" href="https://fisktv.se" target="_blank" rel="noopener">Visit live FiskTV feed ↗</a>
@@ -1038,6 +1042,7 @@
               <a class="vasskant-preview" href="https://www.gu.se/forskning/fran-vass-kant-till-vasskant-borjan-av-en-ny-era" target="_blank" rel="noopener noreferrer" aria-label="Read the Vasskant research project page at the University of Gothenburg">
                 <span class="vasskant-preview-header"><span>Göteborgs universitet</span><span aria-hidden="true">↗</span></span>
                 <img class="vasskant-preview-media" src="assets/Screenshot%20Vasskant%20project.jpg?v=20261105" alt="Preview of the University of Gothenburg Vasskant project page" loading="lazy" />
+                <span class="vasskant-preview-credit">Visualisation: © White Arkitekter · Source: University of Gothenburg</span>
                 <span class="vasskant-preview-body">
                   <span class="vasskant-preview-type">Research project · 2026–2028</span>
                   <span class="vasskant-preview-title" lang="sv">Från vass kant till vasskant – början av en ny era</span>
@@ -1156,7 +1161,7 @@
 
         <article class="card" style="margin-top:1rem">
           <h3>Research-vessel experience</h3>
-          <p>Field experience aboard <strong>RV Polarstern</strong>, <strong>RV Alkor</strong> and <strong>RV Littorina</strong>, alongside additional offshore sampling tools including Van Veen Grab, Box Corer, drop-down camera, dredge and mini-RUV.</p>
+          <p>Field experience aboard <strong>RV Polarstern</strong>, <strong>RV Alkor</strong> and <strong>RV Littorina</strong>, alongside additional offshore sampling tools including Van Veen Grab, Box Corer, drop-down camera, dredge and mini-ROV (FIFISH).</p>
         </article>
       </div>
     </section>
@@ -1233,8 +1238,8 @@
             <div class="timeline-date">08/2026 – 11/2026</div>
             <div class="timeline-copy">
               <h3>SUBSIM Internship · Computer Vision & Marine Monitoring</h3>
-              <div class="org">Sweden · Erasmus+</div>
-              <p>Computer-vision assisted benthic habitat assessment and automated monitoring in Skåne, alongside contributions to Vasskant biodiversity-monitoring design and ROV scouting, plus eDNA, plankton and water sampling within SeAnalytics.</p>
+              <div class="org">SUBSIM · Erasmus+ internship hosted by the University of Gothenburg, Sweden</div>
+              <p>Used and extended SUBSIM’s segmentation pipeline for the LST Skåne project: BIIGLE annotations, training and refinement of a new model, video inference, and GPX-linked coverage maps in QGIS. Also contributed to Vasskant monitoring design and ROV scouting, and SeAnalytics eDNA filtration, plankton and water sampling.</p>
             </div>
           </article>
 
@@ -1269,8 +1274,9 @@
             <div class="timeline-date">06/2023 – 03/2025</div>
             <div class="timeline-copy">
               <h3>Research Assistant · Sea Urchin Culture</h3>
-              <div class="org">Kiel University · Dr. Meike Stumpp, collaboration with Dr. Marian Hu</div>
-              <p>Established and maintained a full-life-cycle rearing system for <em>Lytechinus pictus</em>, including seawater manipulations, long-term culture maintenance and scientific exchange with Scripps Institution of Oceanography.</p>
+              <div class="org">Kiel University · Dr. Meike Stumpp and Dr. Marian Hu</div>
+              <p>Established and maintained a whole-life-cycle rearing system for <em>Lytechinus pictus</em> at Kiel University, working with Dr. Meike Stumpp and Dr. Marian Hu. Cared for up to <strong>100 sea urchins</strong> over approximately two years, including long-term husbandry, seawater filtration, and salinity and alkalinity adjustments. The work also involved scientific exchange with Prof. Amro Hamdoun’s research group at <strong>Scripps Institution of Oceanography</strong>, including the transfer of 60 live sea urchins to Germany.</p>
+              <p class="timeline-resource"><a href="https://www.meike-stumpp.com/team" target="_blank" rel="noopener noreferrer">Meike Stumpp Research · Team profile ↗</a></p>
             </div>
           </article>
 
@@ -1385,7 +1391,7 @@
           <article class="card">
             <div class="date">Shipboard &amp; oceanographic work</div>
             <h3>Vessel-based methods</h3>
-            <p>CTD · Multinet · ARGO-float operations · Van Veen Grab · Box Corer · drop-down camera · dredge · mini-RUV · ship safety training.</p>
+            <p>CTD · Multinet · ARGO-float operations · Van Veen Grab · Box Corer · drop-down camera · dredge · mini-ROV (FIFISH) · ship safety training.</p>
           </article>
           <article class="card">
             <div class="date">Project work &amp; collaboration</div>
@@ -1601,7 +1607,7 @@
           type: 'Scientific collaboration',
           lat: 32.8670,
           lng: -117.2530,
-          info: 'Knowledge exchange connected to sea-urchin culture work, including live-animal transfer to Germany.',
+          info: 'Scientific exchange on sea-urchin culture with Prof. Amro Hamdoun’s research group, including the transfer of 60 live sea urchins to Germany.',
           image: 'assets/sandiego.jpeg?v=20261008'
         },
         {
